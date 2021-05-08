@@ -5,6 +5,7 @@ Route::middleware(['web', 'auth', 'auth:sanctum', 'lang', 'verified'])->namespac
 		Route::get('/', 'DashboardController@index')->name('dashboard');
 		Route::get('/data', 'DashboardController@data')->name('dashboard.data');
 	});
+
 	Route::middleware(['can:super_admin'])->prefix('admin')->group(function () {
 		Route::resource('user', 'UserController');
 		Route::post('user/resetPass', 'UserController@resetPass')->name('user.resetPass');
@@ -13,7 +14,7 @@ Route::middleware(['web', 'auth', 'auth:sanctum', 'lang', 'verified'])->namespac
 	});
 
 	Route::middleware(['can:album_manage'])->prefix('admin')->group(function () {
-		Route::resource('term/albumgroup', 'TermController');
+		Route::resource('albumgroup', 'TermController');
 		Route::resource('{id}/album', 'AlbumController');
 		Route::get('{id}/album/{album}/delete', 'AlbumController@delete')->name('album.delete');
 		Route::get('{id}/album/{image}/{type}', 'AlbumController@changeOrder')->name('album.changeOrder');
@@ -21,7 +22,7 @@ Route::middleware(['web', 'auth', 'auth:sanctum', 'lang', 'verified'])->namespac
 	});
 
 	Route::middleware(['can:video_manage'])->prefix('admin')->group(function () {
-		Route::resource('term/videogroup', 'TermController');
+		Route::resource('videogroup', 'TermController');
 		Route::resource('video', 'VideoController');
 		Route::post('/video/updateVideoGroupSelect', 'VideoController@updateVideoGroupSelect')->name('video.updateVideoGroupSelect');
 		Route::get('/video/setVideoGroupSelect/{id}', 'VideoController@setVideoGroupSelect')->name('video.setVideoGroupSelect');
@@ -31,7 +32,7 @@ Route::middleware(['web', 'auth', 'auth:sanctum', 'lang', 'verified'])->namespac
 	});
 
 	Route::middleware(['can:question_manage'])->prefix('admin')->group(function () {
-		Route::resource('term/questiongroup', 'TermController');
+		Route::resource('questiongroup', 'TermController');
 
 		Route::resource('question', 'QuestionController');
 		Route::post('/question/updateQuestionGroupSelect', 'QuestionController@updateQuestionGroupSelect')->name('question.updateQuestionGroupSelect');
@@ -46,8 +47,8 @@ Route::middleware(['web', 'auth', 'auth:sanctum', 'lang', 'verified'])->namespac
 	});
 
 	Route::middleware(['can:post_manage'])->prefix('admin')->group(function () {
-		Route::resource('term/category', 'TermController');
-		Route::resource('term/tag', 'TermController');
+		Route::resource('category', 'TermController');
+		Route::resource('tag', 'TermController');
 		Route::get('/tag/{tag}/list-post', 'TermController@listPostOfTag')->name('post.listPostOfTag');
 
 		Route::resource('post', 'PostController');

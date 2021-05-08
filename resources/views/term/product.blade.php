@@ -72,7 +72,7 @@
 								<a href="{{route('product.edit',array('product'=>$r->id))}}"><i class="fa fa-edit" title="Sửa"></i></a>
 
 								&nbsp;&nbsp;&nbsp;
-								<a  href="{{route('productitem.index',array('id'=>$r->id))}}" ><i class="fa fa-cog" title="Config"></i></a>
+								<a  href="{{route('product.index',array('id'=>$r->id))}}" ><i class="fa fa-cog" title="Config"></i></a>
 
 								@if(count($r->posts)==0 && !@isset($r->child))
 								&nbsp;&nbsp;&nbsp;
@@ -93,7 +93,7 @@
 							<td align="center">
 								<a href="{{route('product.edit',array('product'=>$rc->id))}}"><i class="fa fa-edit" title="Sửa"></i></a>
 								&nbsp;&nbsp;&nbsp;
-								<a  href="{{route('productitem.index',array('id'=>$rc->id))}}" ><i class="fa fa-cog" title="Config"></i></a>
+								<a  href="{{route('product.index',array('id'=>$rc->id))}}" ><i class="fa fa-cog" title="Config"></i></a>
 								@if(count($rc->posts)==0)
 								&nbsp;&nbsp;&nbsp;
 								<a style="color: red" href="#" onclick="destroyCategory('destroy{{$rc->id}}')"><i class="fa fa-times" title="Sửa"></i></a>

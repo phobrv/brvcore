@@ -32,41 +32,41 @@ class BrvCoreServiceProvider extends ServiceProvider {
 
 	public function register(): void{
 		$this->app->singleton(\Phobrv\BrvCore\ViewComposers\AdminComposer::class);
-		$this->mergeConfigFrom(__DIR__ . '/../config/coreadmin.php', 'coreadmin');
+		$this->mergeConfigFrom(__DIR__ . '/../config/brvcore.php', 'brvcore');
 		$this->mergeConfigFrom(__DIR__ . '/../config/sidebar.php', 'sidebar');
 
 		$this->defineMiddleware();
 
-		$this->app->singleton('coreadmin', function ($app) {
+		$this->app->singleton('brvcore', function ($app) {
 			return new CoreAdmin;
 		});
 	}
 
 	public function provides() {
-		return ['coreadmin'];
+		return ['brvcore'];
 	}
 
 	protected function bootForConsole(): void{
 		// Publishing the configuration file.
 		$this->publishes([
-			__DIR__ . '/../config/coreadmin.php' => config_path('coreadmin.php'),
+			// __DIR__ . '/../config/brvcore.php' => config_path('brvcore.php'),
 			__DIR__ . '/../config/option.php' => config_path('option.php'),
 			__DIR__ . '/../config/sidebar.php' => config_path('sidebar.php'),
-		], 'coreadmin.config');
+		], 'brvcore.config');
 
 		// Publishing assets.
 		$this->publishes([
 			__DIR__ . '/../resources/assets/' => public_path('vendor/phobrv'),
-		], 'coreadmin.assets');
+		], 'brvcore.assets');
 		// Publishing the translation files.
 		$this->publishes([
 			__DIR__ . '/../resources/lang' => resource_path('lang'),
-		], 'coreadmin.lang');
+		], 'brvcore.lang');
 
 		// Publishing the views.
 		// $this->publishes([
 		//  __DIR__ . '/../resources/views' => base_path('resources/views/vendor/phobrv'),
-		// ], 'coreadmin.views');
+		// ], 'brvcore.views');
 
 		// Registering package commands.
 		// $this->commands([]);
@@ -76,7 +76,7 @@ class BrvCoreServiceProvider extends ServiceProvider {
 		$this->loadMigrationsFrom(__DIR__ . '/../database/Migrations');
 		// $this->publishes([
 		//  __DIR__ . '/../database/Migrations/' => database_path('migrations'),
-		// ], 'coreadmin.migrations');
+		// ], 'brvcore.migrations');
 	}
 
 	public function defineMiddleware() {

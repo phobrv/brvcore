@@ -36,7 +36,7 @@ return [
 		'questiongroup' => 'questiongroup',
 		'region' => 'region',
 		'brand' => 'brand',
-		'product' => 'product',
+		'productgroup' => 'productgroup',
 	],
 	'crawler_source_type' => [
 		'rss' => 'RSS',
