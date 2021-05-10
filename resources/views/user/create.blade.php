@@ -27,7 +27,7 @@
 			</div>
 		</div>
 	</div>
-	<form class="form-horizontal" id="formSubmit" method="post" action="{{isset($data['post']) ? route('user.update',array('user'=>$data['post']->id)) : route('user.store')}}">
+	<form class="form-horizontal" id="formSubmit" method="post" action="{{isset($data['post']) ? route('user.update',['user'=>$data['post']->id]) : route('user.store')}}">
 		@csrf
 		@isset($data['post']) @method('put') @endisset
 		<input type="hidden" id="typeSubmit" name="typeSubmit" value="">
@@ -41,10 +41,7 @@
 						@include('phobrv::input.inputText',['label'=>'Password','key'=>'password','required'=>true])
 						@endif
 						@include('phobrv::input.inputSelect',['label'=>'Email Report','key'=>'receive_report','array'=>['no'=>'no','yes'=>'yes'],'type'=>'meta'])
-						{{-- @include('phobrv::input.inputText',['label'=>'MessengerID','key'=>'mess_id','type'=>'meta']) --}}
-						{{-- @include('phobrv::input.inputSelect',['label'=>'Mess Report','key'=>'mess_report','array'=>['no'=>'no','yes'=>'yes'],'type'=>'meta']) --}}
 					</div>
-
 				</div>
 				<div class="col-md-3">
 					<ul id="permissions">
