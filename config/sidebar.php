@@ -145,7 +145,7 @@ return [
 			],
 		],
 		[
-			'id' => 'menu-post',
+			'id' => 'menu-posts',
 			'title' => 'Posts',
 			'icon' => 'fa fa-newspaper-o',
 			'href' => '',
@@ -160,7 +160,7 @@ return [
 					'children' => [],
 				],
 				[
-					'id' => 'menu-post',
+					'id' => 'all-post',
 					'title' => 'All Post',
 					'icon' => 'fa-building-o',
 					'href' => 'admin/post',
@@ -187,7 +187,7 @@ return [
 		],
 
 		[
-			'id' => 'menu-receive-data',
+			'id' => 'menu-contact',
 			'title' => 'Contacts',
 			'icon' => 'fa fa-download',
 			'href' => '/admin/receive',
