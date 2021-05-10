@@ -19,7 +19,7 @@
 						<th>Name</th>
 						<th>Email</th>
 						<th>Roles</th>
-						<th>Email</th>
+						<th>Email Report</th>
 						<th>Date Create</th>
 						<th>Reset</th>
 						<th></th>
