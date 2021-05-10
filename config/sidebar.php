@@ -70,6 +70,14 @@ return [
 			'children' => [
 				[
 					'id' => '',
+					'title' => 'System',
+					'icon' => 'fa-building-o',
+					'href' => 'admin/config-system',
+					'permissions' => [],
+					'children' => [],
+				],
+				[
+					'id' => '',
 					'title' => 'Website',
 					'icon' => 'fa-building-o',
 					'href' => 'admin/config-website',
