@@ -3,7 +3,6 @@
 namespace Phobrv\BrvCore\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Model\Post;
 use Auth;
 use Faker\Generator as Faker;
 use Illuminate\Http\Request;
@@ -349,7 +348,7 @@ class PostController extends Controller {
 		);
 
 		//Create 20 post
-		for ($i = 0; $i < 1000; $i++) {
+		for ($i = 0; $i < 20; $i++) {
 			$title = $faker->sentence;
 			$slug = $this->unitService->renderSlug($title);
 			$post = $this->postRepository->create([
