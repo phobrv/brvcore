@@ -18,7 +18,7 @@ return [
 			'permissions' => ['super_admin'],
 			'children' => [
 				[
-					'id' => '',
+					'id' => 'menu-user',
 					'title' => 'Users',
 					'icon' => 'fa-building-o',
 					'href' => 'admin/user',
@@ -26,7 +26,7 @@ return [
 					'children' => [],
 				],
 				[
-					'id' => '',
+					'id' => 'menu-role',
 					'title' => 'Roles',
 					'icon' => 'fa-building-o',
 					'href' => 'admin/role',
@@ -43,7 +43,7 @@ return [
 			'permissions' => ['menu_manage'],
 			'children' => [
 				[
-					'id' => '',
+					'id' => 'menugroup',
 					'title' => 'All Menu',
 					'icon' => 'fa-building-o',
 					'href' => 'admin/menugroup',
@@ -51,7 +51,7 @@ return [
 					'children' => [],
 				],
 				[
-					'id' => '',
+					'id' => 'menu-menu',
 					'title' => 'Menu structure',
 					'icon' => 'fa-building-o',
 					'href' => 'admin/menu',
@@ -69,7 +69,7 @@ return [
 			'permissions' => ['config_manage'],
 			'children' => [
 				[
-					'id' => '',
+					'id' => 'config-system',
 					'title' => 'System',
 					'icon' => 'fa-building-o',
 					'href' => 'admin/config-system',
@@ -77,7 +77,7 @@ return [
 					'children' => [],
 				],
 				[
-					'id' => '',
+					'id' => 'config-website',
 					'title' => 'Website',
 					'icon' => 'fa-building-o',
 					'href' => 'admin/config-website',
@@ -85,7 +85,7 @@ return [
 					'children' => [],
 				],
 				[
-					'id' => '',
+					'id' => 'config-widget',
 					'title' => 'Widget',
 					'icon' => 'fa-building-o',
 					'href' => 'admin/config-widget',
@@ -93,7 +93,7 @@ return [
 					'children' => [],
 				],
 				[
-					'id' => '',
+					'id' => 'config-icon',
 					'title' => 'Icons',
 					'icon' => 'fa-building-o',
 					'href' => 'admin/config-icon',
@@ -111,7 +111,7 @@ return [
 			'permissions' => [],
 			'children' => [
 				[
-					'id' => '',
+					'id' => 'albumgroup',
 					'title' => 'Album',
 					'icon' => 'fa-building-o',
 					'href' => 'admin/albumgroup',
@@ -119,7 +119,7 @@ return [
 					'children' => [],
 				],
 				[
-					'id' => '',
+					'id' => 'videogroup',
 					'title' => 'Video',
 					'icon' => 'fa-video-o',
 					'href' => 'admin/videogroup',
@@ -127,7 +127,7 @@ return [
 					'children' => [],
 				],
 				[
-					'id' => '',
+					'id' => 'questiongroup',
 					'title' => 'Question',
 					'icon' => 'fa-video-o',
 					'href' => 'admin/questiongroup',
@@ -135,7 +135,7 @@ return [
 					'children' => [],
 				],
 				[
-					'id' => '',
+					'id' => 'customeridea',
 					'title' => 'Customer Idea',
 					'icon' => 'fa-video-o',
 					'href' => 'admin/customeridea',
@@ -152,7 +152,7 @@ return [
 			'permissions' => ['post_manage'],
 			'children' => [
 				[
-					'id' => '',
+					'id' => 'category',
 					'title' => 'Categories',
 					'icon' => 'fa-building-o',
 					'href' => 'admin/category',
@@ -160,7 +160,7 @@ return [
 					'children' => [],
 				],
 				[
-					'id' => '',
+					'id' => 'menu-post',
 					'title' => 'All Post',
 					'icon' => 'fa-building-o',
 					'href' => 'admin/post',
@@ -168,7 +168,7 @@ return [
 					'children' => [],
 				],
 				[
-					'id' => '',
+					'id' => 'menu-tag',
 					'title' => 'Tags',
 					'icon' => 'fa-building-o',
 					'href' => 'admin/tag',
@@ -176,7 +176,7 @@ return [
 					'children' => [],
 				],
 				[
-					'id' => '',
+					'id' => 'menu-comment',
 					'title' => 'Comments',
 					'icon' => 'fa-building-o',
 					'href' => 'admin/comment',
@@ -202,7 +202,7 @@ return [
 			'permissions' => ['product_manage'],
 			'children' => [
 				[
-					'id' => '',
+					'id' => 'productgroup',
 					'title' => 'CategoriesProduct',
 					'icon' => 'fa-building-o',
 					'href' => 'admin/productgroup',
@@ -210,7 +210,7 @@ return [
 					'children' => [],
 				],
 				[
-					'id' => '',
+					'id' => 'menu-brand',
 					'title' => 'Brand',
 					'icon' => 'fa-building-o',
 					'href' => 'admin/brand',
@@ -218,7 +218,7 @@ return [
 					'children' => [],
 				],
 				[
-					'id' => '',
+					'id' => 'menu-product',
 					'title' => 'All Product',
 					'icon' => 'fa-building-o',
 					'href' => 'admin/product',
@@ -236,7 +236,7 @@ return [
 			'permissions' => ['super_admin'],
 			'children' => [
 				[
-					'id' => '',
+					'id' => 'fake-post',
 					'title' => 'Post',
 					'icon' => 'fa-building-o',
 					'href' => 'admin/faker/post/auto',
@@ -244,15 +244,15 @@ return [
 					'children' => [],
 				],
 				[
-					'id' => '',
-					'title' => 'Manager Menu',
+					'id' => 'fake-ques',
+					'title' => 'Question',
 					'icon' => 'fa-building-o',
 					'href' => 'admin/faker/question/auto',
 					'permissions' => [],
 					'children' => [],
 				],
 				[
-					'id' => '',
+					'id' => 'upgrade',
 					'title' => 'Upgrade',
 					'icon' => 'fa-building-o',
 					'href' => 'upgrade',
