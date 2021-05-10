@@ -79,6 +79,9 @@ class PostController extends Controller {
 			$data['posts'][$key]->status = $value->status;
 		}
 		return Datatables::of($data['posts'])
+			->addColumn('title', function ($post) {
+				return view('phobrv::post.components.viewTitle', ['post' => $post]);
+			})
 			->addColumn('edit', function ($post) {
 				return view('phobrv::post.components.editBtn', ['post' => $post]);
 			})
@@ -346,7 +349,7 @@ class PostController extends Controller {
 		);
 
 		//Create 20 post
-		for ($i = 0; $i < 10; $i++) {
+		for ($i = 0; $i < 1000; $i++) {
 			$title = $faker->sentence;
 			$slug = $this->unitService->renderSlug($title);
 			$post = $this->postRepository->create([
@@ -363,6 +366,6 @@ class PostController extends Controller {
 			$meta['meta_keywords'] = $faker->sentence;
 			$this->postRepository->insertMeta($post, $meta);
 		}
-		dd("ok");
+		return redirect()->route('post.index');
 	}
 }
