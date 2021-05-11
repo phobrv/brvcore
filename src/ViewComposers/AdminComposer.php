@@ -22,6 +22,8 @@ class AdminComposer {
 	public $arrayBrand = [];
 	public $arrayTheme = [];
 	public $orderStatus = [];
+	public $sidebarDisable = [];
+	public $configs = [];
 	/**
 	 * Create a movie composer.
 	 *
@@ -63,6 +65,8 @@ class AdminComposer {
 		$this->arrayBoxSidebar = $optionRepository->takeArraySidebarBoxTitle();
 		$this->arrayBrand = $termRepository->getArrayTerms(config('option.taxonomy.brand'));
 		$this->arrayProductGroup = $termRepository->getArrayTerms(config('option.taxonomy.product'));
+		$this->configs = $optionRepository->handleOptionToArray($optionRepository->all());
+		$this->sidebarDisable = isset($this->configs['sidebar_disable']) ? json_decode($this->configs['sidebar_disable'], true) : [];
 	}
 
 	/**
@@ -86,6 +90,8 @@ class AdminComposer {
 		$view->with('arrayQuestionGroup', $this->arrayQuestionGroup);
 		$view->with('arrayTheme', $this->arrayTheme);
 		$view->with('orderStatus', $this->orderStatus);
+		$view->with('configs', $this->configs);
+		$view->with('sidebarDisable', $this->sidebarDisable);
 
 	}
 }

@@ -51,7 +51,7 @@ class BrvCoreServiceProvider extends ServiceProvider {
 		$this->publishes([
 			// __DIR__ . '/../config/brvcore.php' => config_path('brvcore.php'),
 			__DIR__ . '/../config/option.php' => config_path('option.php'),
-			__DIR__ . '/../config/sidebar.php' => config_path('sidebar.php'),
+			// __DIR__ . '/../config/sidebar.php' => config_path('sidebar.php'),
 		], 'brvcore.config');
 
 		// Publishing assets.

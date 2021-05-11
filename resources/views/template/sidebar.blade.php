@@ -15,15 +15,15 @@
   <ul class="sidebar-menu" data-widget="tree">
     <li class="header">MAIN NAVIGATION</li>
 
-    @if( count( config('sidebar.menu') ) > 0 )
     @foreach( config('sidebar.menu') as $menu )
+    @if(!in_array($menu['id'],$sidebarDisable))
+    @if( $menu['children']  )
     @can($menu['permissions'])
-    @if( $menu['children'] )
     @php
     $active = '';
     foreach( $menu['children'] as $submenu ){
       if(Request::is($submenu['href']))
-      $active = 'active';
+        $active = 'active';
     }
     @endphp
     <li class="treeview {{ $active }} ">
@@ -36,7 +36,9 @@
       </a>
       <ul class="treeview-menu">
         @foreach( $menu['children'] as $submenu )
+        @if(!in_array($submenu['id'],$sidebarDisable))
         @can($submenu['permissions'])
+
         <li>
           <a href="{{ url($submenu['href'])}}">
             <i class="fa fa-circle-o"></i>
@@ -44,6 +46,7 @@
           </a>
         </li>
         @endcan
+        @endif
         @endforeach
       </ul>
     </li>
@@ -56,9 +59,8 @@
     </li>
     @endif
     @endcan
-    @endforeach
     @endif
-
+    @endforeach
   </ul>
 </section>
 </aside>
