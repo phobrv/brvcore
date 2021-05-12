@@ -55,6 +55,8 @@ class PostController extends Controller {
 		);
 
 		try {
+			$user = Auth::user();
+			$data['select'] = $this->userRepository->getMetaValueByKey($user, 'category_select');
 			$data['arrayCategory'] = $this->termRepository->getArrayTerms($this->category);
 			$data['arrayTag'] = $this->termRepository->getArrayTerms($this->tag);
 			return view('phobrv::post.index')->with('data', $data);
