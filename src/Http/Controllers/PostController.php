@@ -11,6 +11,7 @@ use Phobrv\BrvCore\Repositories\TermRepository;
 use Phobrv\BrvCore\Repositories\UserRepository;
 use Phobrv\BrvCore\Services\PostServices;
 use Phobrv\BrvCore\Services\UnitServices;
+use Yajra\Datatables\Datatables;
 
 class PostController extends Controller {
 

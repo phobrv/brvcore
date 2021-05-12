@@ -52,7 +52,7 @@ Route::middleware(['web', 'auth', 'auth:sanctum', 'lang', 'verified'])->namespac
 		Route::get('/tag/{tag}/list-post', 'TermController@listPostOfTag')->name('post.listPostOfTag');
 
 		Route::resource('post', 'PostController');
-		Route::get('/post/getData', 'PostController@getData')->name('post.getData');
+		Route::get('/post-getData', 'PostController@getData')->name('post.getData');
 
 		Route::post('/post/tagSearchAjax', 'PostController@tagSearchAjax')->name('post.tagSearchAjax');
 		Route::post('/post/updateUserSelectCategory', 'PostController@updateUserSelectCategory')->name('post.updateUserSelectCategory');
