@@ -229,6 +229,32 @@ return [
 			],
 		],
 		[
+			'id' => 'menu-drugstore',
+			'title' => 'Drugstores',
+			'icon' => 'fa fa-plus-circle',
+			'href' => '',
+			'permissions' => ['drugstore_manage'],
+			'children' => [
+				[
+					'id' => 'menu-region',
+					'title' => 'Regions',
+					'icon' => 'fa-building-o',
+					'href' => 'admin/region',
+					'permissions' => [],
+					'children' => [],
+				],
+				[
+					'id' => 'drugstores',
+					'title' => 'All DrugStore',
+					'icon' => 'fa-building-o',
+					'href' => 'admin/drugstore',
+					'permissions' => [],
+					'children' => [],
+				],
+
+			],
+		],
+		[
 			'id' => 'menu-faker',
 			'title' => 'Faker',
 			'icon' => 'fa fa-bars',

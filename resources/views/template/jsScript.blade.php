@@ -42,6 +42,12 @@
         'autoWidth'   : false
       })
     }
+    if($('#table-no-order').length){
+      $('#table-no-order').DataTable({
+        "lengthMenu": [[35,50, -1], [35,50, "All"]],
+        'ordering'    : false,
+        })
+    }
     if($('.select').length){
       $(document).ready(function() { $(".select").select2(); });
     }
