@@ -11,7 +11,6 @@ use Phobrv\BrvCore\Repositories\TermRepository;
 use Phobrv\BrvCore\Repositories\UserRepository;
 use Phobrv\BrvCore\Services\PostServices;
 use Phobrv\BrvCore\Services\UnitServices;
-use Yajra\Datatables\Datatables;
 
 class PostController extends Controller {
 
@@ -91,7 +90,7 @@ class PostController extends Controller {
 				return view('phobrv::post.components.deleteBtn', ['post' => $post]);
 			})
 			->make(true);
-		return view('phobrv::post.data')->with('data', $data);
+		// return $data;
 	}
 
 	/**
