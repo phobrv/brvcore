@@ -1,6 +1,6 @@
 <?php
 
-namespace Phobrv\BrvCore\Services;
+namespace Phobrv\Frontend\Services;
 use Str;
 use Sunra\PhpSimple\HtmlDomParser;
 

@@ -16,9 +16,9 @@
     <li class="header">MAIN NAVIGATION</li>
 
     @foreach( config('sidebar.menu') as $menu )
+    @can($menu['permissions'])
     @if(!in_array($menu['id'],$sidebarDisable))
     @if( $menu['children']  )
-    @can($menu['permissions'])
     @php
     $active = '';
     foreach( $menu['children'] as $submenu ){
@@ -58,8 +58,8 @@
       </a>
     </li>
     @endif
-    @endcan
     @endif
+    @endcan
     @endforeach
   </ul>
 </section>
