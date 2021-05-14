@@ -1,4 +1,5 @@
 <?php
+
 Route::middleware(['web', 'auth', 'auth:sanctum', 'lang', 'verified'])->namespace('Phobrv\BrvCore\Http\Controllers')->group(function () {
 	Route::get('lang/{lang}', 'LanguageController@changeLang')->name('lang');
 	Route::middleware(['can:super_admin'])->prefix('dashboard')->group(function () {
