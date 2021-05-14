@@ -30,7 +30,7 @@
 					@isset($data['post'])
 					@include('phobrv::input.inputText',['label'=>'Create date','key'=>'created_at','datepicker'=>true])
 					@endif
-					@include('phobrv::input.inputTextarea',['key'=>'Content','label'=>'content','style'=>'short'])
+					@include('phobrv::input.inputTextarea',['label'=>'Content','key'=>'content','style'=>'short'])
 					<label class="font16" style="margin-top: 10px;">{{__('Seo Meta')}}</label>
 					@include('phobrv::input.inputText',['label'=>'Meta Title','key'=>'meta_title','type'=>'meta'])
 					@include('phobrv::input.inputText',['label'=>'Meta Description','key'=>'meta_description','type'=>'meta'])
@@ -126,9 +126,14 @@
 
 @section('scripts')
 <script type="text/javascript">
+	window.onload = function() {
+		CKEDITOR.replace('content', options);
+	};
+
 	$(function(){
 		setInterval(function(){ updatePostAuto(); }, 30000);
 	})
+
 	function updatePostAuto(){
 		var content = CKEDITOR.instances['content'].getData();
 		$("#content_draft").val(content);
@@ -150,11 +155,6 @@
 		var tagContent = tag.value;
 		console.log(tagContent);
 	}
-
-	window.onload = function() {
-		CKEDITOR.replace('content', options);
-
-	};
 
 	function addTag(){
 		var tagContent = $('#taginput').val();

@@ -1,8 +1,8 @@
 <?php
 
-namespace Phobrv\Frontend\Services;
+namespace Phobrv\BrvCore\Services;
+use KubAT\PhpSimple\HtmlDomParser;
 use Str;
-use Sunra\PhpSimple\HtmlDomParser;
 
 class PostServices {
 	public function handleMenuPost($data) {
