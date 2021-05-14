@@ -198,7 +198,7 @@ return [
 			'id' => 'menu-order',
 			'title' => 'Orders',
 			'icon' => 'fa fa-cart-arrow-down',
-			'href' => '/admin/manage-order',
+			'href' => '/admin/order',
 			'permissions' => ['order_manage'],
 			'children' => [],
 		],
