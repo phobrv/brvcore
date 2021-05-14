@@ -38,7 +38,7 @@ class TermController extends Controller {
 			'videogroup' => 'Videos',
 			'questiongroup' => 'Questions',
 			'region' => 'Regions',
-			'product' => 'Products',
+			'productgroup' => 'Product Group',
 			'brand' => 'Brand',
 		];
 	}

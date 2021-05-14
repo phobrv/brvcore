@@ -11,9 +11,9 @@
 			<div class="box-header">
 				{{__('Create/Edit Product Group')}}
 			</div>
-			<form class="form-horizontal" id="formSubmit" method="post" action="{{isset($data['term']) ? route('product.update',array('product'=>$data['term']->id)) : route('product.store')}}">
+			<form class="form-horizontal" id="formSubmit" method="post" action="{{isset($data['term']) ? route('productgroup.update',array('productgroup'=>$data['term']->id)) : route('productgroup.store')}}">
 				<div class="box-body">
-					<input type="hidden" name="taxonomy" value="product">
+					<input type="hidden" name="taxonomy" value="productgroup">
 					@isset($data['term']) @method('put') @endisset
 					@csrf
 					<div class="form-group">

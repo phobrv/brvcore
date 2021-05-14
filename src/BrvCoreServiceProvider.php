@@ -34,6 +34,7 @@ class BrvCoreServiceProvider extends ServiceProvider {
 		$this->app->singleton(\Phobrv\BrvCore\ViewComposers\AdminComposer::class);
 		$this->mergeConfigFrom(__DIR__ . '/../config/brvcore.php', 'brvcore');
 		$this->mergeConfigFrom(__DIR__ . '/../config/sidebar.php', 'sidebar');
+		$this->mergeConfigFrom(__DIR__ . '/../config/option.php', 'option');
 
 		$this->defineMiddleware();
 
