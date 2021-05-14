@@ -195,6 +195,14 @@ return [
 			'children' => [],
 		],
 		[
+			'id' => 'menu-order',
+			'title' => 'Orders',
+			'icon' => 'fa fa-cart-arrow-down',
+			'href' => '/admin/manage-order',
+			'permissions' => ['order_manage'],
+			'children' => [],
+		],
+		[
 			'id' => 'menu-product',
 			'title' => 'Products',
 			'icon' => 'fa fa-gavel',
