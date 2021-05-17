@@ -11,6 +11,9 @@ class CreateTableTranslate extends Migration {
 			$table->increments('id');
 			$table->integer('post_id')->unsigned();
 			$table->foreign('post_id')->references('id')->on('posts');
+			$table->integer('source_id')->unsigned();
+			$table->foreign('source_id')->references('id')->on('posts');
+			$table->string('lang', '4')->default('vi');
 			$table->timestamps();
 		});
 	}

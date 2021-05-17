@@ -26,7 +26,7 @@ class CreateTablePosts extends Migration {
 			$table->integer('parent')->default('0');
 			$table->integer('order')->default('0');
 			$table->integer('view')->default('0');
-			$table->string('lang', 4)->nullable();
+			$table->string('lang', 4)->default('vi');
 			$table->timestamps();
 		});
 	}
