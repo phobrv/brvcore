@@ -85,6 +85,14 @@ return [
 					'children' => [],
 				],
 				[
+					'id' => 'config-lang',
+					'title' => 'Lang',
+					'icon' => 'fa-building-o',
+					'href' => 'admin/configlang',
+					'permissions' => [],
+					'children' => [],
+				],
+				[
 					'id' => 'config-widget',
 					'title' => 'Widget',
 					'icon' => 'fa-building-o',
