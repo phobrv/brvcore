@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Auth;
 use Faker\Generator as Faker;
 use Illuminate\Http\Request;
+use Phobrv\BrvConfigs\Services\ConfigLangService;
 use Phobrv\BrvCore\Repositories\PostRepository;
 use Phobrv\BrvCore\Repositories\TermRepository;
 use Phobrv\BrvCore\Repositories\UserRepository;
@@ -15,6 +16,7 @@ use Yajra\Datatables\Datatables;
 
 class PostController extends Controller {
 
+	protected $configLangService;
 	protected $userRepository;
 	protected $postRepository;
 	protected $termRepository;
@@ -25,6 +27,7 @@ class PostController extends Controller {
 	protected $tag;
 
 	public function __construct(
+		ConfigLangService $configLangService,
 		UserRepository $userRepository,
 		PostRepository $postRepository,
 		PostServices $postService,
@@ -32,6 +35,7 @@ class PostController extends Controller {
 		UnitServices $unitService) {
 		$this->postService = $postService;
 		$this->userRepository = $userRepository;
+		$this->configLangService = $configLangService;
 		$this->postRepository = $postRepository;
 		$this->termRepository = $termRepository;
 		$this->unitService = $unitService;
@@ -144,9 +148,8 @@ class PostController extends Controller {
 		$data['user_id'] = Auth::id();
 
 		$data['type'] = $this->type;
-
+		$data['lang'] = $this->configLangService->getMainLang();
 		$post = $this->postRepository->create($data);
-
 		$this->updatePostInfo($post, $request, $data);
 		$this->postRepository->renderSiteMap();
 		$msg = __('Create post success!');
@@ -190,6 +193,7 @@ class PostController extends Controller {
 		try {
 			$data['categorys'] = $this->termRepository->getTermsOrderByParent($this->category);
 			$data['post'] = $this->postRepository->find($id);
+			$data['boxTranslate'] = $this->configLangService->genLangTranslateBox($data['post']);
 			$data['arrayCategoryID'] = $this->termRepository->getArrayTermIDByTaxonomy($data['post']->terms, 'category');
 			$data['tags'] = $this->termRepository->getArrayTermByTaxonomy($data['post']->terms, 'tag');
 			$data['meta'] = $this->postRepository->getMeta($data['post']->postMetas);

@@ -17,7 +17,7 @@ class Post extends Model implements Transformable {
 	protected $table = 'posts';
 
 	protected $fillable = [
-		'user_id', 'title', 'slug', 'thumb', 'content', 'excerpt', 'status', 'type', 'subtype', 'parent', 'order', 'view', 'created_at',
+		'user_id', 'title', 'slug', 'thumb', 'content', 'excerpt', 'status', 'type', 'subtype', 'parent', 'order', 'view', 'lang', 'created_at',
 	];
 
 	// protected $with = ['postMetas'];

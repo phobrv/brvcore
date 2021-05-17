@@ -10,6 +10,9 @@
 <a href="#" onclick="update()"  class="btn btn-warning float-left">
 	<i class="fa fa-wrench"></i> @lang('Update')
 </a>
+
+{!! $data['boxTranslate'] ?? '' !!}
+
 @endsection
 
 @section('content')
