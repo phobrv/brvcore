@@ -41,6 +41,7 @@
 					<th>{{__('Title')}}</th>
 					<th>{{__('Author')}}</th>
 					<th>{{__('Status')}}</th>
+					<th>{{__('Lang')}}</th>
 					<th>Edit</th>
 					<th>Delete</th>
 				</tr>
@@ -70,6 +71,7 @@
 		{ data: 'title', name: 'title' },
 		{ data: 'author_name', name: 'author_name' },
 		{ data: 'status', name: 'status', orderable: false, searchable: false,className:'text-center'},
+		{ data: 'langButtons', name: 'langButtons', orderable: false, searchable: false,className:'text-center'},
 		{ data: 'edit', name: 'edit',orderable: false, searchable: false,className:'text-center'},
 		{ data: 'delete', name: 'delete',orderable: false, searchable: false,className:'text-center'},
 		]

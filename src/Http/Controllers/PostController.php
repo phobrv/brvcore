@@ -27,6 +27,7 @@ class PostController extends Controller {
 	protected $type;
 	protected $category;
 	protected $tag;
+	protected $langMain;
 
 	public function __construct(
 		ConfigLangService $configLangService,
@@ -46,6 +47,7 @@ class PostController extends Controller {
 		$this->type = config('option.post_type.post');
 		$this->category = config('option.taxonomy.category');
 		$this->tag = config('option.taxonomy.tag');
+		$this->langMain = $configLangService->getMainLang();
 	}
 
 	/**
@@ -78,14 +80,18 @@ class PostController extends Controller {
 		$user = Auth::user();
 		$data['select'] = $this->userRepository->getMetaValueByKey($user, 'category_select');
 		if ($data['select']) {
-			$data['posts'] = $this->termRepository->getPostsByTermID($data['select']);
+			$data['posts'] = $this->termRepository->getPostsByTermID($data['select'])->where('lang', $this->langMain);
 		} else {
-			$data['posts'] = $this->postRepository->orderBy('created_at', 'desc')->with('user')->all()->where('type', 'post');
+			$data['posts'] = $this->postRepository->orderBy('created_at', 'desc')->with('user')->all()->where('type', 'post')->where('lang', $this->langMain);
 		}
+
+		$langArray = $this->configLangService->getArrayLangConfig();
+
 		foreach ($data['posts'] as $key => $value) {
 			$data['posts'][$key]->author_name = $value->user->name;
 			$data['posts'][$key]->create_date = date('d/m/Y', strtotime($value->created_at));
 			$data['posts'][$key]->status = $value->status;
+			$data['posts'][$key]->buttons = $this->configLangService->genLangButton($value->id, $langArray);
 		}
 		return Datatables::of($data['posts'])
 			->addColumn('title', function ($post) {
@@ -96,6 +102,9 @@ class PostController extends Controller {
 			})
 			->addColumn('status', function ($post) {
 				return view('phobrv::post.components.statusLabel', ['post' => $post]);
+			})
+			->addColumn('langButtons', function ($post) {
+				return view('phobrv::post.components.langButtons', ['buttons' => $post->buttons]);
 			})
 			->addColumn('delete', function ($post) {
 				return view('phobrv::post.components.deleteBtn', ['post' => $post]);
@@ -137,6 +146,7 @@ class PostController extends Controller {
 				'slug' => $this->unitService->renderSlug($title),
 				'lang' => $lang,
 				'thumb' => $post->thumb,
+				'type' => $post->type,
 			]
 		);
 		$tran = $this->translateRepository->create([
