@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 use Phobrv\BrvConfigs\Services\ConfigLangService;
 use Phobrv\BrvCore\Repositories\PostRepository;
 use Phobrv\BrvCore\Repositories\TermRepository;
-use Phobrv\BrvCore\Repositories\TranslateRepository;
 use Phobrv\BrvCore\Repositories\UserRepository;
 use Phobrv\BrvCore\Services\PostServices;
 use Phobrv\BrvCore\Services\UnitServices;
@@ -23,7 +22,6 @@ class PostController extends Controller {
 	protected $termRepository;
 	protected $unitService;
 	protected $postService;
-	protected $translateRepository;
 	protected $type;
 	protected $category;
 	protected $tag;
@@ -32,12 +30,10 @@ class PostController extends Controller {
 	public function __construct(
 		ConfigLangService $configLangService,
 		UserRepository $userRepository,
-		TranslateRepository $translateRepository,
 		PostRepository $postRepository,
 		PostServices $postService,
 		TermRepository $termRepository,
 		UnitServices $unitService) {
-		$this->translateRepository = $translateRepository;
 		$this->postService = $postService;
 		$this->userRepository = $userRepository;
 		$this->configLangService = $configLangService;
@@ -110,7 +106,6 @@ class PostController extends Controller {
 				return view('phobrv::post.components.deleteBtn', ['post' => $post]);
 			})
 			->make(true);
-		// return $data;
 	}
 
 	/**
@@ -134,27 +129,6 @@ class PostController extends Controller {
 			return back()->with('alert_danger', $e->getMessage());
 		}
 
-	}
-
-	public function createTranslatePost($source_id, $lang) {
-		$post = $this->postRepository->find($source_id);
-		$title = $post->title . "-" . $lang;
-		$tranPost = $this->postRepository->create(
-			[
-				'user_id' => Auth::id(),
-				'title' => $title,
-				'slug' => $this->unitService->renderSlug($title),
-				'lang' => $lang,
-				'thumb' => $post->thumb,
-				'type' => $post->type,
-			]
-		);
-		$tran = $this->translateRepository->create([
-			'source_id' => $source_id,
-			'post_id' => $tranPost->id,
-			'lang' => $lang,
-		]);
-		return redirect()->route('post.edit', ['post' => $tran->id]);
 	}
 
 	/**
@@ -302,6 +276,7 @@ class PostController extends Controller {
 		$this->postRepository->insertMeta($post, $arrayMeta);
 
 		$this->postRepository->updateTagAndCategory($post, $request->tag, $request->category);
+		$this->configLangService->syncPostTransTerm($post, $request->tag, $request->category);
 		$this->postRepository->handleSeoMeta($post, $request);
 	}
 

@@ -54,7 +54,6 @@ Route::middleware(['web', 'auth', 'auth:sanctum', 'lang', 'verified'])->namespac
 
 		Route::resource('post', 'PostController');
 		Route::get('/post-getData', 'PostController@getData')->name('post.getData');
-		Route::get('/createTranslatePost/{source_id}/{lang}', 'PostController@createTranslatePost')->name('post.createTranslatePost');
 
 		Route::post('/post/tagSearchAjax', 'PostController@tagSearchAjax')->name('post.tagSearchAjax');
 		Route::post('/post/updateUserSelectCategory', 'PostController@updateUserSelectCategory')->name('post.updateUserSelectCategory');
