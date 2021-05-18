@@ -156,6 +156,7 @@ class PostController extends Controller {
 		$data['type'] = $this->type;
 		$post = $this->postRepository->create($data);
 		$this->updatePostInfo($post, $request, $data);
+		$this->configLangService->createTermLang($post);
 		$this->postRepository->renderSiteMap();
 		$msg = __('Create post success!');
 		if ($request->typeSubmit == 'save') {
@@ -254,7 +255,9 @@ class PostController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function destroy($id) {
-		$this->postRepository->destroy($id);
+		// $this->postRepository->destroy($id);
+		$this->postRepository->destroyAllLang($id);
+
 		$msg = __("Delete post success!");
 		return redirect()->route('post.index')->with('alert_success', $msg);
 	}
@@ -272,11 +275,9 @@ class PostController extends Controller {
 	public function updatePostInfo($post, $request) {
 		$arrayMeta = [];
 		$arrayMeta['auto_gen'] = isset($request->auto_gen) ? $request->auto_gen : '0';
-
 		$this->postRepository->insertMeta($post, $arrayMeta);
-
 		$this->postRepository->updateTagAndCategory($post, $request->tag, $request->category);
-		$this->configLangService->syncPostTransTerm($post, $request->tag, $request->category);
+		$this->configLangService->syncPostTagAndCategory($post, $request->tag, $request->category);
 		$this->postRepository->handleSeoMeta($post, $request);
 	}
 

@@ -35,8 +35,5 @@ class Post extends Model implements Transformable {
 	public function user() {
 		return $this->belongsTo('App\Models\User', 'user_id');
 	}
-	public function translate() {
-		return $this->belongsTo('App\Models\User', 'post_id');
-	}
 
 }

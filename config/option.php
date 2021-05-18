@@ -37,6 +37,7 @@ return [
 		'region' => 'region',
 		'brand' => 'brand',
 		'productgroup' => 'productgroup',
+		'lang' => 'lang',
 	],
 	'crawler_source_type' => [
 		'rss' => 'RSS',

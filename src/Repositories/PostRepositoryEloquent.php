@@ -35,7 +35,12 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository {
 	}
 	public function updateTagAndCategory($post, $arrayTagName, $arrayCategoryID) {
 		$arrayTermID = $arrayCategoryID;
-		$post->terms()->detach();
+
+		$arryTermIDCategory = $this->termRepository->getArrayTermIDByTaxonomy($post->terms, 'category');
+		$post->terms()->detach($arryTermIDCategory);
+		$arryTermIDTag = $this->termRepository->getArrayTermIDByTaxonomy($post->terms, 'tag');
+		$post->terms()->detach($arryTermIDTag);
+
 		if (isset($arrayTagName) && count($arrayTagName) > 0) {
 			foreach ($arrayTagName as $tag) {
 				$slug = $this->unitServices->renderSlug($tag);
@@ -48,7 +53,7 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository {
 
 		}
 
-		$post->terms()->sync($arrayTermID);
+		$post->terms()->attach($arrayTermID);
 	}
 	public function getArrayPostByType($type) {
 		$out = ['0' => '-'];
@@ -118,7 +123,16 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository {
 		$post = $this->find($id);
 		$post->terms()->detach();
 		$post->postMetas()->delete();
-		return $this->model::destroy($id);
+		$this->model::destroy($id);
+		return true;
+	}
+	public function destroyAllLang($post_id) {
+		$term = $this->find($post_id)->terms()->first();
+		$posts = $this->termRepository->with('posts')->find($term->id)->posts;
+		foreach ($posts as $p) {
+			$this->destroy($p->id);
+		}
+		$this->termRepository->destroy($term->id);
 	}
 	public function createArrayMenuParent($posts, $expel_id) {
 		$out = array();

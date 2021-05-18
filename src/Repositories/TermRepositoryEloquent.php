@@ -27,6 +27,7 @@ class TermRepositoryEloquent extends BaseRepository implements TermRepository {
 			return null;
 		}
 	}
+
 	public function getArrayTerms($type) {
 		$out = array();
 		$out[0] = '-';

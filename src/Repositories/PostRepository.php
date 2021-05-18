@@ -22,6 +22,8 @@ interface PostRepository extends RepositoryInterface {
 
 	public function destroy($id);
 
+	public function destroyAllLang($post_id);
+
 	public function createArrayMenuParent($posts, $expel_id);
 
 	public function findChilds($id);
