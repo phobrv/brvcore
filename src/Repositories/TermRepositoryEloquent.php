@@ -92,4 +92,12 @@ class TermRepositoryEloquent extends BaseRepository implements TermRepository {
 	public function destroy($id) {
 		return $this->model::destroy($id);
 	}
+
+	public function getArrayTermID($terms) {
+		$out = [];
+		foreach ($terms as $term) {
+			array_push($out, $term->id);
+		}
+		return $out;
+	}
 }

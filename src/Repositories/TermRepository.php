@@ -28,4 +28,6 @@ interface TermRepository extends RepositoryInterface {
 
 	public function destroy($id);
 
+	public function getArrayTermID($terms);
+
 }
