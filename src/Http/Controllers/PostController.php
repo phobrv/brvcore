@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Phobrv\BrvConfigs\Services\ConfigLangService;
 use Phobrv\BrvCore\Repositories\PostRepository;
 use Phobrv\BrvCore\Repositories\TermRepository;
+use Phobrv\BrvCore\Repositories\TranslateRepository;
 use Phobrv\BrvCore\Repositories\UserRepository;
 use Phobrv\BrvCore\Services\PostServices;
 use Phobrv\BrvCore\Services\UnitServices;
@@ -22,6 +23,7 @@ class PostController extends Controller {
 	protected $termRepository;
 	protected $unitService;
 	protected $postService;
+	protected $translateRepository;
 	protected $type;
 	protected $category;
 	protected $tag;
@@ -29,10 +31,12 @@ class PostController extends Controller {
 	public function __construct(
 		ConfigLangService $configLangService,
 		UserRepository $userRepository,
+		TranslateRepository $translateRepository,
 		PostRepository $postRepository,
 		PostServices $postService,
 		TermRepository $termRepository,
 		UnitServices $unitService) {
+		$this->translateRepository = $translateRepository;
 		$this->postService = $postService;
 		$this->userRepository = $userRepository;
 		$this->configLangService = $configLangService;
@@ -115,14 +119,32 @@ class PostController extends Controller {
 		);
 
 		try {
-			$data['categorys'] = $this->termRepository->getTermsOrderByParent($this->category);
-			$data['tags'] = array();
-			$data['arrayCategoryID'] = array();
+			$data['lang'] = $this->configLangService->getMainLang();
 			return view('phobrv::post.create')->with('data', $data);
 		} catch (Exception $e) {
 			return back()->with('alert_danger', $e->getMessage());
 		}
 
+	}
+
+	public function createTranslatePost($source_id, $lang) {
+		$post = $this->postRepository->find($source_id);
+		$title = $post->title . "-" . $lang;
+		$tranPost = $this->postRepository->create(
+			[
+				'user_id' => Auth::id(),
+				'title' => $title,
+				'slug' => $this->unitService->renderSlug($title),
+				'lang' => $lang,
+				'thumb' => $post->thumb,
+			]
+		);
+		$tran = $this->translateRepository->create([
+			'source_id' => $source_id,
+			'post_id' => $tranPost->id,
+			'lang' => $lang,
+		]);
+		return redirect()->route('post.edit', ['post' => $tran->id]);
 	}
 
 	/**
@@ -148,7 +170,6 @@ class PostController extends Controller {
 		$data['user_id'] = Auth::id();
 
 		$data['type'] = $this->type;
-		$data['lang'] = $this->configLangService->getMainLang();
 		$post = $this->postRepository->create($data);
 		$this->updatePostInfo($post, $request, $data);
 		$this->postRepository->renderSiteMap();

@@ -20,8 +20,6 @@ class Post extends Model implements Transformable {
 		'user_id', 'title', 'slug', 'thumb', 'content', 'excerpt', 'status', 'type', 'subtype', 'parent', 'order', 'view', 'lang', 'created_at',
 	];
 
-	// protected $with = ['postMetas'];
-
 	public function postMetas() {
 		return $this->hasMany('Phobrv\BrvCore\Models\PostMeta');
 	}
@@ -36,6 +34,9 @@ class Post extends Model implements Transformable {
 
 	public function user() {
 		return $this->belongsTo('App\Models\User', 'user_id');
+	}
+	public function translate() {
+		return $this->belongsTo('App\Models\User', 'post_id');
 	}
 
 }
