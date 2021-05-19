@@ -11,20 +11,14 @@
       <span class="icon-bar"></span>
     </a>
     <div class="navbar-custom-menu">
-    {{-- @auth --}}
      <ul class="nav navbar-nav">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-          @if(config('app.locale') == 'vi')
-          <img src="{{asset('vendor/phobrv/img/vi.png')}}" alt="">
-          @else
-          <img src="{{asset('vendor/phobrv/img/en.png')}}" alt="">
-          @endif
-           <span class="caret"></span></a>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+          {{ strtoupper(config('app.locale')) }}
+          <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="{{route('lang',['lang'=>'en'])}}">English</a></li>
             <li><a href="{{route('lang',['lang'=>'vi'])}}">Tiếng Việt</a></li>
-
           </ul>
         </li>
         <li class="dropdown user user-menu">
@@ -52,14 +46,14 @@
               <div class="pull-right">
                 <a href="{{ route('logout') }}" class="btn btn-default btn-flat" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Sign out</a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    @csrf
+                  @csrf
                 </form>
               </div>
             </li>
           </ul>
         </li>
       </ul>
-      {{-- @endauth --}}
+
     </div>
   </nav>
 </header>
