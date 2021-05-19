@@ -69,15 +69,15 @@
 							</td>
 							<td>{{$r->description}}</td>
 							<td align="center">
-								<a href="{{route('product.edit',array('product'=>$r->id))}}"><i class="fa fa-edit" title="Sửa"></i></a>
+								<a href="{{route('productgroup.edit',array('productgroup'=>$r->id))}}"><i class="fa fa-edit" title="Sửa"></i></a>
 
 								&nbsp;&nbsp;&nbsp;
-								<a  href="{{route('product.index',array('id'=>$r->id))}}" ><i class="fa fa-cog" title="Config"></i></a>
+								<a  href="{{route('productgroup.index',array('id'=>$r->id))}}" ><i class="fa fa-cog" title="Config"></i></a>
 
 								@if(count($r->posts)==0 && !@isset($r->child))
 								&nbsp;&nbsp;&nbsp;
 								<a style="color: red" href="#" onclick="destroyCategory('destroy{{$r->id}}')"><i class="fa fa-times" title="Sửa"></i></a>
-								<form id="destroy{{$r->id}}" action="{{ route('product.destroy',array('product'=>$r->id)) }}" method="post" style="display: none;">
+								<form id="destroy{{$r->id}}" action="{{ route('productgroup.destroy',array('productgroup'=>$r->id)) }}" method="post" style="display: none;">
 									@method('delete')
 									@csrf
 								</form>
@@ -91,13 +91,13 @@
 							<td style="padding-left: 30px;">-- {{$rc->name}}</td>
 							<td>{{$rc->description}}</td>
 							<td align="center">
-								<a href="{{route('product.edit',array('product'=>$rc->id))}}"><i class="fa fa-edit" title="Sửa"></i></a>
+								<a href="{{route('productgroup.edit',array('productgroup'=>$rc->id))}}"><i class="fa fa-edit" title="Sửa"></i></a>
 								&nbsp;&nbsp;&nbsp;
-								<a  href="{{route('product.index',array('id'=>$rc->id))}}" ><i class="fa fa-cog" title="Config"></i></a>
+								<a  href="{{route('productgroup.index',array('id'=>$rc->id))}}" ><i class="fa fa-cog" title="Config"></i></a>
 								@if(count($rc->posts)==0)
 								&nbsp;&nbsp;&nbsp;
 								<a style="color: red" href="#" onclick="destroyCategory('destroy{{$rc->id}}')"><i class="fa fa-times" title="Sửa"></i></a>
-								<form id="destroy{{$rc->id}}" action="{{ route('product.destroy',array('product'=>$rc->id)) }}" method="post" style="display: none;">
+								<form id="destroy{{$rc->id}}" action="{{ route('productgroup.destroy',array('productgroup'=>$rc->id)) }}" method="post" style="display: none;">
 									@method('delete')
 									@csrf
 								</form>
