@@ -199,11 +199,10 @@ class PostController extends Controller {
 		try {
 			$data['categorys'] = $this->termRepository->getTermsOrderByParent($this->category);
 			$data['post'] = $this->postRepository->find($id);
-			$data['boxTranslate'] = $this->configLangService->genLangTranslateBox($data['post']);
 			$data['arrayCategoryID'] = $this->termRepository->getArrayTermIDByTaxonomy($data['post']->terms, 'category');
 			$data['tags'] = $this->termRepository->getArrayTermByTaxonomy($data['post']->terms, 'tag');
 			$data['meta'] = $this->postRepository->getMeta($data['post']->postMetas);
-			// dd($data);
+			$data['boxTranslate'] = $this->configLangService->genLangTranslateBox($data['post']);
 			return view('phobrv::post.edit')->with('data', $data);
 		} catch (Exception $e) {
 			return back()->with('alert_danger', $e->getMessage());

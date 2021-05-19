@@ -2,6 +2,7 @@
 namespace Phobrv\BrvCore\ViewComposers;
 
 use Illuminate\View\View;
+use Phobrv\BrvConfigs\Services\ConfigLangService;
 use Phobrv\BrvCore\Repositories\OptionRepository;
 use Phobrv\BrvCore\Repositories\PostRepository;
 use Phobrv\BrvCore\Repositories\TermRepository;
@@ -24,12 +25,13 @@ class AdminComposer {
 	public $orderStatus = [];
 	public $sidebarDisable = [];
 	public $configs = [];
+	protected $langMain;
 	/**
 	 * Create a movie composer.
 	 *
 	 * @return void
 	 */
-	public function __construct(TermRepository $termRepository, PostRepository $postRepository, OptionRepository $optionRepository) {
+	public function __construct(TermRepository $termRepository, PostRepository $postRepository, OptionRepository $optionRepository, ConfigLangService $configLangService) {
 		$this->orderStatus = [
 			'0' => '-',
 			'pendding' => 'Pendding',
@@ -67,6 +69,7 @@ class AdminComposer {
 		$this->arrayProductGroup = $termRepository->getArrayTerms(config('option.taxonomy.product'));
 		$this->configs = $optionRepository->handleOptionToArray($optionRepository->all());
 		$this->sidebarDisable = isset($this->configs['sidebar_disable']) ? json_decode($this->configs['sidebar_disable'], true) : [];
+		$this->langMain = $configLangService->getMainLang();
 	}
 
 	/**
@@ -92,6 +95,7 @@ class AdminComposer {
 		$view->with('orderStatus', $this->orderStatus);
 		$view->with('configs', $this->configs);
 		$view->with('sidebarDisable', $this->sidebarDisable);
+		$view->with('langMain', $this->langMain);
 
 	}
 }
