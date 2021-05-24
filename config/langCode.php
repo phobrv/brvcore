@@ -1,6 +1,10 @@
 <?php
 
 return [
+	'langActive' => [
+		'vi',
+		'en',
+	],
 	'codes' => [
 		'ab' => 'Abkhazian',
 		'aa' => 'Afar',

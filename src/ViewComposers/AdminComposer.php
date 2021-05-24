@@ -26,6 +26,8 @@ class AdminComposer {
 	public $sidebarDisable = [];
 	public $configs = [];
 	protected $langMain;
+	protected $langArray;
+
 	/**
 	 * Create a movie composer.
 	 *
@@ -70,6 +72,7 @@ class AdminComposer {
 		$this->configs = $optionRepository->handleOptionToArray($optionRepository->all());
 		$this->sidebarDisable = isset($this->configs['sidebar_disable']) ? json_decode($this->configs['sidebar_disable'], true) : [];
 		$this->langMain = $configLangService->getMainLang();
+		$this->langArray = $configLangService->hanleLangActive();
 	}
 
 	/**
@@ -96,6 +99,7 @@ class AdminComposer {
 		$view->with('configs', $this->configs);
 		$view->with('sidebarDisable', $this->sidebarDisable);
 		$view->with('langMain', $this->langMain);
+		$view->with('langArray', $this->langArray);
 
 	}
 }

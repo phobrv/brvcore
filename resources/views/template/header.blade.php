@@ -17,8 +17,9 @@
           {{ strtoupper(config('app.locale')) }}
           <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="{{route('lang',['lang'=>'en'])}}">English</a></li>
-            <li><a href="{{route('lang',['lang'=>'vi'])}}">Tiếng Việt</a></li>
+            @foreach($langArray as $lang)
+            <li><a href="{{route('lang',['lang'=>$lang])}}"> {{ config('langCode.codes')[$lang] }} </a></li>
+            @endforeach
           </ul>
         </li>
         <li class="dropdown user user-menu">
