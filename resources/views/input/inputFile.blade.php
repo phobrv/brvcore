@@ -39,5 +39,5 @@ if(empty($value)){
 	</div>
 </div>
 <script type="text/javascript">
-	$('{{ $id }}').filemanager('images');
+	$('{{ $id }}').filemanager('file');
 </script>
