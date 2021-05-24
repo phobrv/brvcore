@@ -1,3 +1,11 @@
+{{--
+label
+key
+type
+value: có hoăc không, không tồn tại tự động lấy theo type
+formStyle
+inputStyle
+ --}}
 @php
 $options = [];
 $options['placeholder'] = $label;
@@ -31,6 +39,16 @@ if(empty($value)){
 	}
 }
 @endphp
+@if(isset($formStyle) && $formStyle == 'basic')
+<div class="form-group">
+	<label for="{{ "id".$key }}">{{ $label }}</label>
+	@if($inputType == 'text')
+	{{ Form::text($key,$value,$options) }}
+	@elseif($inputType == 'number')
+	{{ Form::number($key,$value,$options) }}
+	@endif
+</div>
+@else
 <div class="form-group">
 	<label for="inputEmail3" class="col-sm-2 control-label"> {{ $label }} </label>
 	<div class="@isset($check_auto_gen) col-sm-7 @else col-sm-10 @endif">
@@ -51,3 +69,4 @@ if(empty($value)){
 	</div>
 	@endif
 </div>
+@endif
