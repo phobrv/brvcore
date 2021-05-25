@@ -31,7 +31,7 @@ class SendGridService {
 		}
 		$this->setTos($data['tos']);
 		$this->setData(['title' => $data['title'], 'content' => $data['content']]);
-		$this->setLayout($this->layout);
+		$this->setLayout($data['layout'] ?? $this->layout);
 		$this->setSubject($data['subject']);
 		$this->setContent($data['content']);
 		$this->send();
