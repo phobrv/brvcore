@@ -7,6 +7,16 @@ return [
 	'htaccess_file' => '/.htaccess',
 	'customize_css_file' => '/css/customize.css',
 	'http_type' => env('HTTP_TYPE', 'http'),
+	'templateMenu' => [
+		'0' => '-',
+		'home' => 'Home',
+		'link' => 'Link',
+		'category' => 'Nhóm bài viết',
+		'article' => 'Bài viết',
+		'order' => 'Đặt hàng',
+		'contact' => 'Liên hệ',
+		'product' => 'Nhóm sản phẩm',
+	],
 	'post_type' => [
 		'post' => 'post',
 		'image' => 'image',

@@ -44,16 +44,7 @@ class AdminComposer {
 			'default' => 'Default',
 			'theme1' => 'Theme1',
 		];
-		$this->templateMenu = [
-			'0' => '-',
-			'home' => 'Home',
-			'link' => 'Link',
-			'category' => 'Nhóm bài viết',
-			'article' => 'Bài viết',
-			'order' => 'Đặt hàng',
-			'contact' => 'Liên hệ',
-			'product' => 'Nhóm sản phẩm',
-		];
+		$this->templateMenu = config('option.templateMenu');
 		$this->arrayCrawlerType = [
 			'rss' => 'RSS',
 			'category' => 'Category',
