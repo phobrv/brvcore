@@ -134,6 +134,8 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository {
 				$this->destroy($p->id);
 			}
 			$this->termRepository->destroy($term->id);
+		} else {
+			$this->destroy($post_id);
 		}
 	}
 	public function createArrayMenuParent($posts, $expel_id) {
