@@ -128,11 +128,13 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository {
 	}
 	public function destroyAllLang($post_id) {
 		$term = $this->find($post_id)->terms()->where('taxonomy', config('option.taxonomy.lang'))->first();
-		$posts = $this->termRepository->with('posts')->find($term->id)->posts;
-		foreach ($posts as $p) {
-			$this->destroy($p->id);
+		if ($term) {
+			$posts = $this->termRepository->with('posts')->find($term->id)->posts;
+			foreach ($posts as $p) {
+				$this->destroy($p->id);
+			}
+			$this->termRepository->destroy($term->id);
 		}
-		$this->termRepository->destroy($term->id);
 	}
 	public function createArrayMenuParent($posts, $expel_id) {
 		$out = array();
@@ -196,7 +198,7 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository {
 	public function renderSiteMap() {
 		$sitemap = fopen("sitemap.xml", "w") or die("Unable to open file!");
 		$string = '<?xml version="1.0" encoding="utf-8"?>
-                     <urlset  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
+		<urlset  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
 		$posts = $this->model->whereIn('type', ['post', 'menu_item', 'product', 'video'])->get();
 		foreach ($posts as $post) {
 			$string .= '<url><loc>' . \URL::route('level1', ['slug' => $post->slug]) . '</loc></url>';
