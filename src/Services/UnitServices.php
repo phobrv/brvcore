@@ -2,7 +2,6 @@
 namespace Phobrv\BrvCore\Services;
 
 class UnitServices {
-
 	public function renderSlug($str) {
 		$str = trim(strtolower($str));
 		$str = preg_replace("/( )/i", '-', $str);
@@ -51,20 +50,20 @@ class UnitServices {
 	}
 	public function genBreadcrumbsFrontEnd($arrayBread) {
 		$out = '<li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-					<a itemprop="item" href="' . route('home') . '">
-						<span itemprop="name">Trang chủ </span>
-					</a>
-					<meta itemprop="position" content="1" />
-				</li>';
+		<a itemprop="item" href="' . route('home') . '">
+		<span itemprop="name">Trang chủ </span>
+		</a>
+		<meta itemprop="position" content="1" />
+		</li>';
 		$index = 1;
 		foreach ($arrayBread as $value) {
 			$index++;
 			$out .= '<li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-					<a itemprop="item" href="' . route('level1', ['slug' => $value['slug']]) . '">
-						<span itemprop="name">' . $value['name'] . '</span>
-					</a>
-					<meta itemprop="position" content="' . $index . '" />
-				</li>';
+			<a itemprop="item" href="' . route('level1', ['slug' => $value['slug']]) . '">
+			<span itemprop="name">' . $value['name'] . '</span>
+			</a>
+			<meta itemprop="position" content="' . $index . '" />
+			</li>';
 		}
 
 		return $out;
