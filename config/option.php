@@ -1,6 +1,7 @@
 <?php
 
 return [
+	'langMain' => 'vi',
 	'paginate' => '5',
 	'theme' => 'theme1',
 	'robots_file' => '/robots.txt',
