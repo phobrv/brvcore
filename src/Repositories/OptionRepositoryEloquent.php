@@ -59,6 +59,15 @@ class OptionRepositoryEloquent extends BaseRepository implements OptionRepositor
 			}
 			$out[$option->name] = $option->value;
 		}
+
+		$localePrefix = "_" . config('app.locale');
+
+		foreach ($out as $key => $value) {
+			if (strpos($key, $localePrefix) != false) {
+				$newKey = str_replace($localePrefix, "", $key);
+				$out[$newKey] = $value;
+			}
+		}
 		return $out;
 	}
 
