@@ -10,6 +10,7 @@
 <script src="{{asset('/vendor/phobrv/ckeditor/config.js')}}"></script>
 <script>
 	var options = {
+		extraPlugins: 'youtube,videoembed',
 		filebrowserImageBrowseUrl: '/filemanager?type=Images',
 		filebrowserImageUploadUrl: '/filemanager/upload?type=Images&_token=',
 		filebrowserBrowseUrl: '/filemanager?type=Files',
@@ -18,7 +19,7 @@
 	};
 </script>
 <style type="text/css">
-	ol li,ul li{
-		list-style: none!important;
-	}
+ol li,ul li{
+	list-style: none!important;
+}
 </style>
