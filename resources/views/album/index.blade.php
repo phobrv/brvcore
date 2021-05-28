@@ -101,6 +101,13 @@
 
 @section('scripts')
 <script type="text/javascript">
+	function destroy(form){
+		var anwser =  confirm("Bạn muốn xóa image này?");
+		if(anwser){
+			event.preventDefault();
+			window.location.href =form;
+		}
+	}
 	function updateImages()
 	{
 		$('#formImages').submit();
