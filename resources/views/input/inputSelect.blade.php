@@ -1,7 +1,7 @@
 @php
 $type = isset($type) ? $type : "";
 $options['class'] = 'form-control';
-if($select)
+if(isset($select) && $select)
 	$options['class'] .=' select';
 $default = isset($default) ? $default : 0;
 if(empty($value)){
