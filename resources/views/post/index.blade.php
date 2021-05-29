@@ -61,6 +61,7 @@
 <script type="text/javascript">
 	table =  $('#tableTrust').DataTable({
 		lengthMenu: [[15,35,50, -1], [15,35,50, "All"]],
+		"order": [[ 0, "desc" ]],
 		processing: true,
 		serverSide: true,
 		ajax: "{{ route('post.getData') }}",
