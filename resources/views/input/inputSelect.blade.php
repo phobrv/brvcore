@@ -1,6 +1,8 @@
 @php
 $type = isset($type) ? $type : "";
 $options['class'] = 'form-control';
+if($select)
+	$options['class'] .=' select';
 $default = isset($default) ? $default : 0;
 if(empty($value)){
 	switch ($type) {
