@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Phobrv\BrvCore\Repositories\TermRepository;
 use Phobrv\BrvCore\Services\MessageServices;
 use Phobrv\BrvCore\Services\UnitServices;
+use Phobrv\BrvCore\Services\VString;
 
 class TermController extends Controller {
 	protected $requestUri;
@@ -20,31 +21,23 @@ class TermController extends Controller {
 	protected $arrayTaxonomyName;
 
 	protected $messageServices;
+	protected $vstring;
 
 	public function __construct(
+		VString $vstring,
 		TermRepository $termRepository,
 		UnitServices $unitService,
 		MessageServices $messageService
 	) {
+		$this->vstring = $vstring;
 		$this->termRepository = $termRepository;
 		$this->unitService = $unitService;
 		$this->messageService = $messageService;
 		$this->taxonomy = $this->unitService->getTaxonomyFromUri(\Request::getRequestUri());
-		$this->arrayTaxonomyName = [
-			'menugroup' => 'Menus',
-			'category' => 'Category Post',
-			'tag' => 'Tags',
-			'albumgroup' => 'Albums',
-			'videogroup' => 'Videos',
-			'questiongroup' => 'Questions',
-			'region' => 'Regions',
-			'productgroup' => 'Product Group',
-			'brand' => 'Brand',
-		];
+		$this->arrayTaxonomyName = config('term.taxonomyLabel');
 	}
 
 	public function index(Request $request) {
-		//Breadcrumb
 		$data['breadcrumbs'] = $this->unitService->generateBreadcrumbs(
 			[
 				['text' => $this->arrayTaxonomyName[$this->taxonomy], 'href' => ''],
@@ -65,7 +58,7 @@ class TermController extends Controller {
 	}
 
 	public function store(Request $request) {
-		$request->merge(['slug' => Str::slug($request->name, '-')]);
+		$request->merge(['slug' => $this->vstring->standardKeyword($request->name)]);
 		$request->validate([
 			'slug' => 'required|unique:terms',
 			'name' => 'required|unique:terms',
@@ -87,7 +80,6 @@ class TermController extends Controller {
 	}
 
 	public function edit($id) {
-		//Breadcrumb
 		$data['breadcrumbs'] = $this->unitService->generateBreadcrumbs(
 			[
 				['text' => $this->arrayTaxonomyName[$this->taxonomy], 'href' => ''],
@@ -108,8 +100,7 @@ class TermController extends Controller {
 	}
 
 	public function update(Request $request, $id) {
-		$request->request->add(['slug' => $this->unitService->renderSlug($request->name)]);
-
+		$request->merge(['slug' => $this->vstring->standardKeyword($request->name)]);
 		$request->validate([
 			'slug' => 'required|unique:terms,slug,' . $id,
 			'name' => 'required|unique:terms,name,' . $id,

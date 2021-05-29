@@ -7,7 +7,7 @@ return [
 	'robots_file' => '/robots.txt',
 	'htaccess_file' => '/.htaccess',
 	'customize_css_file' => '/css/customize.css',
-	'http_type' => env('HTTP_TYPE', 'http'),
+	'http_type' => env('HTTP_TYPE', 'https'),
 	'templateMenu' => [
 		'0' => '-',
 		'home' => 'Home',
@@ -37,18 +37,6 @@ return [
 		'publish' => '1',
 		'private' => '0',
 		'draft' => '-1',
-	],
-	'taxonomy' => [
-		'category' => 'category',
-		'tag' => 'tag',
-		'menugroup' => 'menugroup',
-		'albumgroup' => 'albumgroup',
-		'videogroup' => 'videogroup',
-		'questiongroup' => 'questiongroup',
-		'region' => 'region',
-		'brand' => 'brand',
-		'productgroup' => 'productgroup',
-		'lang' => 'lang',
 	],
 	'crawler_source_type' => [
 		'rss' => 'RSS',
