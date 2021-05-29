@@ -12,6 +12,7 @@ use Phobrv\BrvCore\Repositories\TermRepository;
 use Phobrv\BrvCore\Repositories\UserRepository;
 use Phobrv\BrvCore\Services\PostServices;
 use Phobrv\BrvCore\Services\UnitServices;
+use Phobrv\BrvCore\Services\VString;
 use Yajra\Datatables\Datatables;
 
 class PostController extends Controller {
@@ -26,14 +27,17 @@ class PostController extends Controller {
 	protected $category;
 	protected $tag;
 	protected $langMain;
+	protected $vstring;
 
 	public function __construct(
+		VString $vstring,
 		ConfigLangService $configLangService,
 		UserRepository $userRepository,
 		PostRepository $postRepository,
 		PostServices $postService,
 		TermRepository $termRepository,
 		UnitServices $unitService) {
+		$this->vstring = $vstring;
 		$this->postService = $postService;
 		$this->userRepository = $userRepository;
 		$this->configLangService = $configLangService;
@@ -138,7 +142,7 @@ class PostController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function store(Request $request) {
-		$request->request->add(['slug' => $this->unitService->renderSlug($request->title)]);
+		$request->merge(['slug' => $this->vstring->standardKeyword($request->title)]);
 		$data = $request->all();
 
 		$request->validate(
@@ -218,7 +222,7 @@ class PostController extends Controller {
 	 */
 	public function update(Request $request, $id) {
 		if (isset($request->auto_gen) && $request->auto_gen == 1) {
-			$request->request->add(['slug' => $this->unitService->renderSlug($request->title)]);
+			$request->merge(['slug' => $this->vstring->standardKeyword($request->title)]);
 		}
 
 		$request->validate(
@@ -273,7 +277,7 @@ class PostController extends Controller {
 
 	public function updatePostInfo($post, $request) {
 		$arrayMeta = [];
-		$arrayMeta['auto_gen'] = isset($request->auto_gen) ? $request->auto_gen : '0';
+		$arrayMeta['auto_gen'] = empty($request->auto_gen) ? 0 : $request->auto_gen;
 		$this->postRepository->insertMeta($post, $arrayMeta);
 		$this->postRepository->updateTagAndCategory($post, $request->tag, $request->category);
 		$this->configLangService->syncPostTagAndCategory($post, $request->tag, $request->category);
