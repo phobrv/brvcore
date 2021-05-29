@@ -45,8 +45,8 @@ class PostController extends Controller {
 		$this->termRepository = $termRepository;
 		$this->unitService = $unitService;
 		$this->type = config('option.post_type.post');
-		$this->category = config('option.taxonomy.category');
-		$this->tag = config('option.taxonomy.tag');
+		$this->category = config('term.taxonomy.category');
+		$this->tag = config('term.taxonomy.tag');
 		$this->langMain = $configLangService->getMainLang();
 	}
 
@@ -266,7 +266,7 @@ class PostController extends Controller {
 	}
 
 	public function tagSearchAjax(Request $request) {
-		$tags = $this->termRepository->getTermSuggest($request['query'], config('option.taxonomy.tag'));
+		$tags = $this->termRepository->getTermSuggest($request['query'], config('term.taxonomy.tag'));
 		$output = '<ul class="dropdown-menu" style="display:block; position:relative">';
 		foreach ($tags as $tag) {
 			$output .= '<li><a>' . $tag->name . '</a></li>';

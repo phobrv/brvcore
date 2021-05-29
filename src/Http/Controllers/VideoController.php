@@ -28,7 +28,7 @@ class VideoController extends Controller {
 		$this->postRepository = $postRepository;
 		$this->unitService = $unitService;
 		$this->type = config('option.post_type.video');
-		$this->taxonomy = config('option.taxonomy.videogroup');
+		$this->taxonomy = config('term.taxonomy.videogroup');
 	}
 
 	/**

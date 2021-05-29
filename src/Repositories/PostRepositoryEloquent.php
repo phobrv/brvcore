@@ -127,7 +127,7 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository {
 		return true;
 	}
 	public function destroyAllLang($post_id) {
-		$term = $this->find($post_id)->terms()->where('taxonomy', config('option.taxonomy.lang'))->first();
+		$term = $this->find($post_id)->terms()->where('taxonomy', config('term.taxonomy.lang'))->first();
 		if ($term) {
 			$posts = $this->termRepository->with('posts')->find($term->id)->posts;
 			foreach ($posts as $p) {

@@ -28,7 +28,7 @@ class QuestionController extends Controller {
 		$this->postRepository = $postRepository;
 		$this->unitService = $unitService;
 		$this->type = config('option.post_type.question');
-		$this->taxonomy = config('option.taxonomy.questiongroup');
+		$this->taxonomy = config('term.taxonomy.questiongroup');
 	}
 
 	/**

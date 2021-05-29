@@ -146,7 +146,7 @@ class TermController extends Controller {
 			foreach ($data['tag']->posts as $key => $value) {
 				$data['tag']->posts[$key]->terms();
 			}
-			$data['arrayCategory'] = $this->termRepository->getArrayTermsParent(config('option.taxonomy.category'), 0);
+			$data['arrayCategory'] = $this->termRepository->getArrayTermsParent(config('term.taxonomy.category'), 0);
 			$data['arrayTag'] = $this->termRepository->getArrayTermsParent($this->taxonomy, 0);
 			return view('phobrv::post.postOfTag')->with('data', $data);
 		} catch (Exception $e) {

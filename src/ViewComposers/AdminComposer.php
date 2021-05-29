@@ -50,16 +50,16 @@ class AdminComposer {
 			'category' => 'Category',
 			'post' => 'Post',
 		];
-		$this->arrayAlbum = $termRepository->getArrayTerms(config('option.taxonomy.albumgroup'));
-		$this->arrayVideo = $termRepository->getArrayTerms(config('option.taxonomy.videogroup'));
-		$this->arrayVideoItem = $postRepository->getArrayPostByType(config('option.taxonomy.video'));
+		$this->arrayAlbum = $termRepository->getArrayTerms(config('term.taxonomy.albumgroup'));
+		$this->arrayVideo = $termRepository->getArrayTerms(config('term.taxonomy.videogroup'));
+		$this->arrayVideoItem = $postRepository->getArrayPostByType(config('term.taxonomy.video'));
 		$this->arrayPosts = $postRepository->getArrayPostByType(config('option.post_type.post'));
-		$this->arrayCategory = $termRepository->getArrayTerms(config('option.taxonomy.category'));
-		$this->arrayQuestionGroup = $termRepository->getArrayTerms(config('option.taxonomy.questiongroup'));
-		$this->arrayMenu = $termRepository->getArrayTerms(config('option.taxonomy.menugroup'));
+		$this->arrayCategory = $termRepository->getArrayTerms(config('term.taxonomy.category'));
+		$this->arrayQuestionGroup = $termRepository->getArrayTerms(config('term.taxonomy.questiongroup'));
+		$this->arrayMenu = $termRepository->getArrayTerms(config('term.taxonomy.menugroup'));
 		$this->arrayBoxSidebar = $optionRepository->takeArraySidebarBoxTitle();
-		$this->arrayBrand = $termRepository->getArrayTerms(config('option.taxonomy.brand'));
-		$this->arrayProductGroup = $termRepository->getArrayTerms(config('option.taxonomy.product'));
+		$this->arrayBrand = $termRepository->getArrayTerms(config('term.taxonomy.brand'));
+		$this->arrayProductGroup = $termRepository->getArrayTerms(config('term.taxonomy.product'));
 		$this->configs = $optionRepository->handleOptionToArray($optionRepository->all());
 		$this->sidebarDisable = isset($this->configs['sidebar_disable']) ? json_decode($this->configs['sidebar_disable'], true) : [];
 		$this->langMain = $configLangService->getMainLang();

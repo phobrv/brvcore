@@ -24,7 +24,7 @@ class UnitServices {
 		return '';
 	}
 	public function getTaxonomyFromUri($uri) {
-		foreach (config('option.taxonomy') as $key => $value) {
+		foreach (config('term.taxonomy') as $key => $value) {
 			if (strpos($uri, $value)) {
 				return $value;
 			}
