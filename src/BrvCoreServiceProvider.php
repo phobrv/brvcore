@@ -37,6 +37,7 @@ class BrvCoreServiceProvider extends ServiceProvider {
 		$this->mergeConfigFrom(__DIR__ . '/../config/option.php', 'option');
 		$this->mergeConfigFrom(__DIR__ . '/../config/langCode.php', 'langCode');
 		$this->mergeConfigFrom(__DIR__ . '/../config/term.php', 'term');
+		$this->mergeConfigFrom(__DIR__ . '/../config/permission.php', 'permission');
 
 		$this->defineMiddleware();
 

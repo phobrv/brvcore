@@ -48,9 +48,9 @@
 
 				</div>
 				<div class="col-md-6">
-					@if( count( config('option.permissions') ) > 0 )
+					@if( count( config('permission.all') ) > 0 )
 					<ul id="permissions">
-						@foreach( config('option.permissions') as $p )
+						@foreach( config('permission.all') as $p )
 							@if( $p['children'] )
 							<li>
 								{{$p['name']}}

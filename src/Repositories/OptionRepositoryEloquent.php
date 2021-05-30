@@ -76,13 +76,13 @@ class OptionRepositoryEloquent extends BaseRepository implements OptionRepositor
 			unset($data['_token']);
 		}
 		if (isset($data['robots_txt'])) {
-			$this->unitServices->writeFile(config('option.robots_file'), $data['robots_txt']);
+			$this->unitServices->writeFile(config('brvcore.robots_file'), $data['robots_txt']);
 		}
 		if (isset($data['customize_css'])) {
-			$this->unitServices->writeFile(config('option.customize_css_file'), $data['customize_css']);
+			$this->unitServices->writeFile(config('brvcore.customize_css_file'), $data['customize_css']);
 		}
 		if (isset($data['htaccess'])) {
-			$this->unitServices->writeFile(config('option.htaccess_file'), $data['htaccess']);
+			$this->unitServices->writeFile(config('brvcore.htaccess_file'), $data['htaccess']);
 		}
 		foreach ($data as $key => $value) {
 			if ($value) {
