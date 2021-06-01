@@ -10,7 +10,7 @@
 <script src="{{asset('/vendor/phobrv/ckeditor/config.js')}}"></script>
 <script>
 	var options = {
-		extraPlugins: 'youtube,videoembed',
+		extraPlugins: 'youtube,videoembed,uploadfile',
 		filebrowserImageBrowseUrl: '/filemanager?type=Images',
 		filebrowserImageUploadUrl: '/filemanager/upload?type=Images&_token=',
 		filebrowserBrowseUrl: '/filemanager?type=Files',

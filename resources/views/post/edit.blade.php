@@ -40,7 +40,7 @@
 					@include('phobrv::input.inputText',['label'=>'Meta Keywords','key'=>'meta_keywords','type'=>'meta'])
 				</div>
 				<div class="col-md-4">
-					@include('phobrv::input.inputImage',['key'=>'thumb'])
+					@include('phobrv::input.inputImage',['key'=>'thumb','basic'=>true])
 					<hr>
 					<div class="form-group">
 						<div class="col-sm-12">

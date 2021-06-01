@@ -3,6 +3,7 @@ $id = '#'.$key;
 $dataInput = "input".$key;
 $type = isset($type) ? $type : "";
 $width =  isset($width) ? $width : "100%";
+$basis = isset($basic) ? true : false;
 if(empty($value)){
 	switch ($type) {
 		case 'meta':
@@ -20,6 +21,7 @@ if(empty($value)){
 	}
 }
 @endphp
+@if($basic)
 <div class="input-group">
 	<span class="input-group-btn">
 		<a id="{{ $key }}" data-input="{{ $dataInput }}" data-preview="holder" class="btn btn-primary">
@@ -29,13 +31,34 @@ if(empty($value)){
 	<input id="{{ $dataInput }}" class="form-control inputfile" type="text" name="{{ $key }}" value="{{ $value }}">
 </div>
 <img id="holder" style="margin-top:15px;max-height:100px;">
-@if(isset($value) && $value != '' && !isset($basic))
 <div class="form-group">
 	<div class="col-sm-12">
-		<img src="{{$value}}" style="width: {{ $width }};height: auto;">
+		<img src="{{ $value ?? ''}}" style="width: {{ $width ?? '100%' }};height: auto;">
+	</div>
+</div>
+
+@else
+
+<div class="form-group">
+	<label for="inputEmail3" class="col-sm-2 control-label">{{$label}}</label>
+	<div class="col-sm-4">
+		<div class="input-group">
+			<span class="input-group-btn">
+				<a id="{{ $key }}" data-input="{{ $dataInput }}" data-preview="holder" class="btn btn-primary">
+					<i class="fa fa-picture-o"></i> Choose
+				</a>
+			</span>
+			<input id="{{ $dataInput }}" class="form-control inputfile" type="text" name="{{ $key }}" value="{{ $value }}">
+		</div>
+		<img id="holder" style="margin-top:15px;max-height:100px;">
+	</div>
+	<div class="col-sm-6">
+		<img class="{{ $key }}"  src="{{$value ?? '' }}" style="width: {{ $width ?? '100%' }};height: auto;">
 	</div>
 </div>
 @endif
+
+
 <script type="text/javascript">
-	$('{{ $id }}').filemanager('file');
+	$('{{ $id }}').filemanager('Images');
 </script>
