@@ -28,6 +28,9 @@
         display: none;
       }
     }
+    .datepicker{
+      z-index: 999999;
+    }
   </style>
 </body>
 </html>
