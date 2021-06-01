@@ -236,6 +236,7 @@ class PostController extends Controller {
 		);
 
 		$data = $request->all();
+		$data['slug'] = $this->vstring->standardKeyword($data['slug']);
 		$data = $this->postService->handleMenuPost($data);
 		$post = $this->postRepository->update($data, $id);
 
