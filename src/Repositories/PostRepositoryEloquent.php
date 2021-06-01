@@ -86,7 +86,7 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository {
 					if (strpos($meta->key, '_paginate')) {
 						$posts = $this->termRepository->find($meta->value)->posts()->where('lang', config('app.locale'))->orderBy('order')->orderBy('created_at', 'desc')->where('status', '1')->simplePaginate($this->paginate);
 					} else {
-						$posts = $this->termRepository->find($meta->value)->posts->orderBy('order')->orderBy('created_at', 'desc')->where('status', '1')->get();
+						$posts = $this->termRepository->find($meta->value)->posts()->orderBy('order')->orderBy('created_at', 'desc')->where('status', '1')->get();
 					}
 					if (count($posts) && $meta_child) {
 						for ($i = 0; $i < count($posts); $i++) {
