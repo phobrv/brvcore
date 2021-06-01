@@ -22,5 +22,12 @@
   </div>
   @include('phobrv::template.jsScript')
   @yield('scripts')
+  <style type="text/css">
+    @media(max-width: 991px){
+      .breadcrumb{
+        display: none;
+      }
+    }
+  </style>
 </body>
 </html>
