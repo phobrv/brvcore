@@ -81,13 +81,20 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository {
 		$out = array();
 		foreach ($postMetas as $meta) {
 			if (strpos($meta->key, '_term') && $meta->value) {
-				$term = $this->termRepository->findWhere(['id' => $meta->value]);
+				$term = $this->termRepository->findWhere(['id' => $meta->value])->first();
 				if ($term) {
-					if (strpos($meta->key, '_paginate')) {
-						$posts = $this->termRepository->find($meta->value)->posts()->where('lang', config('app.locale'))->orderBy('order')->orderBy('created_at', 'desc')->where('status', '1')->simplePaginate($this->paginate);
-					} else {
-						$posts = $this->termRepository->find($meta->value)->posts()->where('lang', config('app.locale'))->orderBy('order')->orderBy('created_at', 'desc')->where('status', '1')->get();
+					$posts = $this->termRepository->find($meta->value)->posts()->where('status', '1')->orderBy('order')->orderBy('created_at', 'desc');
+
+					if ($term['taxonomy'] == 'category') {
+						$posts = $posts->where('lang', config('app.locale'));
 					}
+
+					if (strpos($meta->key, '_paginate')) {
+						$posts = $posts->simplePaginate($this->paginate);
+					} else {
+						$posts = $posts->get();
+					}
+
 					if (count($posts) && $meta_child) {
 						for ($i = 0; $i < count($posts); $i++) {
 							$posts[$i]['meta'] = $this->getMeta($posts[$i]->postMetas);
