@@ -3,7 +3,7 @@ $id = '#'.$key;
 $dataInput = "input".$key;
 $type = isset($type) ? $type : "";
 $width =  isset($width) ? $width : "100%";
-$basis = isset($basic) ? true : false;
+$basic = isset($basic) ? true : false;
 if(empty($value)){
 	switch ($type) {
 		case 'meta':
