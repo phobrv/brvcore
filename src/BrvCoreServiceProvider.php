@@ -114,6 +114,11 @@ class BrvCoreServiceProvider extends ServiceProvider {
 			\Phobrv\BrvCore\Repositories\CommentRepositoryEloquent::class
 		);
 
+		$this->app->bind(
+			\Phobrv\BrvCore\Repositories\PostMetaRepository::class,
+			\Phobrv\BrvCore\Repositories\PostMetaRepositoryEloquent::class
+		);
+
 		// $this->app->bind(
 		//  \Phobrv\BrvCore\Repositories\CrawlerDataRepository::class,
 		//  \Phobrv\BrvCore\Repositories\CrawlerDataRepositoryEloquent::class
