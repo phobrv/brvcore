@@ -4,6 +4,6 @@ namespace Phobrv\BrvCore\Repositories;
 
 use Prettus\Repository\Contracts\RepositoryInterface;
 
-interface PostMeta extends RepositoryInterface {
+interface PostMetaRepository extends RepositoryInterface {
 
 }
