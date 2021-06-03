@@ -130,7 +130,8 @@
 @section('scripts')
 <script type="text/javascript">
 	window.onload = function() {
-		CKEDITOR.replace('content', options);
+		if($('textarea[name="content"]').length > 0)
+			CKEDITOR.replace('content', options);
 	};
 
 	$(function(){
