@@ -108,22 +108,22 @@
 
 @section('styles')
 <style type="text/css">
-	#listTagShow .btn-flat{
-		margin-top: 3px;
-		margin-bottom: 5px;
-	}
-	#listTagShow .show{
-		position: relative;
-		padding-right: 15px;
-		float: left;
-	}
-	#listTagShow .show i{
-		position: absolute;
-		z-index: 1;
-		top: -5px;
-		right: 3px;
-		color: red;
-	}
+#listTagShow .btn-flat{
+	margin-top: 3px;
+	margin-bottom: 5px;
+}
+#listTagShow .show{
+	position: relative;
+	padding-right: 15px;
+	float: left;
+}
+#listTagShow .show i{
+	position: absolute;
+	z-index: 1;
+	top: -5px;
+	right: 3px;
+	color: red;
+}
 </style>
 @endsection
 
