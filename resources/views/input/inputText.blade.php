@@ -1,11 +1,3 @@
-{{--
-label
-key
-type
-value: có hoăc không, không tồn tại tự động lấy theo type
-formStyle
-inputStyle
- --}}
 @php
 $options = [];
 $options['placeholder'] = $label;
