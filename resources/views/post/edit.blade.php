@@ -34,7 +34,7 @@
 					@include('phobrv::input.inputText',['label'=>'Create date','key'=>'created_at','datepicker'=>true,'value'=>date('Y-m-d',strtotime($data['post']->created_at))])
 					@endif
 					@include('phobrv::input.inputTextarea',['label'=>'Nội dung','key'=>'content','style'=>'short'])
-					<label class="font16" style="margin-top: 10px;">{{__('Seo Meta')}}</label>
+					@include('phobrv::input.label',['label'=>'Seo Meta'])
 					@include('phobrv::input.inputText',['label'=>'Meta Title','key'=>'meta_title','type'=>'meta'])
 					@include('phobrv::input.inputText',['label'=>'Meta Description','key'=>'meta_description','type'=>'meta'])
 					@include('phobrv::input.inputText',['label'=>'Meta Keywords','key'=>'meta_keywords','type'=>'meta'])
