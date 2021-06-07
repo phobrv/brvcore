@@ -34,10 +34,19 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository {
 		$this->pushCriteria(app(RequestCriteria::class));
 	}
 	public function updateTagAndCategory($post, $arrayTagName, $arrayCategoryID) {
+		if (!empty($arrayCategoryID)) {
+			foreach ($arrayCategoryID as $key => $value) {
+				$term = $this->termRepository->find($value);
+				if ($term->parent != 0) {
+					array_push($arrayCategoryID, $term->parent);
+				}
+			}
+		}
+
 		$arrayTermID = $arrayCategoryID;
 
-		$arryTermIDCategory = $this->termRepository->getArrayTermIDByTaxonomy($post->terms, 'category');
-		$post->terms()->detach($arryTermIDCategory);
+		$arrayTermIDCategory = $this->termRepository->getArrayTermIDByTaxonomy($post->terms, 'category');
+		$post->terms()->detach($arrayTermIDCategory);
 		$arryTermIDTag = $this->termRepository->getArrayTermIDByTaxonomy($post->terms, 'tag');
 		$post->terms()->detach($arryTermIDTag);
 
