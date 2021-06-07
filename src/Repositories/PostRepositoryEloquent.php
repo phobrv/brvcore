@@ -37,7 +37,7 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository {
 		if (!empty($arrayCategoryID)) {
 			foreach ($arrayCategoryID as $key => $value) {
 				$term = $this->termRepository->find($value);
-				if ($term->parent != 0) {
+				if ($term->parent != 0 && !in_array($term->parent, $arrayCategoryID)) {
 					array_push($arrayCategoryID, $term->parent);
 				}
 			}
