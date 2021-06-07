@@ -312,5 +312,31 @@ return [
 
 			],
 		],
+		[
+			'id' => 'menu-crawler',
+			'title' => 'Crawler',
+			'icon' => 'fa fa-binoculars',
+			'href' => '',
+			'permissions' => ['super_admin'],
+			'children' => [
+				[
+					'id' => '',
+					'title' => 'Profile',
+					'icon' => 'fa-building-o',
+					'href' => 'admin/crawlerProfile',
+					'permissions' => [],
+					'children' => [],
+				],
+				[
+					'id' => '',
+					'title' => 'Crawl Handword',
+					'icon' => 'fa-building-o',
+					'href' => 'admin/crawl-handwork',
+					'permissions' => [],
+					'children' => [],
+				],
+
+			],
+		],
 	],
 ];
