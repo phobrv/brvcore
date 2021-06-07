@@ -188,7 +188,10 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository {
 		foreach ($terms as $t) {
 			foreach ($t->posts as $p) {
 				if ($p->id != $post->id) {
-					$concerts->push($p);
+					if ($concerts->where('id', $p->id)->count() == 0) {
+						$concerts->push($p);
+					}
+
 				}
 			}
 		}
