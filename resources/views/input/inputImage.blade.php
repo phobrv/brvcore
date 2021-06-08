@@ -21,6 +21,29 @@ if(empty($value)){
 	}
 }
 @endphp
+
+@if(isset($configs['filemanager']) && $configs['filemanager'] == 'elfinder')
+<div class="input-group">
+	<span class="input-group-btn">
+		<a data-inputid="{{ $key }}" class="popup_selector btn btn-primary">
+			<i class="fa fa-picture-o"></i> Choose
+		</a>
+	</span>
+	<input id="{{ $key }}" class="form-control inputfile" type="text" name="{{ $key }}" value="{{ $value }}">
+</div>
+<img id="holder" style="margin-top:15px;max-height:100px;">
+<div class="form-group">
+	<div class="col-sm-12">
+		<img src="{{ $value ?? ''}}" style="width: {{ $width ?? '100%' }};height: auto;">
+	</div>
+</div>
+
+
+{{-- <label for="{{ $key }}">Select</label>
+<input type="text" id="{{ $key }}" name="{{ $key }}" value="">
+<a href="" class="popup_selector" data-inputid="{{ $key }}">Select Image</a> --}}
+
+@else
 @if($basic)
 <div class="input-group">
 	<span class="input-group-btn">
@@ -36,9 +59,7 @@ if(empty($value)){
 		<img src="{{ $value ?? ''}}" style="width: {{ $width ?? '100%' }};height: auto;">
 	</div>
 </div>
-
 @else
-
 <div class="form-group">
 	<label for="inputEmail3" class="col-sm-2 control-label">{{$label}}</label>
 	<div class="col-sm-4">
@@ -57,8 +78,7 @@ if(empty($value)){
 	</div>
 </div>
 @endif
-
-
 <script type="text/javascript">
 	$('{{ $id }}').filemanager('Images');
 </script>
+@endif

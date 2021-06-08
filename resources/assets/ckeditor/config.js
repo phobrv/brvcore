@@ -4,7 +4,7 @@
  */
 
  CKEDITOR.editorConfig = function( config ) {
- 	config.language = 'vi';
+    config.language = 'vi';
  	config.extraPlugins = 'videoembed';
  	config.height = '800px';
  };

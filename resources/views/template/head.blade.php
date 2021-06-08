@@ -8,6 +8,19 @@
 <script src="{{asset('/vendor/phobrv/js/admin.js')}}"></script>
 <script src="{{asset('/vendor/phobrv/ckeditor/ckeditor.js')}}"></script>
 <script src="{{asset('/vendor/phobrv/ckeditor/config.js')}}"></script>
+
+@if(isset($configs['filemanager']) && $configs['filemanager'] == 'elfinder')
+<script type="text/javascript" src="/packages/barryvdh/elfinder/js/standalonepopup.js"></script>
+<script src="{{asset('/vendor/phobrv/colorbox/jquery.colorbox-min.js')}}"></script>
+<link rel="stylesheet" href="{{asset('/vendor/phobrv/colorbox/colorbox.css')}}">
+<script>
+	var options = {
+		filebrowserBrowseUrl : '/elfinder/ckeditor',
+		extraPlugins: 'youtube,videoembed',
+		height: '300px'
+	};
+</script>
+@else
 <script>
 	var options = {
 		extraPlugins: 'youtube,videoembed,uploadfile',
@@ -18,6 +31,8 @@
 		height: '300px'
 	};
 </script>
+@endif
+
 <style type="text/css">
 ol li,ul li{
 	list-style: none!important;
