@@ -1,4 +1,5 @@
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script>
   function save(){
     $('#typeSubmit').val('save');
@@ -26,6 +27,13 @@
         autoclose: true,
         format: 'yyyy-mm-dd'
       })
+    }
+    if($('.datetime').length){
+      var optional_config = {
+        enableTime: true,
+        dateFormat: "Y-m-d H:i:ss",
+      }
+      $(".datetime").flatpickr(optional_config);
     }
     if($('#example1').length){
       $('#example1').DataTable({

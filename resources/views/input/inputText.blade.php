@@ -1,9 +1,14 @@
 @php
 $options = [];
+
 $options['placeholder'] = $label;
 $options['class'] = 'form-control';
+
 if(isset($datepicker) && $datepicker)
-	$options['class'] = 'form-control datepicker';
+	$options['class'] .= ' datepicker';
+if(isset($datetime))
+	$options['class'] .= ' datetime';
+
 if(isset($required) && $required )
 	$options['required'] = 'required';
 if(isset($readonly) && $readonly )
