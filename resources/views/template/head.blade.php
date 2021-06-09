@@ -30,7 +30,7 @@
 
 	});
 	function processSelectedFile(filePath, requestingField) {
-		filePath = location.origin+"/"+filePath
+		filePath = location.origin+"/storage/photos/"+filePath
 		$('#' + requestingField).val(filePath).trigger('change');
 	}
 	var options = {
