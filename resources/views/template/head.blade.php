@@ -10,10 +10,29 @@
 <script src="{{asset('/vendor/phobrv/ckeditor/config.js')}}"></script>
 
 @if(isset($configs['filemanager']) && $configs['filemanager'] == 'elfinder')
-<script type="text/javascript" src="/packages/barryvdh/elfinder/js/standalonepopup.js"></script>
 <script src="{{asset('/vendor/phobrv/colorbox/jquery.colorbox-min.js')}}"></script>
 <link rel="stylesheet" href="{{asset('/vendor/phobrv/colorbox/colorbox.css')}}">
+{{-- <script type="text/javascript" src="/packages/barryvdh/elfinder/js/standalonepopup.js"></script> --}}
 <script>
+	$(document).on('click','.popup_selector',function (event) {
+		event.preventDefault();
+		var updateID = $(this).attr('data-inputid');
+		var elfinderUrl = '/elfinder/popup/';
+
+		var triggerUrl = elfinderUrl + updateID;
+		$.colorbox({
+			href: triggerUrl,
+			fastIframe: true,
+			iframe: true,
+			width: '70%',
+			height: '50%'
+		});
+
+	});
+	function processSelectedFile(filePath, requestingField) {
+		filePath = location.origin+"/"+filePath
+		$('#' + requestingField).val(filePath).trigger('change');
+	}
 	var options = {
 		filebrowserBrowseUrl : '/elfinder/ckeditor',
 		extraPlugins: 'youtube,videoembed',
