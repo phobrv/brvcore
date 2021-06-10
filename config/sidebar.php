@@ -331,7 +331,7 @@ return [
 					'id' => '',
 					'title' => 'Crawl Handword',
 					'icon' => 'fa-building-o',
-					'href' => 'admin/crawl-handwork',
+					'href' => 'admin/crawler',
 					'permissions' => [],
 					'children' => [],
 				],

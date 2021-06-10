@@ -35,14 +35,14 @@
 	}
 	var options = {
 		filebrowserBrowseUrl : '/elfinder/ckeditor',
-		extraPlugins: 'youtube,videoembed',
+		extraPlugins: 'youtube,videoembed,codesnippet',
 		height: '300px'
 	};
 </script>
 @else
 <script>
 	var options = {
-		extraPlugins: 'youtube,videoembed,uploadfile',
+		extraPlugins: 'youtube,videoembed,uploadfile,codesnippet',
 		filebrowserImageBrowseUrl: '/filemanager?type=Images',
 		filebrowserImageUploadUrl: '/filemanager/upload?type=Images&_token=',
 		filebrowserBrowseUrl: '/filemanager?type=Files',
