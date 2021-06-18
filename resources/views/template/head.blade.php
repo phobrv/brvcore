@@ -25,7 +25,7 @@
 			fastIframe: true,
 			iframe: true,
 			width: '70%',
-			height: '80%'
+			height: '55%'
 		});
 
 	});
