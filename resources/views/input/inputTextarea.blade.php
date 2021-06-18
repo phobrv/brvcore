@@ -22,12 +22,12 @@ if(empty($value)){
 @endphp
 @if($style == "full")
 <div class="form-group">
-	<label for="inputEmail3" class="col-sm-2 control-label"> {{ $label }} </label>
+	<label for="inputEmail3" class="col-sm-2 control-label"> {{ $label ?? ''}} </label>
 	<div class="col-sm-10">
 		{{ Form::textarea($key,$value,$options) }}
 	</div>
 </div>
 @elseif($style == 'short')
-<label>{{ $label }}</label>
+<label>{{ $label ?? ''}}</label>
 {{ Form::textarea($key,$value,$options) }}
 @endif
