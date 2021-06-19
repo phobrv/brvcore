@@ -271,8 +271,8 @@ return [
 			],
 		],
 		[
-			'id' => 'menu-faker',
-			'title' => 'Faker',
+			'id' => 'menu-tool',
+			'title' => 'Tools',
 			'icon' => 'fa fa-bars',
 			'href' => '',
 			'permissions' => ['super_admin'],
