@@ -1,7 +1,7 @@
 @php
 $options = [];
 $options['class'] = 'form-control';
-$options['rows'] = '3';
+$options['rows'] = $row ?? '3';
 if(isset($required) && $required )
 	$options['required'] = 'required';
 $type = isset($type) ? $type : "";
