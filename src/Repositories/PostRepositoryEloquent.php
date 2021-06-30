@@ -112,7 +112,7 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository {
 					$out[$meta->key . "_term"] = $term;
 				}
 			} elseif (strpos($meta->key, '_post') && $meta->value) {
-				$out[$meta->key . "_source"] = $this->model->findWhere(['id' => $meta->value]);
+				$out[$meta->key . "_source"] = $this->model->findWhere(['id' => $meta->value])->first();
 			}
 			$out[$meta->key] = $meta->value;
 		}
