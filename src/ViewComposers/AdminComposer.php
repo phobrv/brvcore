@@ -40,7 +40,7 @@ class AdminComposer {
 		$this->arrayMenu = $termRepository->getArrayTerms(config('term.taxonomy.menugroup'));
 		$this->arrayBoxSidebar = $optionRepository->takeArraySidebarBoxTitle();
 		$this->arrayBrand = $termRepository->getArrayTerms(config('term.taxonomy.brand'));
-		$this->arrayProductGroup = $termRepository->getArrayTerms(config('term.taxonomy.product'));
+		$this->arrayProductGroup = $termRepository->getArrayTerms(config('term.taxonomy.productgroup'));
 		$this->configs = $optionRepository->handleOptionToArray($optionRepository->all());
 		$this->sidebarDisable = isset($this->configs['sidebar_disable']) ? json_decode($this->configs['sidebar_disable'], true) : [];
 		$this->langMain = $configLangService->getMainLang();
