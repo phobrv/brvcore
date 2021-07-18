@@ -23,9 +23,9 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository {
 		TermRepository $termRepository
 	) {
 		parent::__construct($app);
-		$this->unitServices = $unitServices;
+		$this->unitServices   = $unitServices;
 		$this->termRepository = $termRepository;
-		$this->paginate = config('option.paginate');
+		$this->paginate       = config('option.paginate');
 	}
 	public function model() {
 		return Post::class;
@@ -52,7 +52,7 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository {
 
 		if (isset($arrayTagName) && count($arrayTagName) > 0) {
 			foreach ($arrayTagName as $tag) {
-				$slug = $this->unitServices->renderSlug($tag);
+				$slug              = $this->unitServices->renderSlug($tag);
 				$tagSeacrhOrCreate = Term::firstOrCreate(
 					['slug' => $slug],
 					['name' => $tag, 'taxonomy' => 'tag']
@@ -65,7 +65,7 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository {
 		$post->terms()->attach($arrayTermID);
 	}
 	public function getArrayPostByType($type) {
-		$out = ['0' => '-'];
+		$out   = ['0' => '-'];
 		$posts = $this->model->where('type', $type)->get();
 		if ($posts) {
 			foreach ($posts as $p) {
@@ -109,7 +109,7 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository {
 						}
 					}
 					$out[$meta->key . "_source"] = $posts;
-					$out[$meta->key . "_term"] = $term;
+					$out[$meta->key . "_term"]   = $term;
 				}
 			} elseif (strpos($meta->key, '_post') && $meta->value) {
 				$out[$meta->key . "_source"] = $this->model->find($meta->value);
@@ -154,7 +154,7 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository {
 		}
 	}
 	public function createArrayMenuParent($posts, $expel_id) {
-		$out = array();
+		$out    = array();
 		$out[0] = '-';
 		foreach ($posts as $p) {
 			if ($p->parent == 0 && $p->id != $expel_id) {
@@ -167,7 +167,7 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository {
 		return $this->model->where('parent', $id)->get();
 	}
 	public function handleSeoMeta($post, $request) {
-		$arrayMeta = array();
+		$arrayMeta               = array();
 		$arrayMeta['meta_title'] = ($request->meta_title) ? $request->meta_title : $request->title;
 		if (isset($request->meta_description) && $request->meta_description) {
 			$meta_des = $request->meta_description;
@@ -177,13 +177,13 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository {
 			$meta_des = $request->title;
 		}
 		$arrayMeta['meta_description'] = $meta_des;
-		$arrayMeta['meta_keywords'] = ($request->meta_keywords) ? $request->meta_keywords : "";
+		$arrayMeta['meta_keywords']    = ($request->meta_keywords) ? $request->meta_keywords : "";
 		if ($arrayMeta) {
 			$this->insertMeta($post, $arrayMeta);
 		}
 	}
 	public function getConcern($post) {
-		$terms = $post->terms;
+		$terms    = $post->terms;
 		$concerts = new collect();
 		foreach ($terms as $t) {
 			foreach ($t->posts as $p) {
@@ -217,7 +217,7 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository {
 	}
 	public function renderSiteMap() {
 		$sitemap = fopen("sitemap.xml", "w") or die("Unable to open file!");
-		$string = '<?xml version="1.0" encoding="utf-8"?>
+		$string  = '<?xml version="1.0" encoding="utf-8"?>
 		<urlset  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
 		$posts = $this->model->whereIn('type', ['post', 'menu_item', 'product', 'video'])->get();
 		foreach ($posts as $post) {
@@ -227,5 +227,13 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository {
 		fwrite($sitemap, $string);
 		fclose($sitemap);
 		return 1;
+	}
+	public function getTotalView() {
+		$out = 0;
+		$all = $this->all();
+		foreach ($all as $p) {
+			$out += $p->view;
+		}
+		return $out;
 	}
 }

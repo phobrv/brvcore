@@ -42,4 +42,5 @@ interface PostRepository extends RepositoryInterface {
 
 	public function renderSiteMap();
 
+	public function getTotalView();
 }
