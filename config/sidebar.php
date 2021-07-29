@@ -36,32 +36,6 @@ return [
 			],
 		],
 		[
-			'id' => 'menu-manager',
-			'title' => 'Menus',
-			'icon' => 'fa fa-bars',
-			'href' => '',
-			'permissions' => ['menu_manage'],
-			'children' => [
-				[
-					'id' => 'menugroup',
-					'title' => 'All Menu',
-					'icon' => 'fa-building-o',
-					'href' => 'admin/menugroup',
-					'permissions' => [],
-					'children' => [],
-				],
-				[
-					'id' => 'menu-menu',
-					'title' => 'Menu structure',
-					'icon' => 'fa-building-o',
-					'href' => 'admin/menu',
-					'permissions' => [],
-					'children' => [],
-				],
-
-			],
-		],
-		[
 			'id' => 'menu-config',
 			'title' => 'Configs',
 			'icon' => 'fa fa-cog',
@@ -105,6 +79,32 @@ return [
 					'title' => 'Icons',
 					'icon' => 'fa-building-o',
 					'href' => 'admin/config-icon',
+					'permissions' => [],
+					'children' => [],
+				],
+
+			],
+		],
+		[
+			'id' => 'menu-manager',
+			'title' => 'Menus',
+			'icon' => 'fa fa-bars',
+			'href' => '',
+			'permissions' => ['menu_manage'],
+			'children' => [
+				[
+					'id' => 'menugroup',
+					'title' => 'All Menu',
+					'icon' => 'fa-building-o',
+					'href' => 'admin/menugroup',
+					'permissions' => [],
+					'children' => [],
+				],
+				[
+					'id' => 'menu-menu',
+					'title' => 'Menu structure',
+					'icon' => 'fa-building-o',
+					'href' => 'admin/menu',
 					'permissions' => [],
 					'children' => [],
 				],
@@ -193,7 +193,14 @@ return [
 				],
 			],
 		],
-
+		[
+			'id' => 'menu-recruitment',
+			'title' => 'Recruitment',
+			'icon' => 'fa fa-address-card-o',
+			'href' => '/admin/recruitment',
+			'permissions' => ['post_manage'],
+			'children' => [],
+		],
 		[
 			'id' => 'menu-contact',
 			'title' => 'Contacts',
