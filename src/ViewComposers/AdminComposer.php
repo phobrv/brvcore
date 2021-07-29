@@ -18,6 +18,7 @@ class AdminComposer {
 	public $admin_language;
 	public $arrayProductGroup = [];
 	public $arrayQuestionGroup = [];
+	public $arrayBuildProjectGroup = [];
 	public $arrayBrand = [];
 	public $sidebarDisable = [];
 	public $configs = [];
@@ -45,6 +46,8 @@ class AdminComposer {
 		$this->sidebarDisable = isset($this->configs['sidebar_disable']) ? json_decode($this->configs['sidebar_disable'], true) : [];
 		$this->langMain = $configLangService->getMainLang();
 		$this->langArray = $configLangService->hanleLangActive();
+		$this->arrayBuildProjectGroup = $termRepository->getArrayTerms(config('term.taxonomy.buildprojectgroup'));
+
 	}
 
 	/**
@@ -54,6 +57,7 @@ class AdminComposer {
 	 * @return void
 	 */
 	public function compose(View $view) {
+		$view->with('arrayBuildProjectGroup', $this->arrayBuildProjectGroup);
 		$view->with('arrayAlbum', $this->arrayAlbum);
 		$view->with('arrayVideo', $this->arrayVideo);
 		$view->with('arrayVideoItem', $this->arrayVideoItem);
