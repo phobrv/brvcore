@@ -12,6 +12,7 @@ return [
 		'brand' => 'brand',
 		'productgroup' => 'productgroup',
 		'lang' => 'lang',
+		'buildprojectgroup'=>'buildprojectgroup',
 	],
 	'taxonomyLabel' => [
 		'menugroup' => 'Menus',
@@ -23,5 +24,6 @@ return [
 		'region' => 'Regions',
 		'productgroup' => 'Product Group',
 		'brand' => 'Brand',
+		'buildprojectgroup'=>'Build Project Group',
 	],
 ];

@@ -236,4 +236,13 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository {
 		}
 		return $out;
 	}
+	public function getArrayTermID($terms, $taxonomy) {
+		$out = array();
+		foreach ($terms as $t) {
+			if ($t->taxonomy == $taxonomy) {
+				array_push($out, $t->id);
+			}
+		}
+		return $out;
+	}
 }

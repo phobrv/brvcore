@@ -23,6 +23,7 @@ return [
 		'drugstore' => 'drugstore',
 		'product' => 'product',
 		'recruitment'=>'recruitment',
+		'buildproject'=>'buildproject',
 	],
 ]
 

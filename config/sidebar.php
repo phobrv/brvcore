@@ -202,6 +202,32 @@ return [
 			'children' => [],
 		],
 		[
+			'id' => 'menu-project',
+			'title' => 'Build Project',
+			'icon' => 'fa fa-cube',
+			'href' => '',
+			'permissions' => ['post_manage'],
+			'children' => [
+				[
+					'id' => '',
+					'title' => 'Group',
+					'icon' => 'fa-building-o',
+					'href' => 'admin/buildprojectgroup',
+					'permissions' => [],
+					'children' => [],
+				],
+				[
+					'id' => '',
+					'title' => 'Projects',
+					'icon' => 'fa-building-o',
+					'href' => 'admin/buildproject',
+					'permissions' => [],
+					'children' => [],
+				],
+
+			],
+		],
+		[
 			'id' => 'menu-contact',
 			'title' => 'Contacts',
 			'icon' => 'fa fa-download',
