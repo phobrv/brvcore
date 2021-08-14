@@ -34,9 +34,7 @@ if(empty($value)){
 </div>
 <img id="holder" style="margin-top:15px;max-height:100px;">
 <div class="form-group">
-	<div class="col-sm-12">
-		<img src="{{ $value ?? ''}}" style="width: {{ $width ?? '100%' }};height: auto;">
-	</div>
+	<img src="{{ $value ?? ''}}" style="width: {{ $width ?? '100%' }};height: auto;">
 </div>
 @else
 <div class="form-group">
