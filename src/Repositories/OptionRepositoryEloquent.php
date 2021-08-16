@@ -85,12 +85,12 @@ class OptionRepositoryEloquent extends BaseRepository implements OptionRepositor
 			$this->unitServices->writeFile(config('brvcore.htaccess_file'), $data['htaccess']);
 		}
 		foreach ($data as $key => $value) {
-			if ($value) {
-				$this->model->updateOrCreate(
-					['name' => $key],
-					['value' => $value]
-				);
-			}
+			// if ($value) {
+			// }
+			$this->model->updateOrCreate(
+				['name' => $key],
+				['value' => $value]
+			);
 		}
 	}
 	public function takeArraySidebarBoxTitle() {
