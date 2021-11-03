@@ -33,9 +33,7 @@ if(empty($value)){
 	<input id="{{ $key }}" class="form-control inputfile" type="text" name="{{ $key }}" value="{{ $value }}">
 </div>
 <img id="holder" style="margin-top:15px;max-height:100px;">
-<div class="form-group">
 	<img src="{{ $value ?? ''}}" style="width: {{ $width ?? '100%' }};height: auto;">
-</div>
 @else
 <div class="form-group">
 	<label for="inputEmail3" class="col-sm-2 control-label">{{$label ?? '' }}</label>
