@@ -14,6 +14,13 @@ return [
         'lang' => 'lang',
         'buildprojectgroup' => 'buildprojectgroup',
     ],
+    'taxonmyTmp' => [
+        'tmp1' => 'tmp1',
+        'tmp2' => 'tmp2',
+        'tmp3' => 'tmp3',
+        'tmp4' => 'tmp4',
+        'tmp5' => 'tmp5',
+    ],
     'taxonomyView' => [
         'category' => 'phobrv::term.category',
         'tag' => 'phobrv::term.tag',
