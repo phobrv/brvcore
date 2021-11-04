@@ -99,7 +99,7 @@ class TermController extends Controller
             $data['arrayTerm'] = $this->termRepository->getArrayTermsParent($this->taxonomy, $id);
             $data['term'] = $this->termRepository->find($id);
             $data['submit_lable'] = "Update";
-            return view(config('term.taxonomyView..' . $this->taxonomy))->with('data', $data);
+            return view(config('term.taxonomyView.' . $this->taxonomy))->with('data', $data);
         } catch (Exception $e) {
             return back()->with('alert_danger', $e->getMessage());
         }
