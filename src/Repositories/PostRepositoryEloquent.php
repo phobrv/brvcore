@@ -7,6 +7,7 @@ use Illuminate\Support\Collection as collect;
 use Phobrv\BrvCore\Models\Post;
 use Phobrv\BrvCore\Models\PostMeta;
 use Phobrv\BrvCore\Models\Term;
+use Phobrv\BrvCore\Repositories\PostMetaRepository;
 use Phobrv\BrvCore\Repositories\PostRepository;
 use Phobrv\BrvCore\Repositories\TermRepository;
 use Phobrv\BrvCore\Services\UnitServices;
@@ -17,16 +18,19 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
 {
     private $unitServices;
     private $termRepository;
+    private $postMetaRepository;
     private $paginate;
 
     public function __construct(
         Application $app,
         UnitServices $unitServices,
+        PostMetaRepository $postMetaRepository,
         TermRepository $termRepository
     ) {
         parent::__construct($app);
         $this->unitServices = $unitServices;
         $this->termRepository = $termRepository;
+        $this->postMetaRepository = $postMetaRepository;
         $this->paginate = config('option.paginate');
     }
     public function model()
@@ -92,13 +96,17 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
             }
         } else {
             foreach ($arrayMeta as $key => $value) {
-                $meta = $post->postMetas()->where('key', $key)->get()->first();
+                $meta = $this->postMetaRepository->where([
+                    'post_id' => $post->id,
+                    'key' => $key,
+                ])->get()->first();
                 if ($meta) {
                     $meta->value = $value;
                     $meta->save();
                 } else {
-                    $meta = new PostMeta(['post_id' => $post->id, 'key' => $key, 'value' => $value]);
-                    $post->postMetas()->save($meta);
+                    $this->postMetaRepository->create(
+                        ['post_id' => $post->id, 'key' => $key, 'value' => $value]
+                    );
                 }
             }
         }
