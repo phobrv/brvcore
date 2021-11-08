@@ -86,7 +86,7 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
     }
     public function insertMeta($post, $arrayMeta, $type = null)
     {
-        if ($type = 'multi') {
+        if ($type == 'multi') {
             foreach ($arrayMeta as $key => $value) {
                 $meta = $post->postMetas()->where('key', $key)->where('value', $value)->get()->first();
                 if (!$meta) {
@@ -96,18 +96,13 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
             }
         } else {
             foreach ($arrayMeta as $key => $value) {
-                $meta = $this->postMetaRepository->where([
+                $this->postMetaRepository->where([
                     'post_id' => $post->id,
                     'key' => $key,
-                ])->get()->first();
-                if ($meta) {
-                    $meta->value = $value;
-                    $meta->save();
-                } else {
-                    $this->postMetaRepository->create(
-                        ['post_id' => $post->id, 'key' => $key, 'value' => $value]
-                    );
-                }
+                ])->delete();
+                $this->postMetaRepository->create(
+                    ['post_id' => $post->id, 'key' => $key, 'value' => $value]
+                );
             }
         }
     }
