@@ -2,10 +2,10 @@
 namespace Phobrv\BrvCore\ViewComposers;
 
 use Illuminate\View\View;
-use Phobrv\BrvConfigs\Services\ConfigLangService;
 use Phobrv\BrvCore\Repositories\OptionRepository;
 use Phobrv\BrvCore\Repositories\PostRepository;
 use Phobrv\BrvCore\Repositories\TermRepository;
+use Phobrv\BrvCore\Services\ConfigLangService;
 
 class AdminComposer
 {
