@@ -25,6 +25,7 @@
 				@isset($data['post']) @method('put') @endisset
 				<input type="hidden" id="typeSubmit" name="typeSubmit" value="">
 				<div class="col-md-8">
+					@include('phobrv::input.inputSelect',['label'=>'Status','key'=>'status','array'=>['0'=>'Private','1'=>'Active','2'=>'Hot']])
 					@isset($data['post'])
 					@include('phobrv::input.inputText',['label'=>'Url','key'=>'slug','check_auto_gen'=>'true'])
 					@endif

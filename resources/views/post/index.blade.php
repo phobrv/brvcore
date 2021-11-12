@@ -95,7 +95,6 @@
 				type: 'POST',
 				data: {id: id},
 				success: function(output){
-					console.log(output);
 					if (output == 1){
 						$(obj).html('');
 						$(obj).append('<i class="fa fa-check" style="color:green;"></i>');
