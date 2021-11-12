@@ -103,6 +103,9 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository {
 	public function getMeta($postMetas, $meta_child = true) {
 		$out = array();
 		foreach ($postMetas as $meta) {
+			$out[$meta->key] = $meta->value;
+		}
+		foreach ($postMetas as $meta) {
 			if (strpos($meta->key, '_term') && $meta->value) {
 				$term = $this->termRepository->with('posts')->findWhere(['id' => $meta->value])->first();
 				if ($term) {
@@ -113,7 +116,7 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository {
 
 					if (strpos($meta->key, '_paginate')) {
 						$paginate_number_key = str_replace("_term_paginate", "_number", $meta->key);
-						$paginate = !empty($postMetas[$paginate_number_key]) ? $postMetas[$paginate_number_key] : $this->paginate;
+						$paginate = !empty($out[$paginate_number_key]) ? $out[$paginate_number_key] : $this->paginate;
 						$out['paginate'] = $paginate;
 						$posts = $posts->paginate($paginate);
 					} else {
@@ -131,7 +134,6 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository {
 			} elseif (strpos($meta->key, '_post') && $meta->value) {
 				$out[$meta->key . "_source"] = $this->model->find($meta->value);
 			}
-			$out[$meta->key] = $meta->value;
 		}
 		return $out;
 	}
