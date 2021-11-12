@@ -82,7 +82,7 @@ class PostController extends Controller {
 		if ($data['select']) {
 			$data['posts'] = $this->termRepository->getPostsByTermID($data['select'])->where('lang', $this->langMain);
 		} else {
-			$data['posts'] = $this->postRepository->orderBy('created_at', 'desc')->with('user')->all()->where('type', 'post')->where('lang', $this->langMain);
+			$data['posts'] = $this->postRepository->orderBy('status', 'desc')->orderBy('created_at', 'desc')->with('user')->all()->where('type', 'post')->where('lang', $this->langMain);
 		}
 
 		$langArray = $this->configLangService->getArrayLangConfig();
