@@ -112,7 +112,7 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository {
 					}
 
 					if (strpos($meta->key, '_paginate')) {
-						$paginate_number_key = str_replace("_term_paginate", "_number", $meta->key);
+						$paginate_number_key = "'" . str_replace("_term_paginate", "_number", $meta->key) . "'";
 						$paginate = !empty($postMetas[$paginate_number_key]) ? $postMetas[$paginate_number_key] : $this->paginate;
 						$posts = $posts->paginate($paginate);
 					} else {
