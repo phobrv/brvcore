@@ -82,10 +82,10 @@ class BrvCoreServiceProvider extends ServiceProvider
         // Publishing the views.
         $this->publishes([
             __DIR__ . '/../resources/views/menu' => base_path('resources/views/vendor/phobrv/menu'),
-        ], 'brvcore.menuView');
+        ], 'brvcore.menusView');
         $this->publishes([
             __DIR__ . '/../resources/views/config' => base_path('resources/views/vendor/phobrv/config'),
-        ], 'brvcore.configView');
+        ], 'brvcore.configsView');
 
         // Registering package commands.
         // $this->commands([]);
