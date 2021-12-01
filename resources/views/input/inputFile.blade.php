@@ -34,12 +34,12 @@ if(empty($value)){
 </div>
 <img id="holder" style="margin-top:15px;max-height:100px;">
 <div class="form-group">
-	<img src="{{ $value ?? ''}}" style="width: {{ $width ?? '100%' }};height: auto;">
+	{{-- <img src="{{ $value ?? ''}}" style="width: {{ $width ?? '100%' }};height: auto;"> --}}
 </div>
 @else
 <div class="form-group">
 	<label for="inputEmail3" class="col-sm-2 control-label">{{$label ?? '' }}</label>
-	<div class="col-sm-4">
+	<div class="col-sm-10">
 		<div class="input-group">
 			<span class="input-group-btn">
 				<a data-inputid="{{ $key }}" class="popup_selector btn btn-primary">
@@ -50,9 +50,9 @@ if(empty($value)){
 		</div>
 		<img id="holder" style="margin-top:15px;max-height:100px;">
 	</div>
-	<div class="col-sm-6">
+	{{-- <div class="col-sm-6">
 		<img class="{{ $key }}"  src="{{$value ?? '' }}" style="width: {{ $width ?? '100%' }};height: auto;">
-	</div>
+	</div> --}}
 </div>
 
 @endif
