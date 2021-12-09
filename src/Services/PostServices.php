@@ -20,7 +20,7 @@ class PostServices
             $html = HtmlDomParser::str_get_html($data['content']);
             if ($html != "") {
                 $data['content'] = str_replace("<br />", "", $data['content']);
-                $menu = "<ul id='postMenu' style='display:none'>";
+                $menu = "<ul id='postMenu'>";
                 foreach ($html->find('h2,h3') as $h) {
                     $outertext = $h->outertext;
                     $plaintext = trim($h->plaintext);
