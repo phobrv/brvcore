@@ -50,6 +50,7 @@ class ConfigLangService
         $out = '';
         $termLang = $this->postRepository->find($post_id)->terms()->where('taxonomy', config('term.taxonomy.lang'))->first();
         if (empty($termLang)) {
+            $out = '<a class="btn-default btn" href="javascript:void(0)">VI</a>';
             return $out;
         }
         $posts = $this->termRepository->with('posts')->find($termLang->id)->posts;
