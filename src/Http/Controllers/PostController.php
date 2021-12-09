@@ -165,6 +165,7 @@ class PostController extends Controller
         $data['type'] = $this->type;
         $post = $this->postRepository->create($data);
         $this->updatePostInfo($post, $request, $data);
+        $this->postRepository->handleSeoMeta($post, $request);
         $this->configLangService->createTermLang($post);
         $this->postService->renderSiteMap();
         $msg = __('Create post success!');
@@ -294,7 +295,6 @@ class PostController extends Controller
         $this->postRepository->insertMeta($post, $arrayMeta);
         $this->postRepository->updateTagAndCategory($post, $request->tag, $request->category);
         $this->configLangService->syncPostTagAndCategory($post, $request->tag, $request->category);
-        // $this->postRepository->handleSeoMeta($post, $request);
     }
 
     public function updateUserSelectCategory(Request $request)
