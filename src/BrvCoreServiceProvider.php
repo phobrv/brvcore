@@ -62,13 +62,13 @@ class BrvCoreServiceProvider extends ServiceProvider
         // Publishing the configuration file.
         $this->publishes([
             __DIR__ . '/../config/option.php' => config_path('option.php'),
-        ], 'brvcore.config');
+        ], 'brv_option.config');
         $this->publishes([
             __DIR__ . '/../config/sidebar.php' => config_path('sidebar.php'),
-        ], 'brvsidebar.config');
+        ], 'brv_sidebar.config');
         $this->publishes([
             __DIR__ . '/../config/term.php' => config_path('term.php'),
-        ], 'brvcore.term');
+        ], 'brv_term.config');
 
         // Publishing assets.
         $this->publishes([
@@ -82,10 +82,13 @@ class BrvCoreServiceProvider extends ServiceProvider
         // Publishing the views.
         $this->publishes([
             __DIR__ . '/../resources/views/menu' => base_path('resources/views/vendor/phobrv/menu'),
-        ], 'brvcore.menusView');
+        ], 'brv_menu.view');
         $this->publishes([
             __DIR__ . '/../resources/views/config' => base_path('resources/views/vendor/phobrv/config'),
-        ], 'brvcore.configsView');
+        ], 'brv_config.view');
+        $this->publishes([
+            __DIR__ . '/../resources/views/post' => base_path('resources/views/vendor/phobrv/post'),
+        ], 'brv_post.view');
 
         // Registering package commands.
         // $this->commands([]);

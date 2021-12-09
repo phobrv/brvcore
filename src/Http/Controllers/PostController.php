@@ -294,7 +294,7 @@ class PostController extends Controller
         $this->postRepository->insertMeta($post, $arrayMeta);
         $this->postRepository->updateTagAndCategory($post, $request->tag, $request->category);
         $this->configLangService->syncPostTagAndCategory($post, $request->tag, $request->category);
-        $this->postRepository->handleSeoMeta($post, $request);
+        // $this->postRepository->handleSeoMeta($post, $request);
     }
 
     public function updateUserSelectCategory(Request $request)
