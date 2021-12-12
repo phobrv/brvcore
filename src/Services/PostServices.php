@@ -4,13 +4,16 @@ namespace Phobrv\BrvCore\Services;
 
 use KubAT\PhpSimple\HtmlDomParser;
 use Phobrv\BrvCore\Repositories\PostRepository;
-use Str;
+use Phobrv\BrvCore\Services\VString;
 
 class PostServices
 {
     protected $postRepository;
-    public function __construct(PostRepository $postRepository)
-    {
+    protected $vstring;
+    public function __construct(
+        PostRepository $postRepository,
+        VString $vstring) {
+        $this->vstring = $vstring;
         $this->postRepository = $postRepository;
     }
     public function handleMenuPost($data)
@@ -25,9 +28,9 @@ class PostServices
                     $outertext = $h->outertext;
                     $plaintext = trim($h->plaintext);
                     if (strlen($plaintext) > 4) {
-                        $id = Str::slug($plaintext);
+                        $id = $this->vstring->standardKeyword($plaintext);
                         $menu .= "<li><a href='#" . $id . "' >" . $plaintext . "</a></li>";
-                        $outertextChange = "<" . $h->tag . " id='" . $id . "' >" . $h->innertext . "</" . $h->tag . ">";
+                        $outertextChange = '<' . $h->tag . ' id="' . $id . '" >' . $h->innertext . "</" . $h->tag . ">";
                         $data['content'] = str_replace($outertext, $outertextChange, $data['content']);
                     }
                 }

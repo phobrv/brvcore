@@ -211,6 +211,7 @@ class PostController extends Controller
         try {
             $data['categorys'] = $this->termRepository->getTermsOrderByParent($this->category);
             $data['post'] = $this->postRepository->find($id);
+            // dd($data['post']->content);
             $data['arrayCategoryID'] = $this->termRepository->getArrayTermIDByTaxonomy($data['post']->terms, 'category');
             $data['tags'] = $this->termRepository->getArrayTermByTaxonomy($data['post']->terms, 'tag');
             $data['meta'] = $this->postRepository->getMeta($data['post']->postMetas);
@@ -248,7 +249,6 @@ class PostController extends Controller
         $data['slug'] = $this->vstring->standardKeyword($data['slug']);
         $data = $this->postService->handleMenuPost($data);
         $post = $this->postRepository->update($data, $id);
-
         $this->updatePostInfo($post, $request, $data);
         $this->postService->renderSiteMap();
 
