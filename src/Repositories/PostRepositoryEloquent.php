@@ -136,7 +136,7 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
 
                     }
 
-                    if (count($posts) && $meta_child) {
+                    if (!empty($posts) && $meta_child) {
                         for ($i = 0; $i < count($posts); $i++) {
                             $posts[$i]['meta'] = $this->getMeta($posts[$i]->postMetas);
                         }
