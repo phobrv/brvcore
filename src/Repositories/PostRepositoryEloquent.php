@@ -131,7 +131,7 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
                         if (empty($out[$number_key])) {
                             $posts = $posts->get();
                         } else {
-                            $posts = $posts->take($out[$number_key]);
+                            $posts = $posts->take($out[$number_key])->toArray();
                         }
 
                     }
