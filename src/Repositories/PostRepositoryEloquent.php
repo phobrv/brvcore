@@ -116,7 +116,7 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
             if (strpos($meta->key, '_term') && $meta->value) {
                 $term = $this->termRepository->with('posts')->findWhere(['id' => $meta->value])->first();
                 if ($term) {
-                    $posts = $term->posts->where('status', '>', 0)->sortByDesc('status')->sortBy('order')->sortByDesc('created_at');
+                    $posts = $term->posts()->where('status', '>', 0)->orderBy('status', 'desc')->orderBy('order')->orderBy('created_at', 'desc');
                     if ($term['taxonomy'] == 'category') {
                         $posts = $posts->where('lang', config('app.locale'));
                     }
@@ -129,17 +129,15 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
                     } else {
                         $number_key = str_replace("_term", "_number", $meta->key);
                         if (empty($out[$number_key])) {
-                            $posts = $posts->all();
+                            $posts = $posts->get();
                         } else {
-                            $posts = $posts->take($out[$number_key])->toArray();
+                            $posts = $posts->limit($out[$number_key])->get();
                         }
-
                     }
 
                     if (!empty($posts) && $meta_child) {
                         for ($i = 0; $i < count($posts); $i++) {
-                            $postMetas = $this->PostMetaRepository->findWhere(['post_id' => $posts[$i]->id]);
-                            $posts[$i]['meta'] = $this->getMeta($postMetas);
+                            $posts[$i]['meta'] = $this->getMeta($posts[$i]->postMetas);
                         }
                     }
                     $out[$meta->key . "_source"] = $posts;

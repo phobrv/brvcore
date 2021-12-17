@@ -8,7 +8,6 @@
 		<div class="box-body">
 			@include('phobrv::input.inputSelect',['label'=>'Slide PC','key'=>'album_term_pc','type'=>'meta','array'=>$arrayAlbum])
 			@include('phobrv::input.inputSelect',['label'=>'Slide Mobile','key'=>'album_term_mobile','type'=>'meta','array'=>$arrayAlbum])
-
 		</div>
 		<div class="box-footer">
 			{{ Form::submit('Lưu cấu hình',array('class'=>'btn btn-primary')) }}
