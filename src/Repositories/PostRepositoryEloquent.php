@@ -116,7 +116,7 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
             if (strpos($meta->key, '_term') && $meta->value) {
                 $term = $this->termRepository->with('posts')->findWhere(['id' => $meta->value])->first();
                 if ($term) {
-                    $posts = $term->posts->where('status', '>', 0)->orderBy('status', 'desc')->orderBy('order')->orderBy('created_at', 'desc');
+                    $posts = $term->posts->where('status', '>', 0)->sortByDesc('status')->sortBy('order')->sortByDesc('created_at');
                     if ($term['taxonomy'] == 'category') {
                         $posts = $posts->where('lang', config('app.locale'));
                     }
@@ -129,7 +129,7 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
                     } else {
                         $number_key = str_replace("_term", "_number", $meta->key);
                         if (empty($out[$number_key])) {
-                            $posts = $posts->get();
+                            $posts = $posts->all();
                         } else {
                             $posts = $posts->take($out[$number_key])->toArray();
                         }
