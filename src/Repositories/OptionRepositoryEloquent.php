@@ -56,6 +56,7 @@ class OptionRepositoryEloquent extends BaseRepository implements OptionRepositor
         $out = array();
         $localePrefix = "_" . config('app.locale');
         foreach ($out as $key => $value) {
+            $out[$option->name] = $option->value;
             if (strpos($key, $localePrefix) != false) {
                 $newKey = str_replace($localePrefix, "", $key);
                 $out[$newKey] = $value;
@@ -73,7 +74,7 @@ class OptionRepositoryEloquent extends BaseRepository implements OptionRepositor
                 }
                 $out[$option->name . "_source"] = $posts;
             }
-            $out[$option->name] = $option->value;
+
         }
 
         return $out;
