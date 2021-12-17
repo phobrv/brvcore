@@ -12,7 +12,7 @@
 			if(getData[i]['name']!='_token')
 				data[getData[i]['name']] = getData[i]['value'];
 		}
-
+		console.log(data)
 		$.ajax({
 			headers : { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
 			url: '{{URL::route("configAPI.update")}}',

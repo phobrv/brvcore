@@ -54,14 +54,10 @@ class OptionRepositoryEloquent extends BaseRepository implements OptionRepositor
     public function handleOptionToArray($options)
     {
         $out = array();
-        $localePrefix = "_" . config('app.locale');
-        foreach ($out as $key => $value) {
+        foreach ($options as $key => $option) {
             $out[$option->name] = $option->value;
-            if (strpos($key, $localePrefix) != false) {
-                $newKey = str_replace($localePrefix, "", $key);
-                $out[$newKey] = $value;
-            }
         }
+
         foreach ($options as $key => $option) {
             if (strpos($option->name, "_post")) {
                 $out[$option->name . "_source"] = $this->postRepository->findWhere(['id' => $option->value])->first();
@@ -74,7 +70,13 @@ class OptionRepositoryEloquent extends BaseRepository implements OptionRepositor
                 }
                 $out[$option->name . "_source"] = $posts;
             }
-
+        }
+        $localePrefix = "_" . config('app.locale');
+        foreach ($out as $key => $value) {
+            if (strpos($key, $localePrefix) != false) {
+                $newKey = str_replace($localePrefix, "", $key);
+                $out[$newKey] = $value;
+            }
         }
 
         return $out;
@@ -95,8 +97,6 @@ class OptionRepositoryEloquent extends BaseRepository implements OptionRepositor
             $this->unitServices->writeFile(config('brvcore.htaccess_file'), $data['htaccess']);
         }
         foreach ($data as $key => $value) {
-            // if ($value) {
-            // }
             $this->model->updateOrCreate(
                 ['name' => $key],
                 ['value' => $value]
