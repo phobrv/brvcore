@@ -55,7 +55,7 @@ class AdminComposer
         $this->arrayTaxonomyTmp4 = $termRepository->getArrayTerms(config('term.taxonmyTmp.tmp4'));
         $this->arrayTaxonomyTmp5 = $termRepository->getArrayTerms(config('term.taxonmyTmp.tmp5'));
 
-        $this->arrayVideoItem = $postRepository->getArrayPostByType(config('term.taxonomy.video'));
+        $this->arrayVideoItem = $postRepository->getArrayPostByType(config('option.post_type.video'));
         $this->arrayPosts = $postRepository->getArrayPostByType(config('option.post_type.post'));
         $this->arrayBoxSidebar = $optionRepository->takeArraySidebarBoxTitle();
         $this->configs = $optionRepository->handleOptionToArray($optionRepository->all());
