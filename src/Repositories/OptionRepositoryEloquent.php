@@ -54,6 +54,7 @@ class OptionRepositoryEloquent extends BaseRepository implements OptionRepositor
     public function handleOptionToArray($options)
     {
         $out = array();
+        $localePrefix = "_" . config('app.locale');
         foreach ($out as $key => $value) {
             if (strpos($key, $localePrefix) != false) {
                 $newKey = str_replace($localePrefix, "", $key);
@@ -74,8 +75,6 @@ class OptionRepositoryEloquent extends BaseRepository implements OptionRepositor
             }
             $out[$option->name] = $option->value;
         }
-
-        $localePrefix = "_" . config('app.locale');
 
         return $out;
     }
