@@ -64,7 +64,7 @@ class OptionRepositoryEloquent extends BaseRepository implements OptionRepositor
             if (strpos($option->name, "_post")) {
                 $out[$option->name . "_source"] = $this->postRepository->findWhere(['id' => $option->value])->first();
             } elseif (strpos($option->name, '_term')) {
-                $number_key = str_replace("_term", "_number", $option_name);
+                $number_key = str_replace("_term", "_number", $option->name);
                 if (empty($out[$number_key])) {
                     $posts = $this->termRepository->with('posts')->findWhere(['id' => $option->value])->first()->posts->sortByDesc('created_at')->where('lang', config('app.locale'))->where('status', '>', '0')->take(30);
                 } else {
