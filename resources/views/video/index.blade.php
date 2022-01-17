@@ -51,7 +51,7 @@
 	<div class="col-md-6">
 		<div class="box  box-primary">
 			<div class="box-header">
-				<h4>{{__('Add Video')}}</h4>
+				<h4>{{__('Add/Edit Video')}}</h4>
 			</div>
 			<div class="box-body">
 				<form class="form-horizontal" id="formSubmit" method="post"
