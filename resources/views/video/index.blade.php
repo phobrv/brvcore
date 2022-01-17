@@ -11,7 +11,12 @@
 	</li>
 	<li>
 		<a href="#" onclick="save()" class="btn btn-primary float-left">
-			<i class="fa fa-floppy-o"></i> Save&Close
+			<i class="fa fa-floppy-o"></i> @lang('Save & Close')
+		</a>
+	</li>
+	<li>
+		<a href="#" onclick="update()" class="btn btn-warning float-left">
+			<i class="fa fa-wrench"></i> @lang('Update')
 		</a>
 	</li>
 	<li>
@@ -27,7 +32,7 @@
 						</td>
 						<td>
 							<div class="form-group">
-								<button id="btnSubmitFilter" class="btn btn-primary ">{{__('Get')}}</button>
+								<button id="btnSubmitFilter" class="btn btn-primary ">@lang('Filter')</button>
 							</div>
 						</td>
 					</tr>
@@ -46,7 +51,7 @@
 	<div class="col-md-6">
 		<div class="box  box-primary">
 			<div class="box-header">
-				{{__('Add Video')}}
+				<h4>{{__('Add Video')}}</h4>
 			</div>
 			<div class="box-body">
 				<form class="form-horizontal" id="formSubmit" method="post"
@@ -88,9 +93,7 @@
 						@endif
 					</div>
 					<div class="col-sm-4">
-						<button type="submit" class="btn btn-warning float-left">
-							<i class="fa fa-wrench"></i> @lang('Update')
-						</button>
+
 
 					</div>
 				</div>
@@ -158,7 +161,7 @@
 <div class="col-md-6">
 	<div class="box  box-primary">
 		<div class="box-header">
-			{{__('List Video')}}
+			<h4>{{__('List Video')}}</h4>
 		</div>
 		<div class="box-body">
 			<table  class="table table-bordered table-striped">
@@ -219,7 +222,6 @@
 		$('#btnSubmit').click();
 	}
 	function update(){
-		console.log("@lang('Update')");
 		$('#typeSubmit').val('update');
 		$('#btnSubmit').click();
 	}
