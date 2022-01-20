@@ -3,11 +3,11 @@
 		<input type="hidden" name="type" value="web">
 		@csrf
 		<div class="box-body">
-			<label class="font16"> Nội dung file customize.css </label>
-			{{ Form::textarea('customize_css',old('customize_css',isset($data['configs']['customize_css']) ? $data['configs']['customize_css'] : ''),array('class'=>'form-control','placeholder'=>'Nhập customize_css','rows'=>'20')) }}
+			@include('phobrv::input.inputSelect',['label'=>'Trạng thái sử dụng','key'=>'customize_css_active','array'=>['0'=>'No','1'=>'Yes'],'type'=>'configs'])
+			@include('phobrv::input.inputTextarea',['label'=>'Nội dung file customize.css','key'=>'customize_css','row'=>'20','type'=>'configs'])
 		</div>
 		<div class="box-footer">
-			<button type="submit" class="btn btn-primary pull-right">{{__('update')}}</button>
+			<button type="submit" class="btn btn-primary pull-right">@lang('Update')</button>
 		</div>
 	</form>
 </div>
