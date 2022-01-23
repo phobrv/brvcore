@@ -24,11 +24,12 @@ class PostServices
                 $post->content = str_replace("<br />", "", $post->content);
                 $menu = "<ul class='post__menu'>";
                 foreach ($html->find('h2,h3') as $h) {
+                    $class = $h->tag == 'h2' ? 'l1' : 'l2';
                     $outertext = $h->outertext;
                     $plaintext = trim($h->plaintext);
                     if (strlen($plaintext) > 4) {
                         $id = $this->vstring->standardKeyword($plaintext);
-                        $menu .= "<li><a href='#" . $id . "' >" . $plaintext . "</a></li>";
+                        $menu .= "<li class='" . $class . "'><a href='#" . $id . "' >" . $plaintext . "</a></li>";
                         $outertextChange = '<' . $h->tag . ' id="' . $id . '" >' . $h->innertext . "</" . $h->tag . ">";
                         $post->content = str_replace($outertext, $outertextChange, $post->content);
                     }
