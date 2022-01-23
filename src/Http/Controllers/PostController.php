@@ -247,7 +247,6 @@ class PostController extends Controller
 
         $data = $request->all();
         $data['slug'] = $this->vstring->standardKeyword($data['slug']);
-        $data = $this->postService->handleMenuPost($data);
         $post = $this->postRepository->update($data, $id);
         $this->updatePostInfo($post, $request, $data);
         $this->postService->renderSiteMap();
@@ -365,7 +364,6 @@ class PostController extends Controller
         foreach ($_data as $key => $value) {
             $data[$value['name']] = $value['value'];
         }
-        $data = $this->postService->handleMenuPost($data);
         $data['content'] = $data['content_draft'];
         $this->postRepository->update($data, $data['id_post']);
         return "Auto update post success";

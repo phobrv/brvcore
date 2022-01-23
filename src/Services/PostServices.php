@@ -16,14 +16,13 @@ class PostServices
         $this->vstring = $vstring;
         $this->postRepository = $postRepository;
     }
-    public function handleMenuPost($data)
+    public function handleMenuPost($post)
     {
-        if (!empty($data['content'])) {
-            $data['menu'] = "";
-            $html = HtmlDomParser::str_get_html($data['content']);
+        if (!empty($post->content)) {
+            $html = HtmlDomParser::str_get_html($post->content);
             if ($html != "") {
-                $data['content'] = str_replace("<br />", "", $data['content']);
-                $menu = "<ul id='postMenu'>";
+                $post->content = str_replace("<br />", "", $post->content);
+                $menu = "<ul class='post__menu'>";
                 foreach ($html->find('h2,h3') as $h) {
                     $outertext = $h->outertext;
                     $plaintext = trim($h->plaintext);
@@ -31,15 +30,15 @@ class PostServices
                         $id = $this->vstring->standardKeyword($plaintext);
                         $menu .= "<li><a href='#" . $id . "' >" . $plaintext . "</a></li>";
                         $outertextChange = '<' . $h->tag . ' id="' . $id . '" >' . $h->innertext . "</" . $h->tag . ">";
-                        $data['content'] = str_replace($outertext, $outertextChange, $data['content']);
+                        $post->content = str_replace($outertext, $outertextChange, $post->content);
                     }
                 }
                 $menu .= "</ul>";
-                $data['menu'] = $menu;
+                $post->submenu = $menu;
             }
         }
 
-        return $data;
+        return $post;
     }
     public function takeRatting($postMeta)
     {
