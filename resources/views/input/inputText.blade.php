@@ -38,7 +38,7 @@ if(empty($value)){
 @endphp
 @if(isset($formStyle) && $formStyle == 'basic')
 <div class="form-group">
-	<label for="{{ "id".$key }}">{{ $label ?? ''}}</label>
+	<label for="{{ "id".$key }}" title="{{ $key ?? '' }}>{{ $label ?? ''}}</label>
 	@if($inputType == 'text')
 	{{ Form::text($key,$value,$options) }}
 	@elseif($inputType == 'number')
@@ -47,7 +47,7 @@ if(empty($value)){
 </div>
 @else
 <div class="form-group">
-	<label for="inputEmail3" class="col-sm-2 control-label"> {{ $label ?? ''}} </label>
+	<label for="inputEmail3" class="col-sm-2 control-label" title="{{ $key ?? '' }}"> {{ $label ?? ''}} </label>
 	<div class="@isset($check_auto_gen) col-sm-7 @else col-sm-10 @endif">
 		@if($inputType == 'text')
 		{{ Form::text($key,$value,$options) }}
@@ -62,7 +62,7 @@ if(empty($value)){
 	</div>
 	@isset($check_auto_gen)
 	<div class="col-sm-3">
-		<input type="checkbox" id="auto_gen" name="auto_gen" value="1" {{ $autoGen == 1 ? 'checked' : ''}}  > Tạo theo tên
+		<input  type="checkbox" id="auto_gen" name="auto_gen" value="1" {{ $autoGen == 1 ? 'checked' : ''}}  > Tạo theo tên
 	</div>
 	@endif
 </div>
