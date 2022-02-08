@@ -19,7 +19,7 @@ if(empty($value)){
 }
 @endphp
 <div class="form-group">
-	<label for="inputEmail3" class="col-sm-2 control-label">{{ $label ?? ''}}</label>
+	<label title="{{ $key ?? '' }}" for="inputEmail3" class="col-sm-2 control-label">{{ $label ?? ''}}</label>
 	<div class="col-sm-10">
 		{{Form::select($key, $array,$value,$options)}}
 		@if (isset($errors) && $errors->has($key))

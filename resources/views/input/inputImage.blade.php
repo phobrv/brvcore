@@ -36,7 +36,7 @@ if(empty($value)){
 	<img src="{{ $value ?? ''}}" style="width: {{ $width ?? '100%' }};height: auto;">
 @else
 <div class="form-group">
-	<label for="inputEmail3" class="col-sm-2 control-label">{{$label ?? '' }}</label>
+	<label  title="{{ $key ?? '' }}" for="inputEmail3" class="col-sm-2 control-label">{{$label ?? '' }}</label>
 	<div class="col-sm-4">
 		<div class="input-group">
 			<span class="input-group-btn">
