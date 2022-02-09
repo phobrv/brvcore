@@ -78,8 +78,8 @@
 		]
 	})
 
-	function destroy(form){
-		var anwser =  confirm("Bạn muốn xóa bài viết này?");
+	function destroy(form,title){
+		var anwser =  confirm(`Bạn muốn xóa bài viết này?\n "${title}"`);
 		if(anwser){
 			event.preventDefault();
 			document.getElementById(form).submit();
