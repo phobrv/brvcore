@@ -15,6 +15,7 @@
 					@csrf
 					<input type="hidden" id="typeSubmit" name="typeSubmit" value="">
 					<input type="hidden" id="auto_gen" name="auto_gen" value="1">
+					<input type="hidden" id="status" name="status" value="0">
 					<input type="hidden" name="lang" value="{{ $data['lang'] ?? 'vi' }}">
 					<input type="hidden" name="source_id" value="{{ $data['source_id'] ?? '0' }}">
 					@include('phobrv::input.inputText',['label'=>'Title','key'=>'title','required'=>true])
