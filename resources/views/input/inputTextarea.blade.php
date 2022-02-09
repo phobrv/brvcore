@@ -28,6 +28,6 @@ if(empty($value)){
 	</div>
 </div>
 @elseif($style == 'short')
-<label  title="{{ $key ?? '' }}>{{ $label ?? ''}}</label>
+<label  title="{{ $key ?? '' }}">{{ $label ?? ''}}</label>
 {{ Form::textarea($key,$value,$options) }}
 @endif
