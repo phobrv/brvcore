@@ -14,6 +14,7 @@ return [
         'product' => 'Nhóm sản phẩm',
         'video' => 'Nhóm video',
         'drugstore' => 'Hệ thống nhà thuốc',
+        'recruitment' => 'Tuyển dụng',
     ],
     'post_type' => [
         'post' => 'post',
