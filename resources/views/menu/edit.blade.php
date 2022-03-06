@@ -35,11 +35,11 @@
 			@break
 			@endswitch
 
-			@switch($data['post']->subtype)
+			{{-- @switch($data['post']->subtype)
 			@case('category')
 			@include('phobrv::input.navTab',['id'=>'sidebar','title'=>'Cấu hình box sidebar'])
 			@break
-			@endswitch
+			@endswitch --}}
 		</ul>
 	</div>
 	<div class="col-sm-9">
