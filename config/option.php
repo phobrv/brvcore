@@ -13,6 +13,7 @@ return [
         'contact' => 'Liên hệ',
         'product' => 'Nhóm sản phẩm',
         'video' => 'Nhóm video',
+        'drugstore' => 'Hệ thống nhà thuốc',
     ],
     'post_type' => [
         'post' => 'post',
