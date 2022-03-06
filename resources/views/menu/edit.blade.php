@@ -30,6 +30,10 @@
 			@include('phobrv::input.navTab',['id'=>'product','title'=>'Cấu hình page'])
 			@break
 			@endswitch
+			@case('video')
+			@include('phobrv::input.navTab',['id'=>'video','title'=>'Cấu hình page'])
+			@break
+			@endswitch
 
 			@switch($data['post']->subtype)
 			@case('category')
@@ -56,6 +60,9 @@
 			@break
 			@case('product')
 			@include('phobrv::input.tabContent',['id'=>'product','view'=>'phobrv::menu.config.product'])
+			@break
+			@case('video')
+			@include('phobrv::input.tabContent',['id'=>'video','view'=>'phobrv::menu.config.video'])
 			@break
 			@endswitch
 
