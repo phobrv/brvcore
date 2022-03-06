@@ -89,7 +89,6 @@ class PostController extends Controller
         }
 
         $langArray = $this->configLangService->getArrayLangConfig();
-
         foreach ($data['posts'] as $key => $value) {
             $data['posts'][$key]->author_name = $value->user->name;
             $data['posts'][$key]->create_date = date('d/m/Y', strtotime($value->created_at));

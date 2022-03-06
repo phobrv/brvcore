@@ -63,6 +63,9 @@ class ConfigLangService
                     case 'post':
                         $out .= '<a  class="btn-primary btn" href="' . route('post.edit', ['post' => $post->id]) . '">' . strtoupper($value) . ' </a>&nbsp;&nbsp;&nbsp;';
                         break;
+                    case 'product':
+                        $out .= '<a  class="btn-primary btn" href="' . route('product.edit', ['product' => $post->id]) . '">' . strtoupper($value) . ' </a>&nbsp;&nbsp;&nbsp;';
+                        break;
                     case 'menu_item':
                         $out .= '<a class="btn-primary btn" href="' . route('menu.edit', ['menu' => $post->id]) . '"> ' . strtoupper($value) . ' </a>&nbsp;&nbsp;&nbsp;';
                         break;

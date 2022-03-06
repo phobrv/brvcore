@@ -84,6 +84,9 @@ class LangController extends Controller
             case 'post':
                 return redirect()->route('post.edit', ['post' => $tranPost->id]);
                 break;
+            case 'product':
+                return redirect()->route('product.edit', ['product' => $tranPost->id]);
+                break;
             case 'menu_item':
                 return redirect()->route('menu.edit', ['menu' => $tranPost->id]);
                 break;
