@@ -145,9 +145,9 @@ class ConfigLangService
     public function handleTransPage($data)
     {
         $trans = [];
-        \App::setLocale($data['post']->lang);
         $term = $data['post']->terms->where('taxonomy', 'lang')->first();
         if (!empty($term)) {
+            \App::setLocale($data['post']->lang);
             $pageTrans = $term->posts;
             foreach ($pageTrans as $key => $value) {
                 if ($value->lang == config('option.langMain') && $value->subtype == 'home') {
