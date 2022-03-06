@@ -29,7 +29,7 @@
 			@case('product')
 			@include('phobrv::input.navTab',['id'=>'product','title'=>'Cấu hình page'])
 			@break
-			@endswitch
+
 			@case('video')
 			@include('phobrv::input.navTab',['id'=>'video','title'=>'Cấu hình page'])
 			@break
