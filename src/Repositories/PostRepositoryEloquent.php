@@ -117,7 +117,7 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
                 $term = $this->termRepository->with('posts')->findWhere(['id' => $meta->value])->first();
                 if ($term) {
                     $posts = $term->posts()->where('status', '>', 0)->orderBy('status', 'desc')->orderBy('order')->orderBy('created_at', 'desc');
-                    if ($term['taxonomy'] == 'category') {
+                    if ($term['taxonomy'] == 'category' || $term['taxonomy'] == 'productgroup') {
                         $posts = $posts->where('lang', config('app.locale'));
                     }
 
