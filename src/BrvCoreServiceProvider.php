@@ -72,6 +72,9 @@ class BrvCoreServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/../config/brvreceive.php' => config_path('brvreceive.php'),
         ], 'brvreceive.config');
+        $this->publishes([
+            __DIR__ . '/../config/permission.php' => config_path('permission.php'),
+        ], 'brv_permission.config');
 
         // Publishing assets.
         $this->publishes([
