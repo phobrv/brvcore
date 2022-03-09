@@ -40,7 +40,7 @@ class BrvCoreServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__ . '/../config/option.php', 'option');
         $this->mergeConfigFrom(__DIR__ . '/../config/langCode.php', 'langCode');
         $this->mergeConfigFrom(__DIR__ . '/../config/term.php', 'term');
-        $this->mergeConfigFrom(__DIR__ . '/../config/permission.php', 'permission');
+        $this->mergeConfigFrom(__DIR__ . '/../config/brvpermission.php', 'brvpermission');
         $this->mergeConfigFrom(__DIR__ . '/../config/mess.php', 'mess');
         $this->mergeConfigFrom(__DIR__ . '/../config/brvconfigs.php', 'brvconfigs');
         $this->mergeConfigFrom(__DIR__ . '/../config/brvreceive.php', 'brvreceive');
@@ -73,7 +73,7 @@ class BrvCoreServiceProvider extends ServiceProvider
             __DIR__ . '/../config/brvreceive.php' => config_path('brvreceive.php'),
         ], 'brvreceive.config');
         $this->publishes([
-            __DIR__ . '/../config/permission.php' => config_path('permission.php'),
+            __DIR__ . '/../config/brvpermission.php' => config_path('brvpermission.php'),
         ], 'brv_permission.config');
 
         // Publishing assets.
