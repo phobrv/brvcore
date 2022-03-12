@@ -95,6 +95,10 @@ class HandleMenuServices
         } else {
             $url = route('level1', ['slug' => $p->slug]);
         }
+        if ($url == '#') {
+            $url = 'javascript:void(0)';
+        }
+
         return $url;
     }
 }

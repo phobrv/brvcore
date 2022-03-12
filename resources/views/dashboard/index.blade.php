@@ -32,21 +32,21 @@
 @section('scripts')
 <script type="text/javascript">
 
-	$(document).ready(function(){
-		getData()
-	})
+	// $(document).ready(function(){
+	// 	getData()
+	// })
 
-	function getData(){
-		$.ajax(
-		{
-			url: '{{ route('dashboard.data') }}',
-			type: "get",
-			datatype: "html"
-		}).done(function(data){
-			$("#data").empty().html(data);
-		}).fail(function(jqXHR, ajaxOptions, thrownError){
-			alert('No response from server');
-		});
-	}
+	// function getData(){
+	// 	$.ajax(
+	// 	{
+	// 		url: '{{ route('dashboard.data') }}',
+	// 		type: "get",
+	// 		datatype: "html"
+	// 	}).done(function(data){
+	// 		$("#data").empty().html(data);
+	// 	}).fail(function(jqXHR, ajaxOptions, thrownError){
+	// 		alert('No response from server');
+	// 	});
+	// }
 </script>
 @endsection
