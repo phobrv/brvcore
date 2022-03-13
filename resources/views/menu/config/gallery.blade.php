@@ -6,7 +6,7 @@
 		<input type="hidden" name="menu_id" value="{{ $data['post']->id }}">
 		@csrf
 		<div class="box-body">
-			@include('admin.input.inputText',['label'=>'Số lượng album','key'=>'gallery_number','input_type'=>'number','type'=>'meta'])
+			@include('phobrv::input.inputText',['label'=>'Số lượng album','key'=>'gallery_number','input_type'=>'number','type'=>'meta'])
 			@isset($data['meta']['gallery_number'])
 			@for($i=0;$i<$data['meta']['gallery_number'];$i++)
 			@php
@@ -15,9 +15,9 @@
 			$title = "gallery".$i."_title";
 			@endphp
 			<label for="">No {{ $i+1 }} </label>
-			@include('admin.input.inputText',['label'=>'Title','key'=>$title,'type'=>'meta'])
-			@include('admin.input.inputText',['label'=>'Link album','key'=>$link,'type'=>'meta'])
-			@include('admin.input.inputFile',['label'=>'Thumb','key'=>$thumb,'width'=>'200px','type'=>'meta'])
+			@include('phobrv::input.inputText',['label'=>'Title','key'=>$title,'type'=>'meta'])
+			@include('phobrv::input.inputText',['label'=>'Link album','key'=>$link,'type'=>'meta'])
+			@include('phobrv::input.inputFile',['label'=>'Thumb','key'=>$thumb,'width'=>'200px','type'=>'meta'])
 
 			@endfor
 			@endif
