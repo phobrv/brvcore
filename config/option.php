@@ -13,6 +13,8 @@ return [
         'contact' => 'Liên hệ',
         'product' => 'Nhóm sản phẩm',
         'video' => 'Nhóm video',
+        'album' => 'Album',
+        'gallery' => 'Gallery',
         'drugstore' => 'Hệ thống nhà thuốc',
         'recruitment' => 'Tuyển dụng',
     ],

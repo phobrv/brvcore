@@ -33,6 +33,12 @@
 			@case('video')
 			@include('phobrv::input.navTab',['id'=>'video','title'=>'Cấu hình page'])
 			@break
+			@case('album')
+			@include('phobrv::input.navTab',['id'=>'album','title'=>'Cấu hình page'])
+			@break
+			@case('gallery')
+			@include('phobrv::input.navTab',['id'=>'gallery','title'=>'Cấu hình page'])
+			@break
 			@endswitch
 
 			{{-- @switch($data['post']->subtype)
@@ -63,6 +69,12 @@
 			@break
 			@case('video')
 			@include('phobrv::input.tabContent',['id'=>'video','view'=>'phobrv::menu.config.video'])
+			@break
+			@case('album')
+			@include('phobrv::input.tabContent',['id'=>'album','view'=>'phobrv::menu.config.album'])
+			@break
+			@case('gallery')
+			@include('phobrv::input.tabContent',['id'=>'gallery','view'=>'phobrv::menu.config.gallery'])
 			@break
 			@endswitch
 
