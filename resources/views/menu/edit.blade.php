@@ -14,30 +14,15 @@
 		<ul class="nav nav-pills nav-stacked">
 			@include('phobrv::input.navTab',['id'=>'mainInfo','title'=>'Main Info','active'=>'active'])
 			@switch($data['post']->subtype)
+
 			@case('home')
 			@include('phobrv::menu.home.nav')
 			@break
-			@case('category')
-			@include('phobrv::input.navTab',['id'=>'category','title'=>'Cấu hình page'])
-			@break
-			@case('article')
-			@include('phobrv::input.navTab',['id'=>'article','title'=>'Cấu hình page'])
-			@break
-			@case('contact')
-			@include('phobrv::input.navTab',['id'=>'contact','title'=>'Cấu hình page'])
-			@break
-			@case('product')
-			@include('phobrv::input.navTab',['id'=>'product','title'=>'Cấu hình page'])
-			@break
 
-			@case('video')
-			@include('phobrv::input.navTab',['id'=>'video','title'=>'Cấu hình page'])
-			@break
-			@case('album')
-			@include('phobrv::input.navTab',['id'=>'album','title'=>'Cấu hình page'])
-			@break
-			@case('gallery')
-			@include('phobrv::input.navTab',['id'=>'gallery','title'=>'Cấu hình page'])
+			@case('link')@break
+
+			@default
+			@include('phobrv::input.navTab',['id'=>$data['post']->subtype,'title'=>'Cấu hình page'])
 			@break
 			@endswitch
 
@@ -55,34 +40,17 @@
 			@case('home')
 			@include('phobrv::menu.home.tabpanel')
 			@break
-			@case('category')
-			@include('phobrv::input.tabContent',['id'=>'category','view'=>'phobrv::menu.config.category'])
-			@break
-			@case('article')
-			@include('phobrv::input.tabContent',['id'=>'article','view'=>'phobrv::menu.config.article'])
-			@break
-			@case('contact')
-			@include('phobrv::input.tabContent',['id'=>'contact','view'=>'phobrv::menu.config.contact'])
-			@break
-			@case('product')
-			@include('phobrv::input.tabContent',['id'=>'product','view'=>'phobrv::menu.config.product'])
-			@break
-			@case('video')
-			@include('phobrv::input.tabContent',['id'=>'video','view'=>'phobrv::menu.config.video'])
-			@break
-			@case('album')
-			@include('phobrv::input.tabContent',['id'=>'album','view'=>'phobrv::menu.config.album'])
-			@break
-			@case('gallery')
-			@include('phobrv::input.tabContent',['id'=>'gallery','view'=>'phobrv::menu.config.gallery'])
+
+			@default
+			@include('phobrv::input.tabContent',['id'=>$data['post']->subtype,'view'=>'phobrv::menu.config.'.$data['post']->subtype])
 			@break
 			@endswitch
 
-			@switch($data['post']->subtype)
+			{{-- @switch($data['post']->subtype)
 			@case('category')
 			@include('phobrv::input.tabContent',['id'=>'sidebar','view'=>'phobrv::menu.config.sidebar'])
 			@break
-			@endswitch
+			@endswitch --}}
 		</div>
 	</div>
 

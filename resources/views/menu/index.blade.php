@@ -94,7 +94,7 @@
 								<th class="text-center">{{__('Status')}}</th>
 								<th class="text-center">{{__('Lang')}}</th>
 								<th class="text-center"> <button type="subit" class="btn btn-primary">Submit Order</button> </th>
-								<th class="text-center" width="50">{{__('Action')}}</th>
+								<th class="text-center" width="80">{{__('Action')}}</th>
 							</tr>
 						</thead>
 						<tbody>

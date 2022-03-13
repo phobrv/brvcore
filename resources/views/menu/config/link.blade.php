@@ -1,4 +1,4 @@
-<div class="box box-primary">
+{{-- <div class="box box-primary">
 	<div class="box-header"  id="header-b1">
 		<h3 class="box-title">Cấu hình page</h3>
 	</div>
@@ -13,3 +13,4 @@
 		</div>
 	</form>
 </div>
+ --}}
