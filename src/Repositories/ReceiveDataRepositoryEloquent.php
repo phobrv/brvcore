@@ -12,35 +12,49 @@ use Prettus\Repository\Eloquent\BaseRepository;
  *
  * @package namespace App\Repositories;
  */
-class ReceiveDataRepositoryEloquent extends BaseRepository implements ReceiveDataRepository {
-	/**
-	 * Specify Model class name
-	 *
-	 * @return string
-	 */
-	public function model() {
-		return ReceiveData::class;
-	}
+class ReceiveDataRepositoryEloquent extends BaseRepository implements ReceiveDataRepository
+{
+    /**
+     * Specify Model class name
+     *
+     * @return string
+     */
+    public function model()
+    {
+        return ReceiveData::class;
+    }
 
-	/**
-	 * Boot up the repository, pushing criteria
-	 */
-	public function boot() {
-		$this->pushCriteria(app(RequestCriteria::class));
-	}
+    /**
+     * Boot up the repository, pushing criteria
+     */
+    public function boot()
+    {
+        $this->pushCriteria(app(RequestCriteria::class));
+    }
 
-	public function insertMeta($receive, $arrayMeta) {
-		foreach ($arrayMeta as $key => $value) {
-			$receive->receiveDataMetas()->updateOrCreate(
-				['receive_data_id' => $receive->id, 'key' => $key, 'value' => $value]
-			);
-		}
-	}
+    public function insertMeta($receive, $arrayMeta)
+    {
+        foreach ($arrayMeta as $key => $value) {
+            $receive->receiveDataMetas()->updateOrCreate(
+                ['receive_data_id' => $receive->id, 'key' => $key, 'value' => $value]
+            );
+        }
+    }
 
-	public function destroy($id) {
-		$receive = $this->model->find($id);
-		$receive->receiveDataMetas()->delete();
-		return $this->model::destroy($id);
-	}
+    public function getMeta($metas)
+    {
+        $out = [];
+        foreach ($metas as $meta) {
+            $out[$meta->key] = $meta->value;
+        }
+        return $out;
+    }
+
+    public function destroy($id)
+    {
+        $receive = $this->model->find($id);
+        $receive->receiveDataMetas()->delete();
+        return $this->model::destroy($id);
+    }
 
 }

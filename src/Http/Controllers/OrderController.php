@@ -112,7 +112,7 @@ class OrderController extends Controller
         );
         try {
             $data['post'] = $this->receiveRepository->find($id);
-            $meta = $data['post']->receiveDataMetas;
+            $data['meta'] = $this->receiveRepository->getMeta($data['post']->receiveDataMetas);
             return view('phobrv::order.edit')->with('data', $data);
 
         } catch (Exception $e) {
