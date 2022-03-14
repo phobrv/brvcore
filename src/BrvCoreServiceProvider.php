@@ -96,6 +96,10 @@ class BrvCoreServiceProvider extends ServiceProvider
             __DIR__ . '/../resources/views/post' => base_path('resources/views/vendor/phobrv/post'),
         ], 'brv_post.view');
 
+        $this->publishes([
+            __DIR__ . '/../resources/views/order' => base_path('resources/views/vendor/phobrv/order'),
+        ], 'brv_order.view');
+
         // Registering package commands.
         // $this->commands([]);
     }
