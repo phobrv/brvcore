@@ -27,6 +27,7 @@ return [
         'customeridea' => 'customeridea',
         'drugstore' => 'drugstore',
         'product' => 'product',
+        'agency' => 'agency',
         'recruitment' => 'recruitment',
         'buildproject' => 'buildproject',
     ],
