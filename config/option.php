@@ -17,6 +17,7 @@ return [
         'gallery' => 'Gallery',
         'drugstore' => 'Hệ thống nhà thuốc',
         'recruitment' => 'Tuyển dụng',
+        'agency' => 'Đại lý',
     ],
     'post_type' => [
         'post' => 'post',
