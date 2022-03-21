@@ -20,8 +20,12 @@
 			<div class="form-group">
 				<label for="inputEmail3" class="col-sm-2 control-label"> Content </label>
 				<div class="col-sm-10">
+					@if(!empty($data['post']->content))
+					{!! $data['post']->content !!}
+					@else
 					Sản phẩm: <strong>{{ $data['meta']['product'] ?? '' }}</strong> <br>
 					Số lượng: {{ $data['meta']['number'] ?? '0' }}
+					@endif
 				</div>
 			</div>
 		</div>
