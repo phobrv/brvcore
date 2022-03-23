@@ -4,7 +4,7 @@ namespace Phobrv\BrvCore\Services;
 use Mailjet\LaravelMailjet\Facades\Mailjet;
 use \Mailjet\Resources;
 
-class MailjetService
+class MailjetServices
 {
     private $layout;
     public function __construct()
