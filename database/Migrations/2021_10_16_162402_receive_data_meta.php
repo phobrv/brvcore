@@ -13,12 +13,12 @@ class ReceiveDataMeta extends Migration
      */
     public function up()
     {
-         Schema::create('receive_data_meta', function (Blueprint $table) {
+        Schema::create('receive_data_meta', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('receive_data_id')->unsigned();
             $table->foreign('receive_data_id')->references('id')->on('receive_data');
-            $table->string('key',191);
-            $table->string('value',255)->default('');
+            $table->string('key', 191);
+            $table->longText('value')->nullable();
         });
     }
 
