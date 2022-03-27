@@ -55,15 +55,15 @@ class ReceiveDataRepositoryEloquent extends BaseRepository implements ReceiveDat
             $receive->receiveDataCarts()->create(
                 [
                     'receive_data_id' => $receive->id,
-                    'post_id' => $item['id'],
-                    'name' => $item['name'],
-                    'qty' => $item['qty'],
-                    'price' => $item['price'],
-                    'weight' => $item['weight'],
-                    'discount' => $item['discount'],
-                    'tax' => $item['tax'],
-                    'subtotal' => $item['subtotal'],
-                    'options' => json_encode($item['options']),
+                    'post_id' => $item->id,
+                    'name' => $item->name,
+                    'qty' => $item->qty,
+                    'price' => $item->price,
+                    'weight' => $item->weight,
+                    'discount' => $item->discount,
+                    'tax' => $item->tax,
+                    'subtotal' => $item->subtotal,
+                    'options' => json_encode($item->options),
                 ]
             );
         }
