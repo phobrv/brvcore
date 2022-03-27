@@ -14,18 +14,18 @@ class CreateReceiveDataCartTabel extends Migration
     public function up()
     {
         Schema::create('receive_data_cart', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->integer('receive_data_id')->unsigned();
             $table->foreign('receive_data_id')->references('id')->on('receive_data');
             $table->integer('post_id')->unsigned();
             $table->foreign('post_id')->references('id')->on('posts');
             $table->string('name', 255);
-            $table->integer('qty', 11);
-            $table->integer('price', 11);
-            $table->integer('weight', 11);
-            $table->integer('discount', 11);
-            $table->integer('tax', 11);
-            $table->integer('subtotal', 11);
+            $table->integer('qty')->default('0');
+            $table->integer('price')->default('0');
+            $table->integer('weight')->default('0');
+            $table->integer('discount')->default('0');
+            $table->integer('tax')->default('0');
+            $table->integer('subtotal')->default('0');
             $table->longText('options')->nullable();
         });
     }
