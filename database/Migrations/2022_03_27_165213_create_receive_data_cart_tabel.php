@@ -1,4 +1,4 @@
-<?php
+    <?php
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -14,7 +14,7 @@ class CreateReceiveDataCartTabel extends Migration
     public function up()
     {
         Schema::create('receive_data_cart', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->integer('receive_data_id')->unsigned();
             $table->foreign('receive_data_id')->references('id')->on('receive_data');
             $table->integer('post_id')->unsigned();
