@@ -4,6 +4,7 @@ $dataInput = "input".$key;
 $type = isset($type) ? $type : "";
 $width =  isset($width) ? $width : "100%";
 $basic = isset($basic) ? true : false;
+$bg_color = !empty($bg_color) ? $bg_color :  "transparent";
 if(empty($value)){
 	switch ($type) {
 		case 'meta':
@@ -49,7 +50,7 @@ if(empty($value)){
 		<img id="holder" style="margin-top:15px;max-height:100px;">
 	</div>
 	<div class="col-sm-6">
-		<img class="{{ $key }}"  src="{{$value ?? '' }}" style="background-color: #fafafa;width: {{ $width ?? '100%' }};height: auto;">
+		<img class="{{ $key }}"  src="{{$value ?? '' }}" style="background-color: {{ $bg_color }} ;width: {{ $width ?? '100%' }};height: auto;">
 	</div>
 </div>
 
