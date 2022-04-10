@@ -49,7 +49,7 @@ if(empty($value)){
 		<img id="holder" style="margin-top:15px;max-height:100px;">
 	</div>
 	<div class="col-sm-6">
-		<img class="{{ $key }}"  src="{{$value ?? '' }}" style="width: {{ $width ?? '100%' }};height: auto;">
+		<img class="{{ $key }}"  src="{{$value ?? '' }}" style="background-color: #fafafa;width: {{ $width ?? '100%' }};height: auto;">
 	</div>
 </div>
 
