@@ -117,6 +117,13 @@ Route::middleware(['web', 'auth', 'auth:sanctum', 'lang', 'verified'])->namespac
         Route::post('/order/setDefaultSelect', 'OrderController@setDefaultSelect')->name('order.setDefaultSelect');
     });
 
+    //Mange Comment
+    Route::middleware(['can:post_manage'])->prefix('admin')->group(function () {
+        Route::resource('comment', 'CommentController');
+        Route::post('/comment/setDefaultSelect', 'CommentController@setDefaultSelect')->name('comment.setDefaultSelect');
+        Route::get('/comment/changeStatus/{id}/{status}', 'CommentController@changeStatus')->name('comment.changeStatus');
+    });
+
     //Facker data
     Route::middleware(['can:super_user'])->prefix('admin')->group(function () {
         //Auto create post demo
