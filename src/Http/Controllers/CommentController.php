@@ -47,15 +47,22 @@ class CommentController extends Controller
             $data['select'] = $this->userRepository->getMetaValueByKey(Auth::user(), 'comment_status_select');
             $data['arr_status'] = $this->arr_status;
             if ($data['select']) {
-                $data['comments'] = $this->commentRepository->findWhere(
-                    ['status' => $data['select']])->all();
+                $comments = $this->commentRepository->where('status', $data['select'])->get();
             } else {
-                $data['comments'] = $this->commentRepository->all();
+                $comments = $this->commentRepository->all();
             }
-
-            if (isset($data['comments']) && count($data['comments'])) {
-                for ($i = 0; $i < count($data['comments']); $i++) {
-                    $data['comments'][$i]->post = $this->postRepository->find($data['comments'][$i]->post_id);
+            if (!empty($comments)) {
+                $data['comments'] = $comments->where('parent', 0);
+                if (!empty($data['comments'])) {
+                    foreach ($data['comments'] as $key => $comment) {
+                        $data['comments'][$key]->post = $this->postRepository->find($data['comments'][$key]->post_id);
+                        $data['comments'][$key]['child'] = $comments->where('parent', $data['comments'][$key]->id);
+                        if (!empty($data['comments'][$key]['child'])) {
+                            foreach ($data['comments'][$key]['child'] as $key2 => $value2) {
+                                $data['comments'][$key]['child'][$key2]['child'] = $comments->where('parent', $data['comments'][$key]['child'][$key2]->id);
+                            }
+                        }
+                    }
                 }
             }
 

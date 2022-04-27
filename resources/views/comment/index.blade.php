@@ -28,7 +28,7 @@
 @section('content')
 <div class="box box-primary">
 	<div class="box-body">
-		<table id="example1" class="table table-bordered table-striped">
+		<table id="table-no-order" class="table table-bordered table-striped">
 			<thead>
 				<tr>
 					<th>#</th>
@@ -38,59 +38,23 @@
 					<th>{{__('Info')}}</th>
 					<th>{{__('Status')}}</th>
 					<th>{{__('Action')}}</th>
-					<th></th>
 				</tr>
 			</thead>
 			<tbody>
-				@if($data['comments'])
-				@foreach($data['comments'] as $c)
-				<tr>
-					<td align="center">{{$loop->index+1}}</td>
-					<td align="center">{{date('d/m/Y',strtotime($c->created_at))}}</td>
-					<td>
-						<a href="{{ route('level1',['slug'=>$c->post->slug]) }}">
-							{{ $c->post->title }}
-						</a>
-					</td>
-					<td width="40%">
-						{{ $c->content }}
-					</td>
-					<td>
-						Name:  {{ $c->name }}
-						<br> Phone:  {{ $c->phone }}
-					</td>
-					<td>
-						@php
-						if($c->status == 'success')
-							$color = "green";
-						elseif($c->status =='fail')
-							$color = "red";
-						else
-							$color = "orange";
-						@endphp
-						<span style="background-color: {{ $color }}; padding: 4px; color:white;">
-							{{ $c->status  }}
-						</span>
-
-					</td>
-					<td align="center">
-						<a href="{{ route('comment.changeStatus',['id'=>$c->id,'status'=>'success']) }}">
-							<i style="color: green" class="fa fa-check-circle"></i>
-						</a>
-						&nbsp;&nbsp;&nbsp;
-						<a href="{{ route('comment.changeStatus',['id'=>$c->id,'status'=>'fail']) }}">
-							<i style="color: red" class="fa fa-minus-circle"></i>
-						</a>
-
-					</td>
-					<td style="width: 50px;"  align="center">
-						<a href="{{ route('comment.edit',['comment'=>$c->id]) }}">
-							<i class="fa fa-edit" title=""></i>
-						</a>
-
-					</td>
-				</tr>
-				@endforeach
+				@if(!empty($data['comments']))
+					@foreach($data['comments'] as $key => $value)
+					@include('phobrv::comment.row',['c'=>$value,'no'=>$loop->index+1,'level'=>0])
+					@if(!empty($data['comments'][$key]['child']))
+						@foreach($data['comments'][$key]['child'] as $key2 => $val2)
+						@include('phobrv::comment.row',['c'=>$val2,'no'=>'','level'=>1])
+							@if(!empty($data['comments'][$key]['child'][$key2]['child']))
+								@foreach($data['comments'][$key]['child'][$key2]['child'] as $key3 => $val3)
+								@include('phobrv::comment.row',['c'=>$val3,'no'=>'','level'=>2])
+								@endforeach
+							@endif
+						@endforeach
+					@endif
+					@endforeach
 				@endif
 			</tbody>
 
