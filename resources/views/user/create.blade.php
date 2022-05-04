@@ -1,4 +1,4 @@
-@extends('phobrv::.layout.app')
+@extends('phobrv::adminlte3.layout')
 
 @section('header')
 <a href="{{route('user.index')}}"  class="btn btn-default float-left">
@@ -13,8 +13,8 @@
 @endsection
 
 @section('content')
-<div class="box box-primary">
-	<div class="box-header">
+<div class="card">
+	<div class="card-header">
 		<div class="row">
 			<div class="col-md-6">
 				<h3 class="box-title">User Info</h3>
@@ -27,21 +27,20 @@
 			</div>
 		</div>
 	</div>
-	<form class="form-horizontal" id="formSubmit" method="post" action="{{isset($data['post']) ? route('user.update',['user'=>$data['post']->id]) : route('user.store')}}">
-		@csrf
-		@isset($data['post']) @method('put') @endisset
-		<input type="hidden" id="typeSubmit" name="typeSubmit" value="">
-		<div class="box-body">
+	<div class="card-body">
+		<form class="form-horizontal" id="formSubmit" method="post" action="{{isset($data['post']) ? route('user.update',['user'=>$data['post']->id]) : route('user.store')}}">
+			@csrf
+			@isset($data['post']) @method('put') @endisset
+			<input type="hidden" id="typeSubmit" name="typeSubmit" value="">
+
 			<div class="row">
 				<div class="col-md-6">
-					<div class="box-body">
-						@include('phobrv::input.inputText',['label'=>'Name','key'=>'name','required'=>true])
-						@include('phobrv::input.inputText',['label'=>'Email','key'=>'email','required'=>true])
-						@if(!isset($data['post']))
-						@include('phobrv::input.inputText',['label'=>'Password','key'=>'password','required'=>true])
-						@endif
-						@include('phobrv::input.inputSelect',['label'=>'Email Report','key'=>'receive_report','array'=>['no'=>'no','yes'=>'yes'],'type'=>'meta'])
-					</div>
+					@include('phobrv::input.inputText',['label'=>'Name','key'=>'name','required'=>true])
+					@include('phobrv::input.inputText',['label'=>'Email','key'=>'email','required'=>true])
+					@if(!isset($data['post']))
+					@include('phobrv::input.inputText',['label'=>'Password','key'=>'password','required'=>true])
+					@endif
+					@include('phobrv::input.inputSelect',['label'=>'Email Report','key'=>'receive_report','array'=>['no'=>'no','yes'=>'yes'],'type'=>'meta'])
 				</div>
 				<div class="col-md-3">
 					<ul id="permissions">
@@ -56,7 +55,7 @@
 					</ul>
 				</div>
 				<div class="col-md-3">
-					@include('phobrv::input.inputImage',['key'=>'avatar'])
+					@include('phobrv::input.inputImage',['key'=>'avatar','basic'=>true])
 				</div>
 			</div>
 			<button id="btnSubmit" style="display: none" type="submit" ></button>
@@ -66,7 +65,11 @@
 @endsection
 
 @section('styles')
-
+<style type="text/css">
+	ul>li{
+		list-style: none!important;
+	}
+</style>
 @endsection
 
 @section('scripts')

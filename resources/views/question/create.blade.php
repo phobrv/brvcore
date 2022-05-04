@@ -1,4 +1,4 @@
-@extends('phobrv::layout.app')
+@extends('phobrv::adminlte3.layout')
 
 @section('header')
 <a href="{{route('question.index')}}"  class="btn btn-default float-left">
@@ -14,8 +14,8 @@
 
 @section('content')
 
-<div class="box box-primary">
-	<div class="box-body">
+<div class="card">
+	<div class="card-body">
 		<div class="row">
 			<form class="form-horizontal" id="formSubmit" method="post" action="{{isset($data['post']) ? route('question.update',array('question'=>$data['post']->id)) : route('question.store')}}"  enctype="multipart/form-data">
 				<input type="hidden" name="term_id" value="{{ $data['select'] }}">

@@ -1,5 +1,5 @@
 
-@extends('phobrv::layout.app')
+@extends('phobrv::adminlte3.layout')
 
 @section('header')
 <h1>@lang('Config Lang')</h1>
@@ -8,24 +8,24 @@
 @section('content')
 <div class="row">
 	<div class="col-md-5">
-		<div class="box  box-primary">
-			<div class="box-header">
+		<div class="card">
+			<div class="card-header">
 				{{__('Add Lang')}}
 			</div>
 			<form class="form-horizontal" id="formSubmit" method="post" action="{{route('configlang.store')}}">
-				<div class="box-body">
+				<div class="card-body">
 					@csrf
 					@include('phobrv::input.inputSelect',['label'=>'Select lang','key'=>'lang','array'=>config('langCode.codes')])
 				</div>
-				<div class="box-footer">
+				<div class="card-footer">
 					<button class="pull-right btn btn-primary" type="submit">{{$data['submit_lable'] ?? 'Submit'}}</button>
 				</div>
 			</form>
 		</div>
 	</div>
 	<div class="col-md-7">
-		<div class="box box-primary">
-			<div class="box-body">
+		<div class="card">
+			<div class="card-body">
 				<table id="example1" class="table table-bordered table-striped">
 					<thead>
 						<tr>

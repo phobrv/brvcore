@@ -1,4 +1,4 @@
-@extends('phobrv::layout.app')
+@extends('phobrv::adminlte3.layout')
 
 @section('header')
 <a href="{{route('role.create')}}"  class="btn btn-primary float-left">
@@ -11,8 +11,8 @@
 @endsection
 
 @section('content')
-<div class="box box-primary">
-	<div class="box-body">
+<div class="card">
+	<div class="card-body">
 		<table id="example1" class="table table-bordered table-striped">
 			<thead>
 				<tr>
@@ -49,7 +49,7 @@
 
 		</table>
 	</div>
-	<!-- /.box-body -->
+	<!-- /.card-body -->
 </div>
 @endsection
 

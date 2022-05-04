@@ -1,4 +1,4 @@
-<div class="box-header">
+<div class="card-header">
 	<a href="#" onclick="save()"  class="btn btn-primary float-left">
 		<i class="fa fa-floppy-o"></i> @lang('Save & Close')
 	</a>
@@ -85,7 +85,7 @@
 		</div>
 	</div>
 </div>
-<div class="box-footer " style="margin-top: 20px;" >
+<div class="card-footer " style="margin-top: 20px;" >
 	<a href="#" onclick="save()"  class="btn btn-primary float-left">
 		<i class="fa fa-floppy-o"></i> @lang('Save & Close')
 	</a>

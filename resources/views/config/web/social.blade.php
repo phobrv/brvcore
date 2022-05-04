@@ -1,8 +1,8 @@
-<div class='box  box-primary'>
+<div class='card'>
 	<form class="form-horizontal ConfigForm" enctype="multipart/form-data">
 		<input type="hidden" name="type" value="web">
 		@csrf
-		<div class="box-body">
+		<div class="card-body">
 			@include('phobrv::input.label',['label'=>'Facebook'])
 			@include('phobrv::input.inputText',['label'=>'Fb app_id','key'=>'fb_app_id','type'=>'configs'])
 			@include('phobrv::input.inputText',['label'=>'Fanpage','key'=>'company_fb','type'=>'configs'])
@@ -12,8 +12,8 @@
 			@include('phobrv::input.inputText',['label'=>'Twitter','key'=>'company_twitter','type'=>'configs'])
 			@include('phobrv::input.inputText',['label'=>'Printer','key'=>'company_printer','type'=>'configs'])
 		</div>
-		<div class="box-footer">
-			<button type="submit" class="btn btn-primary pull-right">{{__('update')}}</button>
+		<div class="card-footer">
+			<button type="submit" class="btn btn-primary pull-right">@lang('Update')</button>
 		</div>
 	</form>
 </div>

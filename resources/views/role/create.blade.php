@@ -1,4 +1,4 @@
-@extends('phobrv::layout.app')
+@extends('phobrv::adminlte3.layout')
 
 @section('header')
 <a href="{{route('role.index')}}"  class="btn btn-default float-left">
@@ -17,8 +17,8 @@
 	@csrf
 	@isset($data['role']) @method('put') @endisset
 	<input type="hidden" id="typeSubmit" name="typeSubmit" value="">
-	<div class="box box-primary">
-		<div class="box-header">
+	<div class="card">
+		<div class="card-header">
 			<div class="row">
 				<div class="col-md-6">
 					<h3 class="box-title">Role Info</h3>
@@ -28,11 +28,11 @@
 				</div>
 			</div>
 		</div>
-		<div class="box-body">
+		<div class="card-body">
 			<div class="row">
 				<div class="col-md-6">
-					<div class="box-body">
-						<div class="form-group">
+					<div class="card-body">
+						<div class="form-group row">
 							<label for="inputEmail3" class="col-sm-2 control-label">Name</label>
 							<div class="col-sm-10">
 								{{Form::text('name', old('name',isset($data['role']->name) ? $data['role']->name :'' ),['class'=>'form-control','placeholder'=>'Name','required'=>'required'])}}
@@ -80,7 +80,11 @@
 @endsection
 
 @section('styles')
-
+<style type="text/css">
+	ul>li{
+		list-style: none!important;
+	}
+</style>
 @endsection
 
 @section('scripts')

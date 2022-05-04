@@ -1,4 +1,4 @@
-@extends('phobrv::layout.app')
+@extends('phobrv::adminlte3.layout')
 
 @section('header')
 <ul>
@@ -49,11 +49,11 @@
 @section('content')
 <div class="row">
 	<div class="col-md-6">
-		<div class="box  box-primary">
-			<div class="box-header">
+		<div class="card">
+			<div class="card-header">
 				<h4>{{__('Add/Edit Video')}}</h4>
 			</div>
-			<div class="box-body">
+			<div class="card-body">
 				<form class="form-horizontal" id="formSubmit" method="post"
 				action="{{ isset($data['post']) ? route('video.update',['video'=>$data['post']->id])  : route('video.store')}}"
 				enctype="multipart/form-data">
@@ -159,11 +159,11 @@
 	</div>
 </div>
 <div class="col-md-6">
-	<div class="box  box-primary">
-		<div class="box-header">
+	<div class="card">
+		<div class="card-header">
 			<h4>{{__('List Video')}}</h4>
 		</div>
-		<div class="box-body">
+		<div class="card-body">
 			<table  class="table table-bordered table-striped">
 				<thead>
 					<tr>

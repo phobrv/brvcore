@@ -1,4 +1,4 @@
-@extends('phobrv::layout.app')
+@extends('phobrv::adminlte3.layout')
 @section('header')
 <a href="{{route('customeridea.index')}}"  class="btn btn-default float-left">
 	<i class="fa fa-backward"></i> @lang('Back')
@@ -15,8 +15,8 @@
 	@csrf
 	@isset($data['post']) @method('put') @endisset
 	<input type="hidden" id="typeSubmit" name="typeSubmit" value="">
-	<div class="box box-primary">
-		<div class="box-body">
+	<div class="card">
+		<div class="card-body">
 			<div class="row">
 				<div class="col-sm-7">
 					@include('phobrv::input.inputText',['label'=>'Customer','key'=>'title','required'=>true])

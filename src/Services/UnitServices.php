@@ -77,11 +77,22 @@ class UnitServices {
 		fclose($file);
 	}
 	public function readFile($path) {
-		$fileRobot = public_path() . $path;
-		$file = fopen($fileRobot, "r") or die("Unable to open file!");
-		$content = fread($file, filesize($fileRobot));
-		fclose($file);
-		return $content;
+		try {
+			$fileRobot = public_path() . $path;
+			if(file_exists($fileRobot)){
+				$file = fopen($fileRobot, "r") or die("Unable to open file!");
+				$content = fread($file, filesize($fileRobot));
+				fclose($file);
+				return $content;
+			}
+			return "";
+			
+			
+		} catch (Exception $e) {
+			
+		}
+		
+		
 	}
 	public function cleanString($string) {
 		$array = '/(\'|#|<|>|\(|\)|\*|&|\^|%|-|\\\|=)/u';

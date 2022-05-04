@@ -1,8 +1,8 @@
-<div class='box box-primary'>
+<div class='card'>
 	<form  class="form-horizontal ConfigForm"  enctype="multipart/form-data">
 		<input type="hidden" name="type" value="web">
 		@csrf
-		<div class="box-body">
+		<div class="card-body">
 			@include('phobrv::input.label',['label'=>'Contact'])
 			@include('phobrv::input.inputText',['label'=>'Hotline number','key'=>'hotline_number','type'=>'configs'])
 			@include('phobrv::input.inputText',['label'=>'Email','key'=>'company_email','type'=>'configs'])
@@ -11,9 +11,9 @@
 			@include('phobrv::input.inputText',['label'=>'Address','key'=>'company_add','type'=>'configs'])
 			@include('phobrv::input.label',['label'=>'Copyright'])
 			@include('phobrv::input.inputText',['label'=>'Copyright','key'=>'copyright','type'=>'configs'])
-			<div class="box-footer">
-				<button type="submit" class="btn btn-primary pull-right">{{__('Submit')}}</button>
-			</div>
-		</form>
-	</div>
+		</div>
+		<div class="card-footer">
+			<button type="submit" class="btn btn-primary pull-right">@lang('Update')</button>
+		</div>
+	</form>
 </div>

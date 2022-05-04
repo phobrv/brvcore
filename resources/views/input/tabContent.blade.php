@@ -1,6 +1,6 @@
 @php
-	$active = isset($active) ? $active : "";
+$active = isset($active) ? "show ".$active : "";
 @endphp
-<div role="tabpanel" class="tab-pane {{ $active }}" id="{{ $id }}">
+<div class="tab-pane fade {{ $active }}" id="{{ $id }}" role="tabpanel" aria-labelledby="{{ $id }}tab">
 	@include($view)
 </div>

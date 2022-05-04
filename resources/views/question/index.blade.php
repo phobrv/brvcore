@@ -1,4 +1,4 @@
-@extends('phobrv::layout.app')
+@extends('phobrv::adminlte3.layout')
 
 @section('header')
 <ul>
@@ -41,11 +41,11 @@
 
 @section('content')
 
-	<div class="box  box-primary">
-		<div class="box-header">
+	<div class="card">
+		<div class="card-header">
 			{{__('List Question')}}
 		</div>
-		<div class="box-body">
+		<div class="card-body">
 			<table  class="table table-bordered table-striped">
 				<thead>
 					<tr>

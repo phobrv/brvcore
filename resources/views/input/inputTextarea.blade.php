@@ -21,7 +21,7 @@ if(empty($value)){
 }
 @endphp
 @if($style == "full")
-<div class="form-group">
+<div class="form-group row">
 	<label title="{{ $key ?? '' }}" for="inputEmail3" class="col-sm-2 control-label"> {{ $label ?? ''}} </label>
 	<div class="col-sm-10">
 		{{ Form::textarea($key,$value,$options) }}

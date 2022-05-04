@@ -1,4 +1,4 @@
-@extends('phobrv::layout.app')
+@extends('phobrv::adminlte3.layout')
 
 @section('header')
 <a href="{{route('order.index')}}"  class="btn btn-default float-left">
@@ -7,9 +7,9 @@
 @endsection
 
 @section('content')
-<div class="box box-primary">
+<div class="card">
 	<form action="{{route('order.update',['order'=>$data['post']->id])}}" method="post"  class="form-horizontal">
-		<div class="box-body">
+		<div class="card-body">
 			@csrf
 			@method('put')
 			@include('phobrv::input.inputSelect',['label'=>'Tình trạng đơn hàng','key'=>'status','array'=>config('brvreceive.statusLabel'),'default'=>'pedding'])
@@ -29,7 +29,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="box-footer">
+		<div class="card-footer">
 			<button type="submit" class="btn btn-primary  pull-right">
 				@lang('Update')
 			</button>

@@ -46,7 +46,7 @@ if(empty($value)){
 	@endif
 </div>
 @else
-<div class="form-group">
+<div class="form-group row">
 	<label for="inputEmail3" class="col-sm-2 control-label" title="{{ $key ?? '' }}"> {{ $label ?? ''}} </label>
 	<div class="@isset($check_auto_gen) col-sm-7 @else col-sm-10 @endif">
 		@if($inputType == 'text')

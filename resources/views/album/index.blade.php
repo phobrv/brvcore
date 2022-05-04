@@ -1,4 +1,4 @@
-@extends('phobrv::layout.app')
+@extends('phobrv::adminlte3.layout')
 
 @section('header')
 <a href="{{route('albumgroup.index')}}"  class="btn btn-default float-left">
@@ -9,8 +9,8 @@
 @section('content')
 <div class="row">
 	<div class="col-sm-12">
-		<div class="box  box-primary">
-			<div class="box-body">
+		<div class="card">
+			<div class="card-body">
 				<form class="form-horizontal" id="formSubmit" method="post" action="{{route('album.store',['id'=>$data['post']->id])}}" enctype="multipart/form-data">
 					@csrf
 					<input type="hidden" id="typeSubmit" name="typeSubmit" value="">
@@ -29,11 +29,11 @@
 	<div class="col-sm-12">
 		<form  id="formImages" action="{{route('album.updataImages',['id'=>$data['post']->id])}}" method="post">
 			@csrf
-			<div class="box  box-primary">
-				<div class="box-header">
+			<div class="card">
+				<div class="card-header">
 					{{__('Album Images')}}
 				</div>
-				<div class="box-body">
+				<div class="card-body">
 					<table  class="table table-bordered table-striped">
 						<thead>
 							<tr>

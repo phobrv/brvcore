@@ -1,12 +1,12 @@
-@extends('phobrv::layout.app')
+@extends('phobrv::adminlte3.layout')
 
 @section('header')
 <h1>@lang('Disable Sidebar Menu')</h1>
 @endsection
 
 @section('content')
-<div class='box box-primary'>
-	<div class="box-body">
+<div class='card'>
+	<div class="card-body">
 		<form class="form-horizontal" method="post" action="{{ route('config.updateSidebarConfig') }}">
 			@csrf
 			@if( count( config('sidebar.menu') ) > 0 )
@@ -35,7 +35,7 @@
 			@endif
 			@endforeach
 			@endif
-			<div class="box-footer">
+			<div class="card-footer">
 				<button type="submit" class="btn btn-primary">Submit</button>
 			</div>
 		</form>

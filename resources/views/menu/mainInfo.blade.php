@@ -1,5 +1,5 @@
-<div class="box box-primary">
-	<div class="box-header font16">
+<div class="card">
+	<div class="card-header font16">
 		<a href="#" onclick="save()"  class="btn btn-primary float-left">
 			<i class="fa fa-floppy-o"></i> @lang('Save & Close')
 		</a>
@@ -11,7 +11,7 @@
 		@csrf
 		@isset($data['post']) @method('put') @endif
 		<input type="hidden" name="typeSubmit" id="typeSubmit" value="">
-		<div class="box-body">
+		<div class="card-body">
 			@isset($data['post'])
 			@include('phobrv::input.inputSelect',['label'=>'Show','key'=>'status','default'=>'1','array'=>['0'=>'No','1'=>'Yes']])
 			@endif

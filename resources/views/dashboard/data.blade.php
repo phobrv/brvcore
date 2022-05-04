@@ -1,5 +1,5 @@
 <div class="row">
-	<div class="col-lg-3 col-xs-6">
+	<div class="col-lg-3 col-sm-6">
 		<div class="small-box bg-aqua">
 			<div class="inner">
 				<h3>{{$data['count_blog']}}</h3>
@@ -8,10 +8,10 @@
 			<div class="icon">
 				<i class="ion ion-bag"></i>
 			</div>
-			<a href="/admin/post" class="small-box-footer"> @lang('More info') <i class="fa fa-arrow-circle-right"></i></a>
+			<a href="/admin/post" class="small-card-footer"> @lang('More info') <i class="fa fa-arrow-circle-right"></i></a>
 		</div>
 	</div>
-	<div class="col-lg-3 col-xs-6">
+	<div class="col-lg-3 col-sm-6">
 		<div class="small-box bg-purple">
 			<div class="inner">
 				<h3>{{$data['count_order']}}</h3>
@@ -20,10 +20,10 @@
 			<div class="icon">
 				<i class="ion ion-stats-bars"></i>
 			</div>
-			<a href="/admin/order" class="small-box-footer">@lang('More info')  <i class="fa fa-arrow-circle-right"></i></a>
+			<a href="/admin/order" class="small-card-footer">@lang('More info')  <i class="fa fa-arrow-circle-right"></i></a>
 		</div>
 	</div>
-	<div class="col-lg-3 col-xs-6">
+	<div class="col-lg-3 col-sm-6">
 		<div class="small-box bg-green">
 			<div class="inner">
 				<h3>{{$data['count_order_success']}}</h3>
@@ -33,10 +33,10 @@
 			<div class="icon">
 				<i class="ion ion-person-add"></i>
 			</div>
-			<a href="/admin/order" class="small-box-footer">@lang('More info')  <i class="fa fa-arrow-circle-right"></i></a>
+			<a href="/admin/order" class="small-card-footer">@lang('More info')  <i class="fa fa-arrow-circle-right"></i></a>
 		</div>
 	</div>
-	<div class="col-lg-3 col-xs-6">
+	<div class="col-lg-3 col-sm-6">
 		<div class="small-box bg-orange">
 			<div class="inner">
 				<h3>{{$data['count_order_pendding']}}</h3>
@@ -46,12 +46,12 @@
 			<div class="icon">
 				<i class="ion ion-pie-graph"></i>
 			</div>
-			<a href="/admin/order" class="small-box-footer">@lang('More info')  <i class="fa fa-arrow-circle-right"></i></a>
+			<a href="/admin/order" class="small-card-footer">@lang('More info')  <i class="fa fa-arrow-circle-right"></i></a>
 		</div>
 	</div>
 </div>
 <div class="box box-info">
-	<div class="box-header with-border">
+	<div class="card-header with-border">
 		<h3 class="box-title">@lang('Site Analytics')</h3>
 		<input type="hidden" id="reportTrafficInDay" value="{{$data['reportTrafficInDay']}}">
 		<div class="box-tools pull-right">
@@ -60,12 +60,12 @@
 			<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
 		</div>
 	</div>
-	<div id="chart-report" class="box-body chart-responsive">
+	<div id="chart-report" class="card-body chart-responsive">
 		<div class="row">
-			<div class="col-xs-12 " style="margin-bottom: 15px;" >
+			<div class="col-sm-12 " style="margin-bottom: 15px;" >
 				<div class="chart" id="line-chart" style="height: 300px;"></div>
 			</div>
-			<div class="col-xs-6 col-md-3">
+			<div class="col-sm-6 col-md-3">
 				<div class="info-box">
 					<span class="info-box-icon bg-orange">
 						<i class="ion ion-ios-eye"></i>
@@ -78,7 +78,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-xs-6 col-md-3">
+			<div class="col-sm-6 col-md-3">
 				<div class="info-box">
 					<span class="info-box-icon bg-aqua">
 						<i class="ion ion-ios-people"></i>
@@ -91,7 +91,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-xs-6 col-md-3">
+			<div class="col-sm-6 col-md-3">
 				<div class="info-box">
 					<span class="info-box-icon bg-olive">
 						<i class="ion ion-ios-world-outline"></i>
@@ -104,7 +104,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-xs-6 col-md-3">
+			<div class="col-sm-6 col-md-3">
 				<div class="info-box">
 					<span class="info-box-icon bg-purple">
 						<i class="ion ion-flash"></i>
@@ -118,7 +118,7 @@
 				</div>
 			</div>
 
-			<div class="col-xs-6 col-md-3">
+			<div class="col-sm-6 col-md-3">
 				<div class="info-box">
 					<span class="info-box-icon bg-maroon">
 						<i class="ion ion-arrow-graph-up-right"></i>
@@ -134,7 +134,7 @@
 				</div>
 			</div>
 
-			<div class="col-xs-6 col-md-3">
+			<div class="col-sm-6 col-md-3">
 				<div class="info-box">
 					<span class="info-box-icon bg-yellow">
 						<i class="ion ion-steam"></i>
@@ -150,7 +150,7 @@
 				</div>
 			</div>
 
-			<div class="col-xs-6 col-md-3">
+			<div class="col-sm-6 col-md-3">
 				<div class="info-box">
 					<span class="info-box-icon bg-red">
 						<i class="ion ion-ios-clock-outline"></i>
@@ -166,7 +166,7 @@
 				</div>
 			</div>
 
-			<div class="col-xs-6 col-md-3">
+			<div class="col-sm-6 col-md-3">
 				<div class="info-box">
 					<span class="info-box-icon bg-green">
 						<i class="ion ion-person-add"></i>
@@ -188,7 +188,7 @@
 <div class="row">
 	<div class="col-md-6">
 		<div class="box box-success">
-			<div class="box-header with-border">
+			<div class="card-header with-border">
 				<h3 class="box-title">@lang('Topmost visit pages')</h3>
 				<div class="box-tools pull-right">
 					<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -196,7 +196,7 @@
 					<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
 				</div>
 			</div>
-			<div class="box-body">
+			<div class="card-body">
 				<table class="table table-striped">
 					<tr>
 						<th style="width: 10px">#</th>
@@ -217,7 +217,7 @@
 	</div>
 	<div class="col-md-6">
 		<div class="box box-success">
-			<div class="box-header with-border">
+			<div class="card-header with-border">
 				<h3 class="box-title">Active Log</h3>
 				<div class="box-tools pull-right">
 					<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -225,7 +225,7 @@
 					<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
 				</div>
 			</div>
-			<div class="box-body">
+			<div class="card-body">
 				<table class="table table-striped">
 					<tr>
 						<th style="width: 10px">#</th>

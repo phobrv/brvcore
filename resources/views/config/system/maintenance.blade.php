@@ -1,7 +1,7 @@
-<div class='box box-primary'>
-	<div class="box-body">
+<div class='card'>
+	<div class="card-body">
 		<div class="form-horizontal">
-			<div class="form-group">
+			<div class="form-group row">
 				<label for="inputEmail3" class="col-sm-2 control-label">Maintenance</label>
 				<div class="col-sm-10">
 					<a id="btnTurnOn" href="#" onclick="maintenance(0)" class="btn btn-primary">
@@ -13,7 +13,7 @@
 				</div>
 			</div>
 			@if ($data['configs']['maintenance'])
-			<div class="form-group" id="form-link-private">
+			<div class="form-group row">
 				<label for="inputEmail3" class="col-sm-2 control-label">Link private</label>
 				<div class="col-sm-6">
 					<input type="text" id="link-private" name="link-private" class="form-control" value="{{ $data['configs']['link_private'] ?? '#'  }}">

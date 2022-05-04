@@ -1,4 +1,4 @@
-@extends('phobrv::layout.app')
+@extends('phobrv::adminlte3.layout')
 
 @section('header')
 <ul>
@@ -35,11 +35,11 @@
 	<div class="col-md-5">
 		@isset($data['term'])
 		<form id="formSubmit" method="post" action="{{isset($data['post']) ? route('menu.update',['menu'=>$data['post']->id]) : route('menu.store')}}">
-			<div class="box box-primary">
-				<div class="box-header font16">
+			<div class="card">
+				<div class="card-header font16">
 					Create/Edit quick
 				</div>
-				<div class="box-body">
+				<div class="card-body">
 					<input type="hidden" name="type" value="menu">
 					<input type="hidden" name="lang" value="{{ $data['lang'] ?? 'vi' }}">
 					<input type="hidden" name="term_id" value="{{$data['term']->id}}">
@@ -73,7 +73,7 @@
 						@endif
 					</div>
 				</div>
-				<div class="box-footer">
+				<div class="card-footer">
 					<button class="btn btn-primary pull-right">{{$data['submit_label']}}</button>
 				</div>
 			</div>
@@ -81,8 +81,8 @@
 		@endif
 	</div>
 	<div class="col-md-7">
-		<div class="box box-primary">
-			<div class="box-body">
+		<div class="card">
+			<div class="card-body">
 				<form action="{{ route('menu.updateOrder') }}" method="post">
 					@csrf
 					<table id="" class="table table-bordered table-striped">

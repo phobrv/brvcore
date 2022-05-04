@@ -1,4 +1,4 @@
-@extends('phobrv::layout.app')
+@extends('phobrv::adminlte3.layout')
 
 @section('header')
 <h1>@lang('Questions')</h1>
@@ -7,12 +7,12 @@
 @section('content')
 <div class="row">
 	<div class="col-md-5">
-		<div class="box  box-primary">
-			<div class="box-header">
+		<div class="card">
+			<div class="card-header">
 				{{__('Create/Edit Question Group')}}
 			</div>
 			<form class="form-horizontal" id="formSubmit" method="post" action="{{isset($data['term']) ? route('questiongroup.update',array('questiongroup'=>$data['term']->id)) : route('questiongroup.store')}}">
-				<div class="box-body">
+				<div class="card-body">
 					<input type="hidden" name="taxonomy" value="questiongroup">
 					@isset($data['term']) @method('put') @endisset
 					@csrf
@@ -33,15 +33,15 @@
 						</div>
 					</div>
 				</div>
-				<div class="box-footer">
+				<div class="card-footer">
 					<button class="pull-right btn btn-primary" type="submit">{{$data['submit_lable'] ?? ''}}</button>
 				</div>
 			</form>
 		</div>
 	</div>
 	<div class="col-md-7">
-		<div class="box box-primary">
-			<div class="box-body">
+		<div class="card">
+			<div class="card-body">
 				<table id="example1" class="table table-bordered table-striped">
 					<thead>
 						<tr>

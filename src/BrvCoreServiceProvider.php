@@ -82,7 +82,7 @@ class BrvCoreServiceProvider extends ServiceProvider
         ], 'brvcore.assets');
         // Publishing the translation files.
         $this->publishes([
-            __DIR__ . '/../resources/lang' => resource_path('lang'),
+            __DIR__ . '/../resources/lang' => base_path('lang'),
         ], 'brvcore.lang');
 
         // Publishing the views.

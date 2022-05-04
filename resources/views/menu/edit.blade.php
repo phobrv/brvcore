@@ -1,4 +1,4 @@
-@extends('phobrv::layout.app')
+@extends('phobrv::adminlte3.layout')
 
 @section('header')
 <a href="{{route('menu.index')}}"  class="btn btn-default float-left">
@@ -11,7 +11,7 @@
 
 <div class="row">
 	<div class="col-sm-3">
-		<ul class="nav nav-pills nav-stacked">
+		<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 			@include('phobrv::input.navTab',['id'=>'mainInfo','title'=>'Main Info','active'=>'active'])
 			@switch($data['post']->subtype)
 
@@ -31,10 +31,10 @@
 			@include('phobrv::input.navTab',['id'=>'sidebar','title'=>'Cấu hình box sidebar'])
 			@break
 			@endswitch --}}
-		</ul>
+		</div>
 	</div>
 	<div class="col-sm-9">
-		<div class="tab-content">
+    	<div class="tab-content" id="v-pills-tabContent">
 			@include('phobrv::input.tabContent',['id'=>'mainInfo','view'=>'phobrv::menu.mainInfo','active'=>'active'])
 			@switch($data['post']->subtype)
 			@case('home')

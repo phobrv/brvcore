@@ -1,8 +1,6 @@
 @php
 	$active = isset($active) ? $active : "";
 @endphp
-<li role="presentation" class="{{ $active }}">
-	<a href="#{{ $id }}" aria-controls="{{ $id }}" role="tab" data-toggle="tab">
-		{{ $title }}
-	</a>
-</li>
+<a class="nav-link {{ $active }}" id="{{ $id }}tab" data-toggle="pill" href="#{{ $id }}" role="tab" aria-controls="{{ $id }}" aria-selected="true">
+	{{ $title }}
+</a>

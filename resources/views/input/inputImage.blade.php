@@ -36,7 +36,7 @@ if(empty($value)){
 <img id="holder" style="margin-top:15px;max-height:100px;">
 	<img src="{{ $value ?? ''}}" style="width: {{ $width ?? '100%' }};height: auto;">
 @else
-<div class="form-group">
+<div class="form-group row">
 	<label  title="{{ $key ?? '' }}" for="inputEmail3" class="col-sm-2 control-label">{{$label ?? '' }}</label>
 	<div class="col-sm-4">
 		<div class="input-group">
@@ -73,7 +73,7 @@ if(empty($value)){
 	</div>
 </div>
 @else
-<div class="form-group">
+<div class="form-group row">
 	<label for="inputEmail3" class="col-sm-2 control-label">{{ $label ?? ''}}</label>
 	<div class="col-sm-4">
 		<div class="input-group">

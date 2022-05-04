@@ -1,8 +1,8 @@
-<div class="box box-primary">
-	<div class="box-header"  id="header-b12">
+<div class="card">
+	<div class="card-header"  id="header-b12">
 		<h3 class="box-title">Cấu hình box sidebar</h3>
 	</div>
-	<div class="box-body" id="b12" style="display: block">
+	<div class="card-body" id="b12" style="display: block">
 		<form method="post" action="{{route('menu.updateMultiMeta',['id'=>$data['post']->id])}}">
 			@csrf
 			<div class="row">
