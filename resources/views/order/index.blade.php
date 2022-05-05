@@ -56,7 +56,7 @@
 					</td>
 					<td align="center">
 						<a href="{{route('order.edit',array('order'=>$r->id))}}">
-							<i class="fa fa-edit" title="Sửa"></i>
+							<i class="far fa-edit" title="Sửa"></i>
 						</a>
 						&nbsp;&nbsp;&nbsp;
 						<a style="color: red" href="#" onclick="destroy('destroy{{$r->id}}')"><i class="fa fa-times" title="Sửa"></i></a>

@@ -2,13 +2,13 @@
 
 @section('header')
 <a href="{{route('question.index')}}"  class="btn btn-default float-left">
-	<i class="fa fa-edit"></i> @lang('Back')
+	<i class="far fa-edit"></i> @lang('Back')
 </a>
 <a href="#" onclick="save()"  class="btn btn-primary float-left">
-	<i class="fa fa-edit"></i> @lang('Save & Close')
+	<i class="far fa-edit"></i> @lang('Save & Close')
 </a>
 <a href="#" onclick="update()"  class="btn btn-warning float-left">
-	<i class="fa fa-edit"></i> @lang('Update')
+	<i class="far fa-edit"></i> @lang('Update')
 </a>
 @endsection
 

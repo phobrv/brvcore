@@ -62,7 +62,7 @@
 							</td>
 							<td>{{$r->description}}</td>
 							<td align="center">
-								<a href="{{route('tag.edit',array('tag'=>$r->id))}}"><i class="fa fa-edit" title="Sửa"></i></a>
+								<a href="{{route('tag.edit',array('tag'=>$r->id))}}"><i class="far fa-edit" title="Sửa"></i></a>
 								@if(count($r->posts)==0)
 								&nbsp;&nbsp;&nbsp;
 								<a style="color: red" href="#" onclick="destroyCategory('destroy{{$r->id}}')"><i class="fa fa-times" title="Sửa"></i></a>

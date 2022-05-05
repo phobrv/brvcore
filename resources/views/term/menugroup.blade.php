@@ -59,7 +59,7 @@
 							</td>
 							<td>{{$r->description}}</td>
 							<td align="center">
-								<a href="{{route('menugroup.edit',array('menugroup'=>$r->id))}}"><i class="fa fa-edit" title="Sửa"></i></a>
+								<a href="{{route('menugroup.edit',array('menugroup'=>$r->id))}}"><i class="far fa-edit" title="Sửa"></i></a>
 								&nbsp;&nbsp;&nbsp;
 								<a  href="{{route('menu.setMenuGroupSelect',['id'=>$r->id])}}" ><i class="fa fa-cog" title="Config"></i></a>
 								@if(count($r->posts)==0)

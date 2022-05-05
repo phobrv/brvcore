@@ -60,7 +60,7 @@
 							<td>{{$r->name}}</td>
 							<td>{{$r->description}}</td>
 							<td align="center">
-								<a href="{{route('region.edit',array('region'=>$r->id))}}"><i class="fa fa-edit" title="Sửa"></i></a>
+								<a href="{{route('region.edit',array('region'=>$r->id))}}"><i class="far fa-edit" title="Sửa"></i></a>
 								&nbsp;&nbsp;&nbsp;
 								<a style="color: red" href="#" onclick="destroy('destroy{{$r->id}}')"><i class="fa fa-times" title="Sửa"></i></a>
 								<form id="destroy{{$r->id}}" action="{{ route('region.destroy',array('region'=>$r->id)) }}" method="post" style="display: none;">

@@ -3,7 +3,7 @@
 @section('header')
 <ul>
 	<a href="{{route('tag.index')}}"  class="btn btn-primary float-left">
-	    <i class="fa fa-edit"></i> @lang('Back')
+	    <i class="far fa-edit"></i> @lang('Back')
 	</a>
 </ul>
 @endsection
@@ -49,7 +49,7 @@
 					</td>
 
 					<td align="center">
-						<a href="{{route('post.edit',array('post'=>$r->id))}}"><i class="fa fa-edit" title="Sửa"></i></a>
+						<a href="{{route('post.edit',array('post'=>$r->id))}}"><i class="far fa-edit" title="Sửa"></i></a>
 						&nbsp;&nbsp;&nbsp;
 						<a style="color: red" href="#" onclick="deleteRole('destroy{{$r->id}}')"><i class="fa fa-times" title="Sửa"></i></a>
 						<form id="destroy{{$r->id}}" action="{{ route('post.destroy',array('post'=>$r->id)) }}" method="post" style="display: none;">

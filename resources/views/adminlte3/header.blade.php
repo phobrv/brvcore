@@ -10,15 +10,23 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/css/jquery.fancybox.min.css"  />
-	<script
-	src="https://code.jquery.com/jquery-3.6.0.min.js"
-	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-	crossorigin="anonymous"
-	></script>
-	<script src="/js/admin.js"></script>
+
+
+	{{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"
+	></script> --}}
+	<script src="{{ asset('/vendor/phobrv/adminlte3/plugins/jquery/jquery.min.js') }}"></script>
+	<script src="{{ asset('/vendor/phobrv/adminlte3/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+	<script src="{{ asset('/vendor/phobrv/adminlte3/js/adminlte.min.js') }}"></script>
+	{{-- <script src="{{ asset('/vendor/phobrv/adminlte3/js/demo.js') }}"></script> --}}
+	
 	<script src="{{asset('/vendor/phobrv/ckeditor/ckeditor.js')}}"></script>
 	<script src="{{asset('/vendor/phobrv/ckeditor/config.js')}}"></script>
 
+	<script src="{{ asset('/vendor/phobrv/adminlte3/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+	<script src="{{ asset('/vendor/phobrv/adminlte3/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+	<script src="{{ asset('/vendor/phobrv/adminlte3/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
+	<script src="{{ asset('/vendor/phobrv/adminlte3/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
+	
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js"></script>
 	@yield('styles')

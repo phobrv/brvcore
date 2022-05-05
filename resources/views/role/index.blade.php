@@ -2,10 +2,10 @@
 
 @section('header')
 <a href="{{route('role.create')}}"  class="btn btn-primary float-left">
-	<i class="fa fa-edit"></i> @lang('Create new')
+	<i class="far fa-edit"></i> @lang('Create new')
 </a>
 <a href="" onclick="reloadPermission()" class="btn btn-warning float-left">
-	<i class="fa fa-edit"></i> Reload Permission
+	<i class="far fa-edit"></i> Reload Permission
 </a>
 
 @endsection
@@ -33,7 +33,7 @@
 					<td align="center">{{date('Y-m-d',strtotime($r->created_at))}}</td>
 					<td align="center">
 						@if($loop->index >0)
-						<a href="{{route('role.edit',array('role'=>$r->id))}}"><i class="fa fa-edit" title="Sửa"></i></a>
+						<a href="{{route('role.edit',array('role'=>$r->id))}}"><i class="far fa-edit" title="Sửa"></i></a>
 						&nbsp;&nbsp;&nbsp;
 						<a style="color: red" href="#" onclick="deleteRole('destroy{{$r->id}}')"><i class="fa fa-times" title="Sửa"></i></a>
 						<form id="destroy{{$r->id}}" action="{{ route('role.destroy',array('role'=>$r->id)) }}" method="post" style="display: none;">

@@ -1,7 +1,7 @@
 @extends('phobrv::adminlte3.layout')
 @section('header')
 <a href="{{route('user.create')}}"  class="btn btn-primary float-left">
-	<i class="fa fa-edit"></i> @lang('Create new')
+	<i class="far fa-edit"></i> @lang('Create new')
 </a>
 @endsection
 @section('content')
@@ -47,7 +47,7 @@
 								</a>
 							</td>
 							<td align="center">
-								<a href="{{route('user.edit',array('user'=>$u->id))}}"><i class="fa fa-edit" title="Sửa"></i></a>
+								<a href="{{route('user.edit',array('user'=>$u->id))}}"><i class="far fa-edit" title="Sửa"></i></a>
 								&nbsp;&nbsp;&nbsp;
 								<a style="color: red" href="#" onclick="deleteUser('destroy{{$u->id}}')"><i class="fa fa-times" title="Sửa"></i></a>
 								<form id="destroy{{$u->id}}" action="{{ route('user.destroy',array('user'=>$u->id)) }}" method="post" style="display: none;">
@@ -90,7 +90,7 @@
 							</td>
 							<td>{{date('Y-m-d',strtotime($u->created_at))}}</td>
 							<td align="center">
-								<a href="{{route('user.edit',array('user'=>$u->id))}}"><i class="fa fa-edit" title="Sửa"></i></a>
+								<a href="{{route('user.edit',array('user'=>$u->id))}}"><i class="far fa-edit" title="Sửa"></i></a>
 								&nbsp;&nbsp;&nbsp;
 								<a style="color: red" href="#" onclick="deleteUser('destroy{{$u->id}}')"><i class="fa fa-times" title="Sửa"></i></a>
 								<form id="destroy{{$u->id}}" action="{{ route('user.destroy',array('user'=>$u->id)) }}" method="post" style="display: none;">

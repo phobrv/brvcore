@@ -59,7 +59,7 @@
 							</td>
 							<td>{{$r->description}}</td>
 							<td align="center">
-								<a href="{{route('buildprojectgroup.edit',array('buildprojectgroup'=>$r->id))}}"><i class="fa fa-edit" title="Sửa"></i></a>
+								<a href="{{route('buildprojectgroup.edit',array('buildprojectgroup'=>$r->id))}}"><i class="far fa-edit" title="Sửa"></i></a>
 								&nbsp;&nbsp;&nbsp;
 								<a  href="{{route('buildproject.setGroupSelect',['id'=>$r->id])}}" ><i class="fa fa-cog" title="Config"></i></a>
 								@if(count($r->posts)==0)

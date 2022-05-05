@@ -63,7 +63,7 @@
 							<td>{{$r->name}}</td>
 							<td>{{$r->description}}</td>
 							<td align="center">
-								<a href="{{route('category.edit',array('category'=>$r->id))}}"><i class="fa fa-edit" title="Sửa"></i></a>
+								<a href="{{route('category.edit',array('category'=>$r->id))}}"><i class="far fa-edit" title="Sửa"></i></a>
 								&nbsp;&nbsp;&nbsp;
 								<a  href="{{route('post.index')}}" ><i class="fa fa-cog" title="Config"></i></a>
 								@if($r->child->count() == 0 && $r->posts->count() == 0)
@@ -83,7 +83,7 @@
 							<td style="padding-left: 30px;">-- {{$rc->name}}</td>
 							<td>{{$rc->description}}</td>
 							<td align="center">
-								<a href="{{route('category.edit',array('category'=>$rc->id))}}"><i class="fa fa-edit" title="Sửa"></i></a>
+								<a href="{{route('category.edit',array('category'=>$rc->id))}}"><i class="far fa-edit" title="Sửa"></i></a>
 								&nbsp;&nbsp;&nbsp;
 								<a  href="{{route('post.index')}}" ><i class="fa fa-cog" title="Config"></i></a>
 								&nbsp;&nbsp;&nbsp;

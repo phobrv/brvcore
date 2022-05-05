@@ -170,7 +170,7 @@
 								</td>
 								<td align="center">
 									<a href="{{route('menu.edit',array('menu'=>$c->id))}}">
-										<i class="fa fa-edit" title="Sửa"></i>
+										<i class="far fa-edit" title="Sửa"></i>
 									</a>
 									&nbsp;&nbsp;&nbsp;
 									<a style="color: red" href="#" onclick="destroy('{{ route('menu.destroy',array('menu'=>$c->id)) }}')">

@@ -69,7 +69,7 @@
 							</td>
 							<td>{{$r->description}}</td>
 							<td align="center">
-								<a href="{{route('productgroup.edit',array('productgroup'=>$r->id))}}"><i class="fa fa-edit" title="Sửa"></i></a>
+								<a href="{{route('productgroup.edit',array('productgroup'=>$r->id))}}"><i class="far fa-edit" title="Sửa"></i></a>
 
 								&nbsp;&nbsp;&nbsp;
 								<a  href="{{route('product.index',array('product'=>$r->id))}}" ><i class="fa fa-cog" title="Config"></i></a>
@@ -91,7 +91,7 @@
 							<td style="padding-left: 30px;">-- {{$rc->name}}</td>
 							<td>{{$rc->description}}</td>
 							<td align="center">
-								<a href="{{route('productgroup.edit',array('productgroup'=>$rc->id))}}"><i class="fa fa-edit" title="Sửa"></i></a>
+								<a href="{{route('productgroup.edit',array('productgroup'=>$rc->id))}}"><i class="far fa-edit" title="Sửa"></i></a>
 								&nbsp;&nbsp;&nbsp;
 								<a  href="{{route('product.index',array('product'=>$rc->id))}}" ><i class="fa fa-cog" title="Config"></i></a>
 								@if(count($rc->posts)==0)

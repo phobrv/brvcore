@@ -66,7 +66,7 @@
 								<td>{{date('Y-m-d',strtotime($p->created_at))}}</td>
 								<td align="center" style="vertical-align: middle;">
 									<a href="{{route('question.edit',array('question'=>$p->id))}}">
-										<i class="fa fa-edit" title="Sửa"></i>
+										<i class="far fa-edit" title="Sửa"></i>
 									</a>
 									&nbsp;&nbsp;&nbsp;
 									<a style="color: red" href="javascript:void(0)" onclick="destroy('{{ route('question.delete',array('id'=>$p->id)) }}')">

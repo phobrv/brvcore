@@ -188,7 +188,7 @@
 
 						<td align="center" style="vertical-align: middle;" width="80px">
 							<a href="{{route('video.edit',['video'=>$video->id])}}">
-								<i class="fa fa-edit" title="Edit"></i>
+								<i class="far fa-edit" title="Edit"></i>
 							</a>
 							&nbsp;&nbsp;&nbsp;
 							<a href="#" onclick="destroy('{{route('video.delete',['id'=>$video->id])}}')"  style="color: red;">

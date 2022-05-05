@@ -23,7 +23,7 @@
 				$items_html = '';
 				foreach( $menu['children'] as $submenu ){
 					$childActive = false;
-					if(strpos("/" . Request()->path(), $submenu['href']) !== false){
+					if(strcmp("/" . Request()->path(), $submenu['href']) == 0){
 						$active = $childActive = true;
 					}
 					$title = __($submenu['title']);
