@@ -26,8 +26,12 @@ class HandleMenuServices
         if (!isset($configs[$menu_key])) {
             return "";
         }
-        $posts = $this->termRepository->find($configs[$menu_key])->posts()->where('lang', config('app.locale'))->orderBy('order')->with('postMetas')->get();
-        return $this->handleMenuItem($posts, ['disablePrivateMenu' => $disablePrivateMenu]);
+        $term = $this->termRepository->with('posts')->findWhere(['id'=>$configs[$menu_key]])->first();
+        if($term){
+            $posts = $this->termRepository->with('posts')->find($configs[$menu_key])->posts()->where('lang', config('app.locale'))->orderBy('order')->with('postMetas')->get();
+            return $this->handleMenuItem($posts, ['disablePrivateMenu' => $disablePrivateMenu]);
+        }
+        return [];
     }
     public function handleMenuItem($posts, $option = [])
     {

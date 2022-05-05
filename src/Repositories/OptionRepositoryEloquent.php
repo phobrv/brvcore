@@ -64,7 +64,7 @@ class OptionRepositoryEloquent extends BaseRepository implements OptionRepositor
             } elseif (strpos($option->name, '_term')) {
                 $number_key = str_replace("_term", "_number", $option->name);
                 $number = !empty($out[$number_key]) ? $out[$number_key] : 30;
-
+                
                 $term = $this->termRepository->with('posts')->findWhere(['id' => $option->value])->first();
                 if ($term) {
                     $posts = $term->posts->sortByDesc('created_at')->where('lang', config('app.locale'))->where('status', '>', '0')->take($number);
