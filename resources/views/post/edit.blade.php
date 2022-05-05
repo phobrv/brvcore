@@ -11,12 +11,16 @@
 
 @section('content')
 <div class="nav-tabs-custom">
-	<ul class="nav nav-tabs">
-		<li class="active"><a href="#tab_1" data-toggle="tab">Main</a></li>
-		<li><a href="#tab_2" data-toggle="tab">Meta</a></li>
+	<ul class="nav nav-tabs" id="myTab" role="tablist">
+		<li class="nav-item" role="presentation">
+			<a class="nav-link active"  href="#tab_1" data-toggle="tab">Main</a>
+		</li>
+		<li class="nav-item" role="presentation">
+			<a class="nav-link"  href="#tab_2" data-toggle="tab">Meta</a>
+		</li>
 	</ul>
-	<div class="tab-content">
-		<div class="tab-pane active" id="tab_1">
+	<div class="tab-content" id="myTabContent">
+		<div class="tab-pane fade show active" id="tab_1">
 			@include('phobrv::post.components.main')
 		</div>
 		@isset($data['post'])
@@ -32,22 +36,22 @@
 
 @section('styles')
 <style type="text/css">
-#listTagShow .btn-flat{
-	margin-top: 3px;
-	margin-bottom: 5px;
-}
-#listTagShow .show{
-	position: relative;
-	padding-right: 15px;
-	float: left;
-}
-#listTagShow .show i{
-	position: absolute;
-	z-index: 1;
-	top: -5px;
-	right: 3px;
-	color: red;
-}
+	#listTagShow .btn-flat{
+		margin-top: 3px;
+		margin-bottom: 5px;
+	}
+	#listTagShow .show{
+		position: relative;
+		padding-right: 15px;
+		float: left;
+	}
+	#listTagShow .show i{
+		position: absolute;
+		z-index: 1;
+		top: -5px;
+		right: 3px;
+		color: red;
+	}
 </style>
 @endsection
 
@@ -79,6 +83,7 @@
 		});
 	}
 	function addTag(){
+		e.preventDefault()
 		var tag = document.getElementById("tags");
 		var tagContent = tag.value;
 		console.log(tagContent);

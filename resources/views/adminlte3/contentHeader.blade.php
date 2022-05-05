@@ -1,6 +1,6 @@
 <section class="content-header">
     <div class="container-fluid">
-        <div class="row mb-2">
+        <div class="row">
             <div class="col-sm-6">
                 @yield('header')
             </div>

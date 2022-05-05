@@ -94,7 +94,7 @@ return [
             'children' => [
                 [
                     'id' => 'menugroup',
-                    'title' => 'All Menu',
+                    'title' => 'Menu Group',
                     'icon' => 'fa-building-o',
                     'href' => '/admin/menugroup',
                     'permissions' => [],
@@ -102,7 +102,7 @@ return [
                 ],
                 [
                     'id' => 'menu-menu',
-                    'title' => 'Menu structure',
+                    'title' => 'Menu',
                     'icon' => 'fa-building-o',
                     'href' => '/admin/menu',
                     'permissions' => [],

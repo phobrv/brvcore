@@ -1,0 +1,16 @@
+.content-header .form-group {
+    margin-bottom: 0 !important;
+}
+
+.content-header a {
+    margin-right: 10px;
+}
+
+.content-header ul {
+    padding-left: 0 !important;
+}
+
+.content-header ul li {
+    float: left;
+    list-style: none !important;
+}

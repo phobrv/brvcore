@@ -16,6 +16,9 @@
 	crossorigin="anonymous"
 	></script>
 	<script src="/js/admin.js"></script>
+	<script src="{{asset('/vendor/phobrv/ckeditor/ckeditor.js')}}"></script>
+	<script src="{{asset('/vendor/phobrv/ckeditor/config.js')}}"></script>
+
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js"></script>
 	@yield('styles')

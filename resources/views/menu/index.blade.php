@@ -93,7 +93,7 @@
 								<th class="text-center">{{__('Type')}}</th>
 								<th class="text-center">{{__('Status')}}</th>
 								<th class="text-center">{{__('Lang')}}</th>
-								<th class="text-center"> <button type="subit" class="btn btn-primary">Submit Order</button> </th>
+								<th class="text-center"> <button type="subit" class="btn btn-primary">Update Order</button> </th>
 								<th class="text-center" width="80">{{__('Action')}}</th>
 							</tr>
 						</thead>
@@ -130,10 +130,11 @@
 								</td>
 								<td align="center">
 
-									<a href="{{route('menu.edit',array('menu'=>$r->id))}}"><i class="fa fa-edit" title="Sửa"></i></a>
+									<a href="{{route('menu.edit',array('menu'=>$r->id))}}"><i class="far fa-edit" title="Sửa"></i></a>
 									@if(count($r->childs) == 0)
 									&nbsp;&nbsp;&nbsp;
-									<a style="color: red" href="#" onclick="destroy('{{ route('menu.destroy',['menu'=>$r->id]) }}')"><i class="fa fa-times" title="Sửa"></i></a>
+									<a style="color: red" href="#" onclick="destroy('{{ route('menu.destroy',['menu'=>$r->id]) }}')">
+										<i class="fa fa-times" title="Delete"></i></a>
 									@endif
 								</td>
 							</tr>
@@ -168,9 +169,13 @@
 									<input type="number" class="order_input" name="order[]" value="{{ $c->order }}">
 								</td>
 								<td align="center">
-									<a href="{{route('menu.edit',array('menu'=>$c->id))}}"><i class="fa fa-edit" title="Sửa"></i></a>
+									<a href="{{route('menu.edit',array('menu'=>$c->id))}}">
+										<i class="fa fa-edit" title="Sửa"></i>
+									</a>
 									&nbsp;&nbsp;&nbsp;
-									<a style="color: red" href="#" onclick="destroy('{{ route('menu.destroy',array('menu'=>$c->id)) }}')"><i class="fa fa-times" title="Sửa"></i></a>
+									<a style="color: red" href="#" onclick="destroy('{{ route('menu.destroy',array('menu'=>$c->id)) }}')">
+										<i class="fa fa-times" title="Delete"></i>
+									</a>
 								</td>
 							</tr>
 							@endforeach

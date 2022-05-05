@@ -26,11 +26,12 @@
 					if(strpos("/" . Request()->path(), $submenu['href']) !== false){
 						$active = $childActive = true;
 					}
+					$title = __($submenu['title']);
 					$items_html .= '
 					<li class="nav-item">
 					<a href="'. $submenu['href'] .'" class="nav-link '. ($childActive ? 'active': '') .'">
 					<i class="far fa-circle nav-icon"></i>
-					<p>'. $submenu['title'] .'</p>
+					<p>'. $title .'</p>
 					</a>
 					</li>';
 				}
