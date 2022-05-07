@@ -9,6 +9,7 @@
 	<div class="col-sm-2">
     	<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 			@include('phobrv::input.navTab',['id'=>'maintenance','title'=>'Maintenance','active'=>'active'])
+			@include('phobrv::input.navTab',['id'=>'info','title'=>'Webserver info'])
 			@include('phobrv::input.navTab',['id'=>'code','title'=>'Code Insert'])
 			@include('phobrv::input.navTab',['id'=>'robot','title'=>'Robots.txt'])
 			@include('phobrv::input.navTab',['id'=>'custom','title'=>'Customize.css'])
@@ -21,6 +22,7 @@
 	<div class="col-sm-10">
     	<div class="tab-content" id="v-pills-tabContent">
 			@include('phobrv::input.tabContent',['id'=>'maintenance','view'=>'phobrv::config.system.maintenance','active'=>'active'])
+			@include('phobrv::input.tabContent',['id'=>'info','view'=>'phobrv::config.system.info'])
 			@include('phobrv::input.tabContent',['id'=>'code','view'=>'phobrv::config.system.code_insert'])
 			@include('phobrv::input.tabContent',['id'=>'robot','view'=>'phobrv::config.system.robots'])
 			@include('phobrv::input.tabContent',['id'=>'custom','view'=>'phobrv::config.system.customize_css'])

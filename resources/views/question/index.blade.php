@@ -9,7 +9,7 @@
 	</li>
 	<li>
 		<a href="{{route('question.create')}}"  class="btn btn-primary float-left">
-			<i class="fa fa-floppy-o"></i> Create
+			<i class="fas fa-save"></i> Create
 		</a>
 	</li>
 	<li>

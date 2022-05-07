@@ -57,7 +57,7 @@
 						$active = true;
 					}
 				@endphp
-				<li class="nav-item {{ $active ? 'menu-open' : '' }}bui" >
+				<li class="nav-item {{ $active ? 'menu-open' : '' }}" >
 					<a href="{{ url($menu['href'] ) }}" class="nav-link">
 						{!! $menu['icon'] !!}
 						<p>

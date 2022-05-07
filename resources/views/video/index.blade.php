@@ -11,7 +11,7 @@
 	</li>
 	<li>
 		<a href="#" onclick="save()" class="btn btn-primary float-left">
-			<i class="fa fa-floppy-o"></i> @lang('Save & Close')
+			<i class="fas fa-save"></i> @lang('Save & Close')
 		</a>
 	</li>
 	<li>

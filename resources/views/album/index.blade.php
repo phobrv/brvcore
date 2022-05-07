@@ -14,7 +14,7 @@
 				<form class="form-horizontal" id="formSubmit" method="post" action="{{route('album.store',['id'=>$data['post']->id])}}" enctype="multipart/form-data">
 					@csrf
 					<input type="hidden" id="typeSubmit" name="typeSubmit" value="">
-					<div class="form-group">
+					<div class="form-group row">
 						<div class="col-sm-10">
 							@include('phobrv::input.inputImage',['key'=>'images','basic'=>true])
 						</div>
