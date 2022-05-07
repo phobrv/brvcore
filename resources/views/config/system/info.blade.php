@@ -28,6 +28,7 @@
 			</div>
 			<div class="col-md-6">
 				<ul>
+					<li>OS: {{ PHP_OS }}</li>
 					<li>
 						Webserver: {{ $_SERVER['SERVER_SOFTWARE'] }}
 					</li>
