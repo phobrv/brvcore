@@ -11,6 +11,18 @@
 <div class='card'>
 	<div class="card-body">
 		<div class="row">
+			
+			<div class="col-md-6">
+				<ul>
+					<li><strong>OS:</strong> {{ PHP_OS }}</li>
+					<li>
+						<strong>Webserver:</strong> {{ $_SERVER['SERVER_SOFTWARE'] }}
+					</li>
+					<li><strong>Laravel:</strong> {{ app()->version() }}</li>
+					<li><strong>Database:</strong> Mysql</li>
+					<li><strong>Timezone:</strong> {{ config('app.timezone') }}</li>
+				</ul>
+			</div>
 			<div class="col-md-6">
 				<ul>
 					@php  
@@ -24,16 +36,6 @@
 					@endphp
 					<li> {!! $icon !!} {{ $ex }} PHP Extension </li>
 					@endforeach
-				</ul>
-			</div>
-			<div class="col-md-6">
-				<ul>
-					<li>OS: {{ PHP_OS˘ }}</li>
-					<li>
-						Webserver: {{ $_SERVER['SERVER_SOFTWARE'] }}
-					</li>
-					<li>Laravel Frameword: {{ app()->version() }}</li>
-					<li>Database: Mysql</li>
 				</ul>
 			</div>
 		</div>

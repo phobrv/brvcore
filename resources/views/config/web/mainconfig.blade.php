@@ -4,7 +4,6 @@
 		@csrf
 		<div class="card-body">
 			@include('phobrv::input.inputSelect',['label'=>'Main Menu','key'=>'main_menu','array'=>$arrayMenu,'type'=>'configs'])
-			@include('phobrv::input.inputSelect',['label'=>'Main Menu','key'=>'main_term','array'=>$arrayMenu,'type'=>'configs'])
 			@include('phobrv::input.inputText',['label'=>'Name Web','key'=>'site_name','type'=>'configs'])
 		</div>
 		<div class="card-footer">
