@@ -28,7 +28,7 @@ class HandleMenuServices
         }
         $term = $this->termRepository->with('posts')->findWhere(['id'=>$configs[$menu_key]])->first();
         if($term){
-            $posts = $this->termRepository->with('posts')->find($configs[$menu_key])->posts()->where('lang', config('app.locale'))->orderBy('order')->with('postMetas')->get();
+            $posts = $term->posts()->where('lang', config('app.locale'))->orderBy('order')->with('postMetas')->get();
             return $this->handleMenuItem($posts, ['disablePrivateMenu' => $disablePrivateMenu]);
         }
         return [];
@@ -37,35 +37,33 @@ class HandleMenuServices
     {
         $menus = array();
         $curRequest = str_replace("/", "", $_SERVER['REQUEST_URI']);
-        $langArray = $this->configLangService->getArrayLangConfig();
         foreach ($posts as $p) {
             if (!isset($option['disablePrivateMenu']) || $p->status == 1) {
-
                 $p->active = $this->handleMenuAcitve($p, $curRequest);
-                $p->url = $this->handleUrlMenu($p);
                 $icon = $p->postMetas->where('key', 'icon')->first();
                 $p->icon = isset($icon->value) ? $icon->value : '';
+              
+                $p->url = $this->handleUrlMenu($p);
+               
                 if (isset($option['langButton'])) {
-                    $p->langButtons = $this->configLangService->genLangButton($p->id, $langArray);
+                    $p->langButtons = $this->configLangService->genLangButton($p->id);
                 }
 
                 if ($p->parent == 0) {
                     if (isset($option['disablePrivateMenu'])) {
-                        $childs = $this->postRepository->where('parent', $p->id)->where('status', '1')->orderBy('order')->get();
+                        $childs = $posts->where('parent', $p->id)->where('status', '1')->sortBy('order')->all();
                     } else {
-                        $childs = $this->postRepository->where('parent', $p->id)->orderBy('order')->get();
+                        $childs = $posts->where('parent', $p->id)->sortBy('order')->all();
                     }
 
                     if ($childs) {
-                        if ($childs->where('slug', $curRequest)->first()) {
-                            $p->active = "active";
-                        }
-                        for ($i = 0; $i < count($childs); $i++) {
-                            $childs[$i]->url = $this->handleUrlMenu($childs[$i]);
+                        foreach($childs as $idx => $val){
+                            if($childs[$idx]->url == $curRequest )
+                                $p->active = "active";
+                            $childs[$idx]->url = $this->handleUrlMenu($childs[$idx]);
                             if (isset($option['langButton'])) {
-                                $childs[$i]->langButtons = $this->configLangService->genLangButton($childs[$i]->id, $langArray);
+                                $childs[$idx]->langButtons = $this->configLangService->genLangButton($childs[$idx]->id);
                             }
-
                         }
                         $p->childs = $childs;
                     }

@@ -45,9 +45,10 @@ class ConfigLangService
         return $out;
     }
 
-    public function genLangButton($post_id, $langArray)
+    public function genLangButton($post_id)
     {
         $out = '';
+        $langArray = $this->getArrayLangConfig();
         $termLang = $this->postRepository->find($post_id)->terms()->where('taxonomy', config('term.taxonomy.lang'))->first();
         if (empty($termLang)) {
             $out = '<a class="btn-default btn" href="javascript:void(0)">VI</a>';
