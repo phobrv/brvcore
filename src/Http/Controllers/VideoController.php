@@ -9,6 +9,7 @@ use Phobrv\BrvCore\Repositories\PostRepository;
 use Phobrv\BrvCore\Repositories\TermRepository;
 use Phobrv\BrvCore\Repositories\UserRepository;
 use Phobrv\BrvCore\Services\UnitServices;
+use Phobrv\BrvCore\Services\PostServices;
 
 class VideoController extends Controller
 {
@@ -18,17 +19,21 @@ class VideoController extends Controller
     protected $unitService;
     protected $type;
     protected $taxonomy;
+    protected $postService;
 
     public function __construct(
         UserRepository $userRepository,
         TermRepository $termRepository,
-        PostRepository $postRepository,
+        PostRepository $postRepository,        
+        PostServices $postService,
         UnitServices $unitService
     ) {
         $this->userRepository = $userRepository;
         $this->termRepository = $termRepository;
         $this->postRepository = $postRepository;
         $this->unitService = $unitService;
+        $this->postService = $postService;
+
         $this->type = config('option.post_type.video');
         $this->taxonomy = config('term.taxonomy.videogroup');
     }
@@ -118,7 +123,7 @@ class VideoController extends Controller
 
                 $slug = $this->unitService->renderSlug($info['title']);
 
-                $slug = $this->postRepository->handleSlugUniquePost($slug);
+                $slug = $this->postService->handleSlugUniquePost($slug);
 
                 $post = $this->postRepository->create([
                     'title' => $info['title'],
@@ -174,7 +179,7 @@ class VideoController extends Controller
             $data['post'] = $this->postRepository->find($id);
             $data['categorys'] = $this->termRepository->getTermsOrderByParent($this->taxonomy);
             $data['arrayCategoryID'] = $this->termRepository->getArrayTermIDByTaxonomy($data['post']->terms, 'videogroup');
-            $data['meta'] = $this->postRepository->getMeta($data['post']->postMetas);
+            $data['meta'] = $this->postService->getMeta($data['post']->postMetas);
             return view('phobrv::video.index')->with('data', $data);
         } catch (Exception $e) {
             return back()->with('alert_danger', $e->getMessage());
@@ -239,7 +244,7 @@ class VideoController extends Controller
             $this->postRepository->update(['order' => $curOrder], $imgReplace->id);
         }
         return redirect()->route('video.index')
-            ->with('alert_success', __('Change video order success'));
+        ->with('alert_success', __('Change video order success'));
     }
 
     public function updatePostInfo($post, $request)

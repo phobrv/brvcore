@@ -69,16 +69,6 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository {
 
 		$post->terms()->attach($arrayTermID);
 	}
-	public function getArrayPostByType($type) {
-		$out = ['0' => '-'];
-		$posts = $this->model->where('type', $type)->get();
-		if ($posts) {
-			foreach ($posts as $p) {
-				$out[$p->id] = $p->title;
-			}
-		}
-		return $out;
-	}
 	public function insertMeta($post, $arrayMeta, $type = null) {
 		if ($type == 'multi') {
 			foreach ($arrayMeta as $key => $value) {
@@ -100,57 +90,6 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository {
 			}
 		}
 	}
-	public function getMeta($postMetas, $meta_child = true) {
-		$out = array();
-		foreach ($postMetas as $meta) {
-			$out[$meta->key] = $meta->value;
-		}
-		foreach ($postMetas as $meta) {
-			if (strpos($meta->key, '_term') && $meta->value) {
-				$term = $this->termRepository->with('posts')->findWhere(['id' => $meta->value])->first();
-				if ($term) {
-					$posts = $term->posts()->where('status', '>', 0)->orderBy('status', 'desc')->orderBy('order')->orderBy('created_at', 'desc');
-					if ($term['taxonomy'] == 'category' || $term['taxonomy'] == 'productgroup') {
-						$posts = $posts->where('lang', config('app.locale'));
-					}
-
-					if (strpos($meta->key, '_paginate')) {
-						$paginate_number_key = str_replace("_term_paginate", "_number", $meta->key);
-						$paginate = !empty($out[$paginate_number_key]) ? $out[$paginate_number_key] : $this->paginate;
-						$out['paginate'] = $paginate;
-						$posts = $posts->paginate($paginate);
-					} else {
-						$number_key = str_replace("_term", "_number", $meta->key);
-						if (empty($out[$number_key])) {
-							$posts = $posts->get();
-						} else {
-							$posts = $posts->limit($out[$number_key])->get();
-						}
-					}
-
-					if (!empty($posts) && $meta_child) {
-						for ($i = 0; $i < count($posts); $i++) {
-							$posts[$i]['meta'] = $this->getMeta($posts[$i]->postMetas);
-						}
-					}
-					$out[$meta->key . "_source"] = $posts;
-					$out[$meta->key . "_term"] = $term;
-				}
-			} elseif (strpos($meta->key, '_post') && $meta->value) {
-				$out[$meta->key . "_source"] = Post::find($meta->value);
-			}
-		}
-		return $out;
-	}
-	public function getMultiMetaByKey($postMetas, $key) {
-		$out = [];
-		foreach ($postMetas as $meta) {
-			if ($meta->key == $key) {
-				$out[$meta->id] = $meta->value;
-			}
-		}
-		return $out;
-	}
 	public function destroy($id) {
 		$post = $this->find($id);
 		$post->terms()->detach();
@@ -169,16 +108,6 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository {
 		} else {
 			$this->destroy($post_id);
 		}
-	}
-	public function createArrayMenuParent($posts, $expel_id) {
-		$out = array();
-		$out[0] = '-';
-		foreach ($posts as $p) {
-			if ($p->parent == 0 && $p->id != $expel_id) {
-				$out[$p->id] = $p->title;
-			}
-		}
-		return $out;
 	}
 	public function findChilds($id) {
 		return $this->model->where('parent', $id)->get();
@@ -214,13 +143,6 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository {
 		}
 		return $concerts;
 	}
-	public function handleSlugUniquePost($slug) {
-		$ck = $this->model->where('slug', $slug)->first();
-		if ($ck) {
-			$slug = $slug . "-" . rand(100, 999);
-		}
-		return $slug;
-	}
 	public function resetOrderPostByTermID($term_id) {
 		$posts = $this->termRepository->find($term_id)->posts()->orderBy('order')->get();
 		$order = 1;
@@ -231,13 +153,5 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository {
 	}
 	public function removeMeta($meta_id) {
 		PostMeta::destroy($meta_id);
-	}
-	public function getTotalView() {
-		$out = 0;
-		$all = $this->all();
-		foreach ($all as $p) {
-			$out += $p->view;
-		}
-		return $out;
 	}
 }

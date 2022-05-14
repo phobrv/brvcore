@@ -131,7 +131,7 @@
 								<td align="center">
 
 									<a href="{{route('menu.edit',array('menu'=>$r->id))}}"><i class="far fa-edit" title="Sửa"></i></a>
-									@if(count($r->childs) == 0)
+									@if(!empty($r->childs))
 									&nbsp;&nbsp;&nbsp;
 									<a style="color: red" href="#" onclick="destroy('{{ route('menu.destroy',['menu'=>$r->id]) }}')">
 										<i class="fa fa-times" title="Delete"></i></a>

@@ -6,6 +6,7 @@ use Phobrv\BrvCore\Repositories\OptionRepository;
 use Phobrv\BrvCore\Repositories\PostRepository;
 use Phobrv\BrvCore\Repositories\TermRepository;
 use Phobrv\BrvCore\Services\ConfigLangService;
+use Phobrv\BrvCore\Services\PostServices;
 
 class AdminComposer
 {
@@ -37,7 +38,12 @@ class AdminComposer
      *
      * @return void
      */
-    public function __construct(TermRepository $termRepository, PostRepository $postRepository, OptionRepository $optionRepository, ConfigLangService $configLangService)
+    public function __construct(
+        TermRepository $termRepository, 
+        PostRepository $postRepository, 
+        PostServices $postService, 
+        OptionRepository $optionRepository, 
+        ConfigLangService $configLangService)
     {
 
         $this->arrayAlbum = $termRepository->getArrayTerms(config('term.taxonomy.albumgroup'));
@@ -55,7 +61,7 @@ class AdminComposer
         $this->arrayTaxonomyTmp4 = $termRepository->getArrayTerms(config('term.taxonmyTmp.tmp4'));
         $this->arrayTaxonomyTmp5 = $termRepository->getArrayTerms(config('term.taxonmyTmp.tmp5'));
 
-        $this->arrayVideoItem = $postRepository->getArrayPostByType(config('option.post_type.video'));
+        $this->arrayVideoItem = $postService->getArrayPostByType(config('option.post_type.video'));
         $this->arrayPosts = $postRepository->getArrayPostByType(config('option.post_type.post'));
         $this->arrayBoxSidebar = $optionRepository->takeArraySidebarBoxTitle();
         $this->configs = $optionRepository->handleOptionToArray($optionRepository->all());

@@ -9,23 +9,27 @@ use Phobrv\BrvCore\Repositories\PostRepository;
 use Phobrv\BrvCore\Repositories\TermRepository;
 use Phobrv\BrvCore\Repositories\UserRepository;
 use Phobrv\BrvCore\Services\UnitServices;
+use Phobrv\BrvCore\Services\PostServices;
 
 class QuestionController extends Controller {
 	protected $userRepository;
 	protected $termRepository;
 	protected $postRepository;
+	protected $postService;
 	protected $unitService;
 	protected $type;
 	protected $taxonomy;
 	public function __construct(
 		UserRepository $userRepository,
 		TermRepository $termRepository,
+        PostServices $postService,
 		PostRepository $postRepository,
 		UnitServices $unitService
 	) {
 		$this->userRepository = $userRepository;
 		$this->termRepository = $termRepository;
 		$this->postRepository = $postRepository;
+        $this->postService = $postService;
 		$this->unitService = $unitService;
 		$this->type = config('option.post_type.question');
 		$this->taxonomy = config('term.taxonomy.questiongroup');
@@ -156,7 +160,7 @@ class QuestionController extends Controller {
 			$data['categorys'] = $this->termRepository->getTermsOrderByParent($this->taxonomy);
 			$data['post'] = $this->postRepository->find($id);
 			$data['arrayCategoryID'] = $this->termRepository->getArrayTermIDByTaxonomy($data['post']->terms, 'questiongroup');
-			$data['meta'] = $this->postRepository->getMeta($data['post']->postMetas);
+			$data['meta'] = $this->postService->getMeta($data['post']->postMetas);
 			return view('phobrv::question.create')->with('data', $data);
 		} catch (Exception $e) {
 			return back()->with('alert_danger', $e->getMessage());

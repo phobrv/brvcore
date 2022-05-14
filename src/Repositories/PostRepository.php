@@ -15,10 +15,6 @@ interface PostRepository extends RepositoryInterface
 
     public function insertMeta($post, $arrayMeta);
 
-    public function getMeta($postMetas);
-
-    public function getMultiMetaByKey($postMetas, $key);
-
     public function destroy($id);
 
     public function destroyAllLang($post_id);
@@ -26,8 +22,6 @@ interface PostRepository extends RepositoryInterface
     public function createArrayMenuParent($posts, $expel_id);
 
     public function findChilds($id);
-
-    public function getArrayPostByType($type);
 
     public function handleSeoMeta($post, $request);
 
@@ -38,6 +32,4 @@ interface PostRepository extends RepositoryInterface
     public function resetOrderPostByTermID($term_id);
 
     public function removeMeta($meta_id);
-
-    public function getTotalView();
 }

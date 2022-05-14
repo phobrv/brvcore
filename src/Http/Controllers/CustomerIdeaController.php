@@ -8,19 +8,24 @@ use Illuminate\Http\Request;
 use Phobrv\BrvCore\Repositories\PostRepository;
 use Phobrv\BrvCore\Repositories\TermRepository;
 use Phobrv\BrvCore\Services\UnitServices;
+use Phobrv\BrvCore\Services\PostServices;
 
 class CustomerIdeaController extends Controller {
 	protected $termRepository;
 	protected $postRepository;
 	protected $unitService;
 	protected $type;
+	protected $postService;
+
 
 	public function __construct(
 		TermRepository $termRepository,
 		PostRepository $postRepository,
+		PostServices $postService,
 		UnitServices $unitService
 	) {
 		$this->termRepository = $termRepository;
+		$this->postService = $postService;
 		$this->postRepository = $postRepository;
 		$this->unitService = $unitService;
 		$this->type = config('option.post_type.customeridea');
@@ -126,7 +131,7 @@ class CustomerIdeaController extends Controller {
 
 		try {
 			$data['post'] = $this->postRepository->find($id);
-			$data['metas'] = $this->postRepository->getMeta($data['post']->postMetas);
+			$data['metas'] = $this->postService->getMeta($data['post']->postMetas);
 			return view('phobrv::customer.create')->with('data', $data);
 		} catch (Exception $e) {
 			return back()->with('alert_danger', $e->getMessage());

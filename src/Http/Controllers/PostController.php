@@ -213,7 +213,7 @@ class PostController extends Controller
             // dd($data['post']->content);
             $data['arrayCategoryID'] = $this->termRepository->getArrayTermIDByTaxonomy($data['post']->terms, 'category');
             $data['tags'] = $this->termRepository->getArrayTermByTaxonomy($data['post']->terms, 'tag');
-            $data['meta'] = $this->postRepository->getMeta($data['post']->postMetas);
+            $data['meta'] = $this->postService->getMeta($data['post']->postMetas);
             $data['boxTranslate'] = $this->configLangService->genLangTranslateBox($data['post']);
             return view('phobrv::post.edit')->with('data', $data);
         } catch (Exception $e) {
