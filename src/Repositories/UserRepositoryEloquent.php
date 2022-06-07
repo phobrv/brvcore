@@ -53,19 +53,6 @@ class UserRepositoryEloquent extends BaseRepository implements UserRepository {
 
 	}
 
-	public function getMeta($userMetas) {
-		if (!$userMetas) {
-			return;
-		}
-
-		$out = array();
-
-		foreach ($userMetas as $meta) {
-			$out[$meta->key] = $meta->value;
-		}
-		return $out;
-	}
-
 	public function getArrayMailReport() {
 		$out = [];
 		$users = $this->model->all();

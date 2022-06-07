@@ -54,7 +54,7 @@ class UserController extends Controller {
 						}
 					}
 					$data['users'][$i]->stringRole = $stringRole;
-					$metas = $this->userRepository->getMeta($data['users'][$i]->userMetas);
+					$metas = $data['users'][$i]->meta;
 					$data['users'][$i]->receive_report = isset($metas['receive_report']) ? $metas['receive_report'] : 'no';
 					$data['users'][$i]->mess_report = isset($metas['mess_report']) ? $metas['mess_report'] : 'no';
 				}
@@ -177,7 +177,7 @@ class UserController extends Controller {
 
 		try {
 			$data['post'] = $this->userRepository->find($id);
-			$data['meta'] = $this->userRepository->getMeta($data['post']->userMetas);
+			$data['meta'] = $data['post']->meta;
 			$arrayRole = array();
 			foreach ($data['post']->roles as $r) {
 				array_push($arrayRole, $r->name);

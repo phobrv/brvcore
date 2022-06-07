@@ -14,8 +14,6 @@ interface UserRepository extends RepositoryInterface {
 
 	public function getMetaValueByKey($user, $key);
 
-	public function getMeta($userMetas);
-
 	public function getArrayMailReport();
 
 }
