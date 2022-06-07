@@ -18,7 +18,7 @@ class CreateReceiveDataCartTabel extends Migration
             $table->integer('receive_data_id')->unsigned();
             $table->foreign('receive_data_id')->references('id')->on('brv_receive_data');
             $table->integer('post_id')->unsigned();
-            $table->foreign('post_id')->references('id')->on('posts');
+            $table->foreign('post_id')->references('id')->on('brv_posts');
             $table->string('name', 255);
             $table->integer('qty')->default('0');
             $table->integer('price')->default('0');
