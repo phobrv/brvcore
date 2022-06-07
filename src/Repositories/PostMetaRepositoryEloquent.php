@@ -7,21 +7,23 @@ use Phobrv\BrvCore\Repositories\PostMetaRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Prettus\Repository\Eloquent\BaseRepository;
 
-class PostMetaRepositoryEloquent extends BaseRepository implements PostMetaRepository {
+class PostMetaRepositoryEloquent extends BaseRepository implements PostMetaRepository
+{
 	/**
 	 * Specify Model class name
 	 *
 	 * @return string
 	 */
-	public function model() {
+	public function model()
+	{
 		return PostMeta::class;
 	}
 
 	/**
 	 * Boot up the repository, pushing criteria
 	 */
-	public function boot() {
+	public function boot()
+	{
 		$this->pushCriteria(app(RequestCriteria::class));
 	}
-
 }

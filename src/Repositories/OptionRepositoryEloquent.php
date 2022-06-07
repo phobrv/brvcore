@@ -50,40 +50,6 @@ class OptionRepositoryEloquent extends BaseRepository implements OptionRepositor
     {
         $this->pushCriteria(app(RequestCriteria::class));
     }
-
-    public function handleOptionToArray($options)
-    {
-        $out = array();
-        foreach ($options as $key => $option) {
-            $out[$option->name] = $option->value;
-        }
-
-        foreach ($options as $key => $option) {
-            if (strpos($option->name, "_post")) {
-                $out[$option->name . "_source"] = $this->postRepository->findWhere(['id' => $option->value])->first();
-            } elseif (strpos($option->name, '_term')) {
-                $number_key = str_replace("_term", "_number", $option->name);
-                $number = !empty($out[$number_key]) ? $out[$number_key] : 30;
-                
-                $term = $this->termRepository->with('posts')->findWhere(['id' => $option->value])->first();
-                if ($term) {
-                    $posts = $term->posts->sortByDesc('created_at')->where('lang', config('app.locale'))->where('status', '>', '0')->take($number);
-                    $out[$option->name . "_source"] = $posts;
-                }
-
-            }
-        }
-        $localePrefix = "_" . config('app.locale');
-        foreach ($out as $key => $value) {
-            if (strpos($key, $localePrefix) != false) {
-                $newKey = str_replace($localePrefix, "", $key);
-                $out[$newKey] = $value;
-            }
-        }
-
-        return $out;
-    }
-
     public function updateOption($data)
     {
         if (isset($data['_token'])) {

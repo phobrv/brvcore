@@ -12,21 +12,23 @@ use Prettus\Repository\Eloquent\BaseRepository;
  *
  * @package namespace App\Repositories;
  */
-class CommentRepositoryEloquent extends BaseRepository implements CommentRepository {
+class CommentRepositoryEloquent extends BaseRepository implements CommentRepository
+{
 	/**
 	 * Specify Model class name
 	 *
 	 * @return string
 	 */
-	public function model() {
+	public function model()
+	{
 		return Comment::class;
 	}
 
 	/**
 	 * Boot up the repository, pushing criteria
 	 */
-	public function boot() {
+	public function boot()
+	{
 		$this->pushCriteria(app(RequestCriteria::class));
 	}
-
 }

@@ -19,7 +19,6 @@ interface PostRepository extends RepositoryInterface
 
     public function destroyAllLang($post_id);
 
-    public function createArrayMenuParent($posts, $expel_id);
 
     public function findChilds($id);
 
@@ -27,8 +26,7 @@ interface PostRepository extends RepositoryInterface
 
     public function getConcern($post);
 
-    public function handleSlugUniquePost($slug);
-
+  
     public function resetOrderPostByTermID($term_id);
 
     public function removeMeta($meta_id);

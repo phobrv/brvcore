@@ -9,11 +9,10 @@ use Prettus\Repository\Contracts\RepositoryInterface;
  *
  * @package namespace App\Repositories;
  */
-interface OptionRepository extends RepositoryInterface {
-	public function handleOptionToArray($options);
+interface OptionRepository extends RepositoryInterface
+{
 
 	public function updateOption($data);
 
 	public function takeArraySidebarBoxTitle();
-
 }

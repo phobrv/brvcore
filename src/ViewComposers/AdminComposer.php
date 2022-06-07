@@ -7,6 +7,7 @@ use Phobrv\BrvCore\Repositories\PostRepository;
 use Phobrv\BrvCore\Repositories\TermRepository;
 use Phobrv\BrvCore\Services\ConfigLangService;
 use Phobrv\BrvCore\Services\PostServices;
+use Phobrv\BrvCore\Services\OptionServices;
 
 class AdminComposer
 {
@@ -39,6 +40,7 @@ class AdminComposer
      * @return void
      */
     public function __construct(
+        OptionServices $optionService,
         TermRepository $termRepository, 
         PostRepository $postRepository, 
         PostServices $postService, 
@@ -62,9 +64,9 @@ class AdminComposer
         $this->arrayTaxonomyTmp5 = $termRepository->getArrayTerms(config('term.taxonmyTmp.tmp5'));
 
         $this->arrayVideoItem = $postService->getArrayPostByType(config('option.post_type.video'));
-        $this->arrayPosts = $postRepository->getArrayPostByType(config('option.post_type.post'));
+        $this->arrayPosts = $postService->getArrayPostByType(config('option.post_type.post'));
         $this->arrayBoxSidebar = $optionRepository->takeArraySidebarBoxTitle();
-        $this->configs = $optionRepository->handleOptionToArray($optionRepository->all());
+        $this->configs = $optionService->getConfigs($optionRepository->all());
         $this->sidebarDisable = isset($this->configs['sidebar_disable']) ? json_decode($this->configs['sidebar_disable'], true) : [];
         $this->langMain = $configLangService->getMainLang();
         $this->langArray = $configLangService->hanleLangActive();

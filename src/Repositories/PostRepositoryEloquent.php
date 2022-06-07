@@ -14,11 +14,11 @@ use Phobrv\BrvCore\Services\UnitServices;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Prettus\Repository\Eloquent\BaseRepository;
 
-class PostRepositoryEloquent extends BaseRepository implements PostRepository {
+class PostRepositoryEloquent extends BaseRepository implements PostRepository
+{
 	private $unitServices;
 	private $termRepository;
 	private $postMetaRepository;
-	private $paginate;
 
 	public function __construct(
 		Application $app,
@@ -32,13 +32,16 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository {
 		$this->postMetaRepository = $postMetaRepository;
 		$this->paginate = config('option.paginate');
 	}
-	public function model() {
+	public function model()
+	{
 		return Post::class;
 	}
-	public function boot() {
+	public function boot()
+	{
 		$this->pushCriteria(app(RequestCriteria::class));
 	}
-	public function updateTagAndCategory($post, $arrayTagName, $arrayCategoryID) {
+	public function updateTagAndCategory($post, $arrayTagName, $arrayCategoryID)
+	{
 		if (!empty($arrayCategoryID)) {
 			foreach ($arrayCategoryID as $key => $value) {
 				$term = $this->termRepository->find($value);
@@ -64,12 +67,12 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository {
 				);
 				array_push($arrayTermID, $tagSeacrhOrCreate->id);
 			}
-
 		}
 
 		$post->terms()->attach($arrayTermID);
 	}
-	public function insertMeta($post, $arrayMeta, $type = null) {
+	public function insertMeta($post, $arrayMeta, $type = null)
+	{
 		if ($type == 'multi') {
 			foreach ($arrayMeta as $key => $value) {
 				$meta = $post->postMetas()->where('key', $key)->where('value', $value)->get()->first();
@@ -90,14 +93,16 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository {
 			}
 		}
 	}
-	public function destroy($id) {
+	public function destroy($id)
+	{
 		$post = $this->find($id);
 		$post->terms()->detach();
 		$post->postMetas()->delete();
 		$this->model::destroy($id);
 		return true;
 	}
-	public function destroyAllLang($post_id) {
+	public function destroyAllLang($post_id)
+	{
 		$term = $this->find($post_id)->terms()->where('taxonomy', config('term.taxonomy.lang'))->first();
 		if ($term) {
 			$posts = $this->termRepository->with('posts')->find($term->id)->posts;
@@ -109,10 +114,12 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository {
 			$this->destroy($post_id);
 		}
 	}
-	public function findChilds($id) {
+	public function findChilds($id)
+	{
 		return $this->model->where('parent', $id)->get();
 	}
-	public function handleSeoMeta($post, $request) {
+	public function handleSeoMeta($post, $request)
+	{
 		$arrayMeta = array();
 		$arrayMeta['meta_title'] = ($request->meta_title) ? $request->meta_title : $request->title;
 		if (isset($request->meta_description) && $request->meta_description) {
@@ -128,7 +135,8 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository {
 			$this->insertMeta($post, $arrayMeta);
 		}
 	}
-	public function getConcern($post) {
+	public function getConcern($post)
+	{
 		$terms = $post->terms;
 		$concerts = new collect();
 		foreach ($terms as $t) {
@@ -137,13 +145,13 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository {
 					if ($concerts->where('id', $p->id)->count() == 0) {
 						$concerts->push($p);
 					}
-
 				}
 			}
 		}
 		return $concerts;
 	}
-	public function resetOrderPostByTermID($term_id) {
+	public function resetOrderPostByTermID($term_id)
+	{
 		$posts = $this->termRepository->find($term_id)->posts()->orderBy('order')->get();
 		$order = 1;
 		foreach ($posts as $p) {
@@ -151,7 +159,8 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository {
 			$order++;
 		}
 	}
-	public function removeMeta($meta_id) {
+	public function removeMeta($meta_id)
+	{
 		PostMeta::destroy($meta_id);
 	}
 }

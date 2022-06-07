@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Phobrv\BrvCore\Repositories\OptionRepository;
 use Phobrv\BrvCore\Repositories\TermRepository;
 use Phobrv\BrvCore\Services\UnitServices;
+use Phobrv\BrvCore\Services\OptionServices;
 
 class ConfigController extends Controller
 {
@@ -15,7 +16,9 @@ class ConfigController extends Controller
     protected $termRepository;
     protected $unitService;
     protected $app;
+    protected $optionService;
     public function __construct(
+        OptionServices $optionService,
         OptionRepository $optionRepository,
         TermRepository $termRepository,
         Application $app,
@@ -25,6 +28,7 @@ class ConfigController extends Controller
         $this->optionRepository = $optionRepository;
         $this->termRepository = $termRepository;
         $this->unitService = $unitService;
+        $this->optionService = $optionService;
     }
 
     public function system()
@@ -35,7 +39,7 @@ class ConfigController extends Controller
                     ['text' => 'Config website', 'href' => ''],
                 ]
             );
-            $data['configs'] = $this->optionRepository->handleOptionToArray($this->optionRepository->all());
+            $data['configs'] = $this->optionService->getConfigs($this->optionRepository->all());
             $data['configs']['robots_txt'] = $this->unitService->readFile(config('brvcore.robots_file'));
             $data['configs']['customize_css'] = $this->unitService->readFile(config('brvcore.customize_css_file'));
             $data['configs']['htaccess'] = $this->unitService->readFile(config('brvcore.htaccess_file'));
@@ -59,7 +63,7 @@ class ConfigController extends Controller
                 ]
             );
 
-            $data['configs'] = $this->optionRepository->handleOptionToArray($this->optionRepository->all());
+            $data['configs'] = $this->optionService->getConfigs($this->optionRepository->all());
 
             return view('phobrv::config.website')
                 ->with('data', $data);
@@ -77,7 +81,7 @@ class ConfigController extends Controller
                     ['text' => 'Config widgets', 'href' => ''],
                 ]
             );
-            $data['configs'] = $this->optionRepository->handleOptionToArray($this->optionRepository->all());
+            $data['configs'] = $this->optionService->getConfigs($this->optionRepository->all());
             return view('phobrv::config.widget')
                 ->with('data', $data);
         } catch (Exception $e) {
@@ -134,7 +138,7 @@ class ConfigController extends Controller
 
     public function sidebar()
     {
-        $data['configs'] = $this->optionRepository->handleOptionToArray($this->optionRepository->all());
+        $data['configs'] = $this->optionService->getConfigs($this->optionRepository->all());
 
         $data['sidebar_disable'] = isset($data['configs']['sidebar_disable']) ? json_decode($data['configs']['sidebar_disable'], true) : [];
         return view('phobrv::config.sidebar', ['data' => $data]);
