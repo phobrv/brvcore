@@ -85,7 +85,6 @@ class MenuController extends Controller
     }
 
     public function create(){
-//
     }
 
     public function store(Request $request){
@@ -129,7 +128,6 @@ class MenuController extends Controller
     }
 
     public function show($id){
-//
     }
 
     public function edit($id){
@@ -144,8 +142,7 @@ class MenuController extends Controller
             $data['term'] = $data['post']->terms()->where('taxonomy', $this->taxonomy)->first();
             $data['arrayMenuParent'] = $this->postService->createArrayMenuParent($data['term']->posts, $id);
             $data['submit_label'] = "Update";
-            $data['meta'] = $this->postService->getMeta($data['post']->postMetas);
-// dd($data);
+            $data['meta'] = $data['post']->meta;
             $data['meta']['box_sidebars'] = $this->postService->getMultiMetaByKey($data['post']->postMetas, 'box_sidebar');
             $data['post']['childs'] = $this->postRepository->findChilds($id);
             $data['boxTranslate'] = $this->configLangService->genLangTranslateBox($data['post']);

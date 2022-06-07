@@ -160,7 +160,7 @@ class QuestionController extends Controller {
 			$data['categorys'] = $this->termRepository->getTermsOrderByParent($this->taxonomy);
 			$data['post'] = $this->postRepository->find($id);
 			$data['arrayCategoryID'] = $this->termRepository->getArrayTermIDByTaxonomy($data['post']->terms, 'questiongroup');
-			$data['meta'] = $this->postService->getMeta($data['post']->postMetas);
+			$data['meta'] = $data['post']->meta;
 			return view('phobrv::question.create')->with('data', $data);
 		} catch (Exception $e) {
 			return back()->with('alert_danger', $e->getMessage());

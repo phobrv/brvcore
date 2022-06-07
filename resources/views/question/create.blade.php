@@ -22,41 +22,42 @@
 				@csrf
 				@isset($data['post']) @method('put') @endisset
 				<input type="hidden" id="typeSubmit" name="typeSubmit" value="">
-				<div class="col-md-8">
-					@isset($data['post'])
-					@include('phobrv::input.inputText',['label'=>'Url','key'=>'slug'])
-					@endif
-					@include('phobrv::input.inputText',['label'=>'Title','key'=>'title','required'=>true])
-					@include('phobrv::input.inputText',['label'=>'Question','key'=>'excerpt','required'=>true])
-					@include('phobrv::input.inputTextarea',['label'=>'Câu trả lời','key'=>'content'])
-
-					<label class="font16" style="margin-top: 10px;">{{__('Seo Meta')}}</label>
-					@include('phobrv::input.inputText',['label'=>'Meta Title','key'=>'meta_title','type'=>'meta'])
-					@include('phobrv::input.inputText',['label'=>'Meta Description','key'=>'meta_description','type'=>'meta'])
-					@include('phobrv::input.inputText',['label'=>'Meta Keywords','key'=>'meta_keywords','type'=>'meta'])
-				</div>
-				<div class="col-md-4">
-					@include('phobrv::input.inputImage',['key'=>'thumb'])
-					<div class="form-group">
-						<div class="col-sm-12">
-							<label  class="font16">Group</label>
+				<div class="row">
+					<div class="col-md-8">
+						@isset($data['post'])
+						@include('phobrv::input.inputText',['label'=>'Url','key'=>'slug'])
+						@endif
+						@include('phobrv::input.inputText',['label'=>'Title','key'=>'title','required'=>true])
+						@include('phobrv::input.inputText',['label'=>'Question','key'=>'excerpt','required'=>true])
+						@include('phobrv::input.inputTextarea',['label'=>'Câu trả lời','key'=>'content'])
+						@include('phobrv::input.label',['label'=>'Seo Meta'])
+						@include('phobrv::input.inputText',['label'=>'Meta Title','key'=>'meta_title','type'=>'meta'])
+						@include('phobrv::input.inputText',['label'=>'Meta Description','key'=>'meta_description','type'=>'meta'])
+						@include('phobrv::input.inputText',['label'=>'Meta Keywords','key'=>'meta_keywords','type'=>'meta'])
+					</div>
+					<div class="col-md-4">
+						@include('phobrv::input.inputImage',['key'=>'thumb'])
+						<div class="form-group">
+							<div class="col-sm-12">
+								<label  class="font16">Group</label>
+							</div>
+							@isset($data['categorys'])
+							<ul>
+								@foreach($data['categorys'] as $cate)
+								<li>
+									<input type="checkbox" name="category[]" value="{{$cate->id}}" @if(in_array($cate->id,$data['arrayCategoryID'])) checked @endif> {{$cate->name}}
+								</li>
+								@if(isset($cate->child))
+								@foreach($cate->child as $c)
+								<li style="padding-left: 30px;">
+									<input type="checkbox" name="category[]" value="{{$c->id}}" @if(in_array($c->id,$data['arrayCategoryID'])) checked @endif> {{$c->name}}
+								</li>
+								@endforeach
+								@endif
+								@endforeach
+							</ul>
+							@endisset
 						</div>
-						@isset($data['categorys'])
-						<ul>
-							@foreach($data['categorys'] as $cate)
-							<li>
-								<input type="checkbox" name="category[]" value="{{$cate->id}}" @if(in_array($cate->id,$data['arrayCategoryID'])) checked @endif> {{$cate->name}}
-							</li>
-							@if(isset($cate->child))
-							@foreach($cate->child as $c)
-							<li style="padding-left: 30px;">
-								<input type="checkbox" name="category[]" value="{{$c->id}}" @if(in_array($c->id,$data['arrayCategoryID'])) checked @endif> {{$c->name}}
-							</li>
-							@endforeach
-							@endif
-							@endforeach
-						</ul>
-						@endisset
 					</div>
 				</div>
 				<button id="btnSubmit" style="display: none" type="submit" ></button>

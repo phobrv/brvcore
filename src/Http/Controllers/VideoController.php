@@ -179,7 +179,7 @@ class VideoController extends Controller
             $data['post'] = $this->postRepository->find($id);
             $data['categorys'] = $this->termRepository->getTermsOrderByParent($this->taxonomy);
             $data['arrayCategoryID'] = $this->termRepository->getArrayTermIDByTaxonomy($data['post']->terms, 'videogroup');
-            $data['meta'] = $this->postService->getMeta($data['post']->postMetas);
+            $data['meta'] = $data['post']->meta;
             return view('phobrv::video.index')->with('data', $data);
         } catch (Exception $e) {
             return back()->with('alert_danger', $e->getMessage());

@@ -17,8 +17,10 @@ class Post extends Model implements Transformable
 
     protected $table = 'posts';
 
+    protected $appends = ['meta'];
+
     protected $fillable = [
-        'user_id', 'title', 'slug', 'thumb', 'content', 'excerpt', 'status', 'type', 'subtype', 'parent', 'order', 'view', 'lang', 'created_at',
+        'user_id', 'title', 'slug', 'thumb', 'content', 'excerpt', 'status', 'type', 'subtype', 'parent', 'order', 'view', 'lang', 'created_at','meta'
     ];
 
     public function postMetas()
@@ -46,4 +48,11 @@ class Post extends Model implements Transformable
         return $this->belongsTo('App\Models\User', 'user_id');
     }
 
+    public function getMetaAttribute(){
+        $meta = [];
+        foreach($this->postMetas as  $pm){
+            $meta[$pm->key] = $pm->value;
+        }
+        return $meta;
+    }
 }

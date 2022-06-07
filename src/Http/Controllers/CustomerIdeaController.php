@@ -131,7 +131,7 @@ class CustomerIdeaController extends Controller {
 
 		try {
 			$data['post'] = $this->postRepository->find($id);
-			$data['metas'] = $this->postService->getMeta($data['post']->postMetas);
+			$data['metas'] = $data['post']->meta;
 			return view('phobrv::customer.create')->with('data', $data);
 		} catch (Exception $e) {
 			return back()->with('alert_danger', $e->getMessage());
