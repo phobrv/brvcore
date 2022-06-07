@@ -14,7 +14,7 @@ class CreateCommentTable extends Migration {
 		Schema::create('brv_comment', function (Blueprint $table) {
 			$table->bigIncrements('id');
 			$table->integer('post_id')->unsigned();
-			$table->foreign('post_id')->references('id')->on('posts');
+			$table->foreign('post_id')->references('id')->on('brv_posts');
 			$table->longText('content')->nullable();
 			$table->string('name', 255);
 			$table->integer('phone')->default('0');

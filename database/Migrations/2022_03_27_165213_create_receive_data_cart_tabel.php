@@ -16,7 +16,7 @@ class CreateReceiveDataCartTabel extends Migration
         Schema::create('brv_receive_data_cart', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('receive_data_id')->unsigned();
-            $table->foreign('receive_data_id')->references('id')->on('receive_data');
+            $table->foreign('receive_data_id')->references('id')->on('brv_receive_data');
             $table->integer('post_id')->unsigned();
             $table->foreign('post_id')->references('id')->on('posts');
             $table->string('name', 255);

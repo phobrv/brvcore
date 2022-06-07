@@ -16,7 +16,7 @@ class CreateTablePostMeta extends Migration
         Schema::create('brv_post_meta', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('post_id')->unsigned();
-            $table->foreign('post_id')->references('id')->on('posts');
+            $table->foreign('post_id')->references('id')->on('brv_posts');
             $table->string('key',191);
             $table->longText('value')->nullable();
         });

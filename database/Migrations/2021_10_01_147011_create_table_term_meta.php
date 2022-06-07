@@ -16,7 +16,7 @@ class CreateTableTermMeta extends Migration
         Schema::create('brv_term_meta', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('term_id')->unsigned();
-            $table->foreign('term_id')->references('id')->on('terms');
+            $table->foreign('term_id')->references('id')->on('brv_terms');
             $table->string('key', 191);
             $table->longText('value')->nullable();
             $table->timestamps();
