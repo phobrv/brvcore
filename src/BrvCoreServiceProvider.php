@@ -48,7 +48,7 @@ class BrvCoreServiceProvider extends ServiceProvider
         $this->defineMiddleware();
 
         $this->app->singleton('brvcore', function ($app) {
-            return new CoreAdmin;
+            return new BrvCore;
         });
     }
 
