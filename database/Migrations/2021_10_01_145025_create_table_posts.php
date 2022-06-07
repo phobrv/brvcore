@@ -11,7 +11,7 @@ class CreateTablePosts extends Migration {
 	 * @return void
 	 */
 	public function up() {
-		Schema::create('posts', function (Blueprint $table) {
+		Schema::create('brv_posts', function (Blueprint $table) {
 			$table->increments('id');
 			$table->bigInteger('user_id')->default('0')->unsigned();
 			$table->foreign('user_id')->references('id')->on('users');
@@ -37,6 +37,6 @@ class CreateTablePosts extends Migration {
 	 * @return void
 	 */
 	public function down() {
-		Schema::dropIfExists('posts');
+		Schema::dropIfExists('brv_posts');
 	}
 }

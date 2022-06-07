@@ -24,7 +24,7 @@ class UserMeta extends Model implements Transformable {
 	 * [$table description]
 	 * @var string
 	 */
-	protected $table = 'user_meta';
+	protected $table = 'brv_user_meta';
 
 	/**
 	 * [$fillable description]

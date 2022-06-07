@@ -11,7 +11,7 @@ class ReceiveData extends Migration {
 	 * @return void
 	 */
 	public function up() {
-		Schema::create('receive_data', function (Blueprint $table) {
+		Schema::create('brv_receive_data', function (Blueprint $table) {
 			$table->increments('id');
 			$table->string('name', 255)->nullable();
 			$table->string('email', 255)->nullable();
@@ -34,6 +34,6 @@ class ReceiveData extends Migration {
 	 * @return void
 	 */
 	public function down() {
-		Schema::dropIfExists('receive_data');
+		Schema::dropIfExists('brv_receive_data');
 	}
 }

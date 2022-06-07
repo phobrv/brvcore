@@ -14,7 +14,7 @@ use Prettus\Repository\Traits\TransformableTrait;
 class Comment extends Model implements Transformable {
 	use TransformableTrait;
 
-	protected $table = 'comment';
+	protected $table = 'brv_comment';
 
 	protected $fillable = ['content', 'phone', 'name', 'status', 'parent', 'post_id'];
 

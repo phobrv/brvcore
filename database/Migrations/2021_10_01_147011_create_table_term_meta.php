@@ -13,7 +13,7 @@ class CreateTableTermMeta extends Migration
      */
     public function up()
     {
-        Schema::create('term_meta', function (Blueprint $table) {
+        Schema::create('brv_term_meta', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('term_id')->unsigned();
             $table->foreign('term_id')->references('id')->on('terms');
@@ -30,6 +30,6 @@ class CreateTableTermMeta extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('term_meta');
+        Schema::dropIfExists('brv_term_meta');
     }
 }

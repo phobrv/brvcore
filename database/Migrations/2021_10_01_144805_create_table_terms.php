@@ -13,7 +13,7 @@ class CreateTableTerms extends Migration
      */
     public function up()
     {
-        Schema::create('terms', function (Blueprint $table) {
+        Schema::create('brv_terms', function (Blueprint $table) {
             $table->increments('id')->unsigned();
             $table->string('name',100);
             $table->string('slug',100)->unique();
@@ -31,6 +31,6 @@ class CreateTableTerms extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('terms');
+        Schema::dropIfExists('brv_terms');
     }
 }

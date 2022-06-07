@@ -14,7 +14,7 @@ use Prettus\Repository\Traits\TransformableTrait;
 class ReceiveData extends Model implements Transformable
 {
     use TransformableTrait;
-    protected $table = 'receive_data';
+    protected $table = 'brv_receive_data';
 
     /**
      * The attributes that are mass assignable.

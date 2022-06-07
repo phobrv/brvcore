@@ -14,7 +14,7 @@ use Prettus\Repository\Traits\TransformableTrait;
 class Term extends Model implements Transformable {
 	use TransformableTrait;
 
-	protected $table = 'terms';
+	protected $table = 'brv_terms';
 
 	protected $fillable = [
 		'name', 'slug', 'description', 'taxonomy', 'parent',
@@ -25,7 +25,7 @@ class Term extends Model implements Transformable {
 	}
 
 	public function posts() {
-		return $this->belongsToMany('Phobrv\BrvCore\Models\Post', 'term_relationships');
+		return $this->belongsToMany('Phobrv\BrvCore\Models\Post', 'brv_term_relationships');
 	}
 
 }

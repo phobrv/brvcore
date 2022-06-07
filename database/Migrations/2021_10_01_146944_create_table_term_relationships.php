@@ -13,7 +13,7 @@ class CreateTableTermRelationships extends Migration
      */
     public function up()
     {
-        Schema::create('term_relationships', function (Blueprint $table) {
+        Schema::create('brv_term_relationships', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('term_id')->unsigned();
             $table->foreign('term_id')->references('id')->on('terms');
@@ -30,6 +30,6 @@ class CreateTableTermRelationships extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('term_relationships');
+        Schema::dropIfExists('brv_term_relationships');
     }
 }

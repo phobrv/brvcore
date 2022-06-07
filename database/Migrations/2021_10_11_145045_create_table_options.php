@@ -13,7 +13,7 @@ class CreateTableOptions extends Migration
      */
     public function up()
     {
-        Schema::create('options', function (Blueprint $table) {
+        Schema::create('brv_options', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name',255);
             $table->longText('value')->nullable();
@@ -28,6 +28,6 @@ class CreateTableOptions extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('options');
+        Schema::dropIfExists('brv_options');
     }
 }

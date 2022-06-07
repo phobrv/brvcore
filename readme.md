@@ -6,6 +6,23 @@
 [![StyleCI][ico-styleci]][link-styleci]
 
 This is where your description should go. Take a look at [contributing.md](contributing.md) to see a to do list.
+## Change table name
+
+```
+ALTER TABLE `comment` RENAME TO brv_comment;
+ALTER TABLE `options` RENAME TO brv_options;
+ALTER TABLE posts RENAME TO brv_posts;
+ALTER TABLE post_meta RENAME TO brv_post_meta;
+ALTER TABLE receive_data RENAME TO brv_receive_data;
+ALTER TABLE receive_data_cart RENAME TO brv_receive_data_cart;
+ALTER TABLE receive_data_meta RENAME TO brv_receive_data_meta;
+ALTER TABLE terms RENAME TO brv_terms;
+ALTER TABLE term_meta RENAME TO brv_term_meta;
+ALTER TABLE term_relationships RENAME TO brv_term_relationships;
+ALTER TABLE user_meta RENAME TO brv_user_meta;
+ALTER TABLE crawler_data RENAME TO brv_crawler_data;
+ALTER TABLE crawler_profile RENAME TO brv_crawler_profile;
+```
 
 ## Installation
 

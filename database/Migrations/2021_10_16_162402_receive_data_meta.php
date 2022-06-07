@@ -13,7 +13,7 @@ class ReceiveDataMeta extends Migration
      */
     public function up()
     {
-        Schema::create('receive_data_meta', function (Blueprint $table) {
+        Schema::create('brv_receive_data_meta', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('receive_data_id')->unsigned();
             $table->foreign('receive_data_id')->references('id')->on('receive_data');
@@ -29,6 +29,6 @@ class ReceiveDataMeta extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('receive_data_meta');
+        Schema::dropIfExists('brv_receive_data_meta');
     }
 }

@@ -13,7 +13,7 @@ class CreateReceiveDataCartTabel extends Migration
      */
     public function up()
     {
-        Schema::create('receive_data_cart', function (Blueprint $table) {
+        Schema::create('brv_receive_data_cart', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('receive_data_id')->unsigned();
             $table->foreign('receive_data_id')->references('id')->on('receive_data');
@@ -37,6 +37,6 @@ class CreateReceiveDataCartTabel extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('receive_data_cart');
+        Schema::dropIfExists('brv_receive_data_cart');
     }
 }

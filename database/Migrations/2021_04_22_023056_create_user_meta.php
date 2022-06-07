@@ -13,7 +13,7 @@ class CreateUserMeta extends Migration
      */
     public function up()
     {
-        Schema::create('user_meta', function (Blueprint $table) {
+        Schema::create('brv_user_meta', function (Blueprint $table) {
             $table->increments('id');
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
@@ -29,6 +29,6 @@ class CreateUserMeta extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_meta');
+        Schema::dropIfExists('brv_user_meta');
     }
 }

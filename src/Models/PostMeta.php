@@ -20,7 +20,7 @@ class PostMeta extends Model implements Transformable {
 	 * @var array
 	 */
 
-	protected $table = 'post_meta';
+	protected $table = 'brv_post_meta';
 
 	public $timestamps = false;
 

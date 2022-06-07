@@ -15,7 +15,7 @@ class ReceiveDataCart extends Model implements Transformable
 {
     use TransformableTrait;
 
-    protected $table = 'receive_data_cart';
+    protected $table = 'brv_receive_data_cart';
 
     /**
      * The attributes that are mass assignable.

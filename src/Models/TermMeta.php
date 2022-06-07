@@ -14,7 +14,7 @@ use Prettus\Repository\Traits\TransformableTrait;
 class TermMeta extends Model implements Transformable {
 	use TransformableTrait;
 
-	protected $table = 'term_meta';
+	protected $table = 'brv_term_meta';
 	/**
 	 * The attributes that are mass assignable.
 	 *

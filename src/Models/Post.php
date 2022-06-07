@@ -15,7 +15,7 @@ class Post extends Model implements Transformable
 {
     use TransformableTrait;
 
-    protected $table = 'posts';
+    protected $table = 'brv_posts';
 
     protected $appends = ['meta'];
 
@@ -40,7 +40,7 @@ class Post extends Model implements Transformable
 
     public function terms()
     {
-        return $this->belongsToMany('Phobrv\BrvCore\Models\Term', 'term_relationships');
+        return $this->belongsToMany('Phobrv\BrvCore\Models\Term', 'brv_term_relationships');
     }
 
     public function user()

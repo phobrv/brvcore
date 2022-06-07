@@ -11,7 +11,7 @@ class CreateCommentTable extends Migration {
 	 * @return void
 	 */
 	public function up() {
-		Schema::create('comment', function (Blueprint $table) {
+		Schema::create('brv_comment', function (Blueprint $table) {
 			$table->bigIncrements('id');
 			$table->integer('post_id')->unsigned();
 			$table->foreign('post_id')->references('id')->on('posts');
@@ -30,6 +30,6 @@ class CreateCommentTable extends Migration {
 	 * @return void
 	 */
 	public function down() {
-		Schema::dropIfExists('comment');
+		Schema::dropIfExists('brv_comment');
 	}
 }

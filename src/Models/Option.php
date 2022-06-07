@@ -14,7 +14,7 @@ use Prettus\Repository\Traits\TransformableTrait;
 class Option extends Model implements Transformable {
 	use TransformableTrait;
 
-	protected $table = 'options';
+	protected $table = 'brv_options';
 
 	protected $fillable = [
 		'name', 'value', 'autoload',
