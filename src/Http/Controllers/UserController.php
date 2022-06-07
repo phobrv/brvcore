@@ -8,6 +8,7 @@ use Phobrv\BrvCore\Repositories\UserRepository;
 use Phobrv\BrvCore\Services\SendGridService;
 use Phobrv\BrvCore\Services\UnitServices;
 use Spatie\Permission\Models\Role;
+use Exception;
 
 class UserController extends Controller {
 
