@@ -1,6 +1,6 @@
 <div class="card">
 	<div class="card-header">
-		<a href="#" onclick="save()"  class="btn btn-primary float-left mr-2">
+		<a href="#" onclick="save()"  class="btn btn-primary float-left mr-3">
 			<i class="fas fa-save"></i> @lang('Save & Close')
 		</a>
 		<a href="#" onclick="update()"  class="btn btn-warning float-left">
