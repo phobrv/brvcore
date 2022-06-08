@@ -1,5 +1,6 @@
 <?php
 namespace Phobrv\BrvCore\Services;
+use Exception;
 
 class UnitServices {
 	public function renderSlug($str) {
@@ -85,9 +86,7 @@ class UnitServices {
 				fclose($file);
 				return $content;
 			}
-			return "";
-			
-			
+			return "File not exist";
 		} catch (Exception $e) {
 			
 		}
