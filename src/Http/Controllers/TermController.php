@@ -8,6 +8,7 @@ use Phobrv\BrvCore\Repositories\TermRepository;
 use Phobrv\BrvCore\Services\MessageServices;
 use Phobrv\BrvCore\Services\UnitServices;
 use Phobrv\BrvCore\Services\VString;
+use Exception;
 
 class TermController extends Controller
 {
@@ -64,8 +65,8 @@ class TermController extends Controller
     {
         $request->merge(['slug' => $this->vstring->standardKeyword($request->name)]);
         $request->validate([
-            'slug' => 'required|unique:terms',
-            'name' => 'required|unique:terms',
+            'slug' => 'required|unique:brv_terms',
+            'name' => 'required|unique:brv_terms',
         ]);
 
         $data = $request->all();
@@ -109,8 +110,8 @@ class TermController extends Controller
     {
         $request->merge(['slug' => $this->vstring->standardKeyword($request->name)]);
         $request->validate([
-            'slug' => 'required|unique:terms,slug,' . $id,
-            'name' => 'required|unique:terms,name,' . $id,
+            'slug' => 'required|unique:brv_terms,slug,' . $id,
+            'name' => 'required|unique:brv_terms,name,' . $id,
         ]);
 
         $data = $request->all();
