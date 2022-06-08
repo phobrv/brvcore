@@ -397,5 +397,31 @@ return [
 
             ],
         ],
+        [
+            'id' => 'menu-english',
+            'title' => 'English',
+            'icon' => '<i class="nav-icon fas fa-binoculars"></i>',
+            'href' => '',
+            'permissions' => ['super_admin'],
+            'children' => [
+                [
+                    'id' => '',
+                    'title' => 'Topic',
+                    'icon' => 'fa-building-o',
+                    'href' => '/admin/topic-english',
+                    'permissions' => [],
+                    'children' => [],
+                ],
+                [
+                    'id' => '',
+                    'title' => 'Audio',
+                    'icon' => 'fa-building-o',
+                    'href' => '/admin/audio-english',
+                    'permissions' => [],
+                    'children' => [],
+                ],
+
+            ],
+        ],
     ],
 ];

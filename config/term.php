@@ -14,6 +14,7 @@ return [
         'productgroup' => 'productgroup',
         'lang' => 'lang',
         'buildprojectgroup' => 'buildprojectgroup',
+        'topic-english'=>'topic-english',
     ],
     'taxonmyTmp' => [
         'tmp1' => 'tmp1',
@@ -35,6 +36,7 @@ return [
         'productgroup' => 'phobrv::term.productgroup',
         'lang' => 'phobrv::term.lang',
         'buildprojectgroup' => 'phobrv::term.buildprojectgroup',
+        'topic-english' => 'phobrv::english.topic',
     ],
     'taxonomyLabel' => [
         'menugroup' => 'Menus',
@@ -48,5 +50,6 @@ return [
         'productgroup' => 'Product Group',
         'brand' => 'Brand',
         'buildprojectgroup' => 'Build Project Group',
+        'topic-english' => 'Topic English',
     ],
 ];
