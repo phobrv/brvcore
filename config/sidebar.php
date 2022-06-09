@@ -399,8 +399,8 @@ return [
         ],
         [
             'id' => 'menu-english',
-            'title' => 'English',
-            'icon' => '<i class="nav-icon fas fa-binoculars"></i>',
+            'title' => 'English App',
+            'icon' => '<i class="fas fa-seedling"></i>',
             'href' => '',
             'permissions' => ['super_admin'],
             'children' => [
