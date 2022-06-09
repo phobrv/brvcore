@@ -103,7 +103,7 @@ class VideoController extends Controller
     {
         $user = Auth::user();
         $request->validate([
-            'excerpt' => 'required|unique:posts',
+            'excerpt' => 'required|unique:brv_posts',
         ]);
         try {
             $id_video = $request->excerpt;

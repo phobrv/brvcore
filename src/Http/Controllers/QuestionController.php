@@ -108,7 +108,7 @@ class QuestionController extends Controller {
 		$request->request->add(['slug' => $this->unitService->renderSlug($request->title)]);
 
 		$request->validate([
-			'slug' => 'required|unique:posts',
+			'slug' => 'required|unique:brv_posts',
 		]);
 
 		$data = $request->all();
@@ -178,7 +178,7 @@ class QuestionController extends Controller {
 		$user = Auth::user();
 		$request->request->add(['slug' => $this->unitService->renderSlug($request->title)]);
 		$request->validate([
-			'slug' => 'required|unique:posts,slug,' . $id,
+			'slug' => 'required|unique:brv_posts,slug,' . $id,
 		]);
 
 		$data = $request->all();

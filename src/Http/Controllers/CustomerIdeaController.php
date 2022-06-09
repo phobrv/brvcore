@@ -83,7 +83,7 @@ class CustomerIdeaController extends Controller {
 		$request->request->add(['slug' => $this->unitService->renderSlug($request->title)]);
 
 		$request->validate([
-			'slug' => 'required|unique:posts',
+			'slug' => 'required|unique:brv_posts',
 		]);
 
 		$postdata = $request->all();
@@ -148,7 +148,7 @@ class CustomerIdeaController extends Controller {
 	public function update(Request $request, $id) {
 		$request->request->add(['slug' => $this->unitService->renderSlug($request->title)]);
 		$request->validate([
-			'slug' => 'required|unique:posts,slug,' . $id,
+			'slug' => 'required|unique:brv_posts,slug,' . $id,
 		]);
 
 		$postdata = $request->all();

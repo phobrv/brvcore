@@ -98,7 +98,7 @@ class MenuController extends Controller
 
         $request->validate(
             [
-                'slug' => 'required|unique:posts',
+                'slug' => 'required|unique:brv_posts',
                 'subtype' => 'required|not_in:0',
             ],
             [
@@ -155,7 +155,7 @@ class MenuController extends Controller
     public function update(Request $request, $item_id){
         $request->validate(
             [
-                'slug' => 'required|unique:posts,slug,' . $item_id,
+                'slug' => 'required|unique:brv_posts,slug,' . $item_id,
                 'subtype' => 'required|not_in:0',
             ],
             [

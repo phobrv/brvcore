@@ -151,7 +151,7 @@ class PostController extends Controller
 
         $request->validate(
             [
-                'slug' => 'required|unique:posts',
+                'slug' => 'required|unique:brv_posts',
             ],
             [
                 'slug.unique' => 'Title đã tồn tại',
@@ -236,7 +236,7 @@ class PostController extends Controller
 
         $request->validate(
             [
-                'slug' => 'required|unique:posts,slug,' . $id,
+                'slug' => 'required|unique:brv_posts,slug,' . $id,
             ],
             [
                 'slug.unique' => 'Title đã tồn tại',
