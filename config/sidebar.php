@@ -406,6 +406,14 @@ return [
             'children' => [
                 [
                     'id' => '',
+                    'title' => 'Configs',
+                    'icon' => 'fa-building-o',
+                    'href' => '/admin/english-app-config',
+                    'permissions' => [],
+                    'children' => [],
+                ],
+                [
+                    'id' => '',
                     'title' => 'Topic',
                     'icon' => 'fa-building-o',
                     'href' => '/admin/topic-english',
