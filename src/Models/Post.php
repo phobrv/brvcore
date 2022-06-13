@@ -47,6 +47,9 @@ class Post extends Model implements Transformable
     {
         return $this->belongsTo('App\Models\User', 'user_id');
     }
+    public function lessons() {
+        return $this->hasMany('Phobrv\Brvenglish\Models\Lesson');
+    }
 
     public function getMetaAttribute(){
         $meta = [];
