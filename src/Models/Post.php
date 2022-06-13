@@ -43,6 +43,12 @@ class Post extends Model implements Transformable
         return $this->belongsToMany('Phobrv\BrvCore\Models\Term', 'brv_term_relationships');
     }
 
+    public function users()
+    {
+        return $this->belongsToMany('Phobrv\BrvCore\Models\User', 'brv_lessons');
+    }
+
+
     public function user()
     {
         return $this->belongsTo('App\Models\User', 'user_id');
