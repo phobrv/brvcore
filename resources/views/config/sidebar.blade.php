@@ -25,7 +25,7 @@
 			@php
 				$checked = (in_array($submenu['id'],$data['sidebar_disable']))  ? 'checked' : '';
 			@endphp
-			<div class="form-group  row">
+			<div class="form-group row">
 				<label for="inputEmail3" class="col-sm-3 control-label"> {{ $submenu['title'] }} </label>
 				<div class="col-sm-9">
 					<input type="checkbox" name="disable[]" value="{{ $submenu['id'] }}" {{ $checked }}>
