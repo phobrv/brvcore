@@ -22,18 +22,21 @@
 				$active = $childActive = false;
 				$items_html = '';
 				foreach( $menu['children'] as $submenu ){
-					$childActive = false;
-					if(strcmp("/" . Request()->path(), $submenu['href']) == 0){
-						$active = $childActive = true;
+					if(!in_array($submenu['id'],$sidebarDisable)){
+						$childActive = false;
+						if(strcmp("/" . Request()->path(), $submenu['href']) == 0){
+							$active = $childActive = true;
+						}
+						$title = __($submenu['title']);
+						$items_html .= '
+						<li class="nav-item">
+						<a href="'. $submenu['href'] .'" class="nav-link '. ($childActive ? 'active': '') .'">
+						<i class="far fa-circle nav-icon"></i>
+						<p>'. $title .'</p>
+						</a>
+						</li>';
 					}
-					$title = __($submenu['title']);
-					$items_html .= '
-					<li class="nav-item">
-					<a href="'. $submenu['href'] .'" class="nav-link '. ($childActive ? 'active': '') .'">
-					<i class="far fa-circle nav-icon"></i>
-					<p>'. $title .'</p>
-					</a>
-					</li>';
+					
 				}
 
 				@endphp
