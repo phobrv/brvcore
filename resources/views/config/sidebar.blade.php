@@ -15,7 +15,7 @@
 				$checked = (in_array($menu['id'],$data['sidebar_disable']))  ? 'checked' : '';
 			@endphp
 			<div class="form-group">
-				<label for="inputEmail3" class="col-sm-2 control-label"> {{ $menu['title'] }}  </label>
+				<label for="inputEmail3" class="col-sm-2 control-label" style="display: flex; justify-content: end;"> {{ $menu['title'] }}  </label>
 				<div class="col-sm-10">
 					<input type="checkbox" name="disable[]" value="{{ $menu['id'] }}" {{ $checked }} >
 				</div>
@@ -26,7 +26,7 @@
 				$checked = (in_array($submenu['id'],$data['sidebar_disable']))  ? 'checked' : '';
 			@endphp
 			<div class="form-group">
-				<label for="inputEmail3" class="col-sm-3 control-label"> {{ $submenu['title'] }} </label>
+				<label for="inputEmail3" class="col-sm-3 control-label" style="display: flex; justify-content: end;"> {{ $submenu['title'] }} </label>
 				<div class="col-sm-9">
 					<input type="checkbox" name="disable[]" value="{{ $submenu['id'] }}" {{ $checked }}>
 				</div>
