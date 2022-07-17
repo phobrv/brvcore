@@ -38,7 +38,7 @@ if(empty($value)){
 @endphp
 @if(isset($formStyle) && $formStyle == 'basic')
 <div class="form-group">
-	<label for="{{ "id".$key }}" title="{{ $key ?? '' }}>{{ $label ?? ''}}</label>
+	<label for="{{ "id".$key }}" title="{{ $key ?? '' }}">{{ $label ?? ''}} </label>
 	@if($inputType == 'text')
 	{{ Form::text($key,$value,$options) }}
 	@elseif($inputType == 'number')

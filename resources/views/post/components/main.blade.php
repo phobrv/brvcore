@@ -13,19 +13,20 @@
 			@isset($data['post']) @method('put') @endisset
 			<input type="hidden" id="typeSubmit" name="typeSubmit" value="">
 			<div class="row">
-				<div class="col-md-8">
-					@include('phobrv::input.inputSelect',['label'=>'Status','key'=>'status','array'=>['0'=>'Private','1'=>'Active','2'=>'Hot']])
+				<div class="col-md-9">
+					
 					@isset($data['post'])
-					@include('phobrv::input.inputText',['label'=>'Url','key'=>'slug','check_auto_gen'=>'true'])
+					@include('phobrv::input.inputText',['label'=>'Slug','key'=>'slug','check_auto_gen'=>'true'])
 					@endif
 					@include('phobrv::input.inputText',['label'=>'Title','key'=>'title','required'=>true])
 					@include('phobrv::input.inputText',['label'=>'Description','key'=>'excerpt'])
-					@isset($data['post'])
-					@include('phobrv::input.inputText',['label'=>'Create date','key'=>'created_at','datetime'=>true,'value'=>date('Y-m-d H:i:s',strtotime($data['post']->created_at))])
-					@endif
 					@include('phobrv::input.inputTextarea',['label'=>'Nội dung','key'=>'content','style'=>'short'])
 				</div>
-				<div class="col-md-4">
+				<div class="col-md-3">
+					@include('phobrv::input.inputText',['label'=>'Create date','key'=>'created_at','formStyle'=>'basic','datetime'=>true,'value'=>date('Y-m-d H:i:s',strtotime($data['post']->created_at))])
+				
+					@include('phobrv::input.inputSelect',['label'=>'Status','key'=>'status','array'=>['0'=>'Private','1'=>'Active','2'=>'Hot'],'formStyle'=>'basic'])
+					<label>Thumb</label>
 					@include('phobrv::input.inputImage',['key'=>'thumb','basic'=>true])
 					<hr>
 					<div class="form-group">

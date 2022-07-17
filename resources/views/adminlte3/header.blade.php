@@ -77,7 +77,7 @@
 	}
 </style>
 
-<body class=" sidebar-mini">
+<body class=" sidebar-mini {{ $sidebar_collapse ?? '' }}">
     <div class="wrapper">
         <nav class="main-header navbar navbar-expand navbar-white navbar-light">
             <ul class="navbar-nav">

@@ -1,4 +1,4 @@
-@extends('phobrv::adminlte3.layout')
+@extends('phobrv::adminlte3.layout_collapse')
 
 @section('header')
 <a href="{{route('post.index')}}"  class="btn btn-default float-left">

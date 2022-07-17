@@ -18,6 +18,19 @@ if(empty($value)){
 	}
 }
 @endphp
+@if(isset($formStyle) && $formStyle =='basic')
+<div class="form-group row">
+	<label title="{{ $key ?? '' }}" for="inputEmail3" class="col-sm-12 control-label">{{ $label ?? ''}}</label>
+	<div class="col-sm-12">
+		{{Form::select($key, $array,$value,$options)}}
+		@if (isset($errors) && $errors->has($key))
+		<span class="invalid-feed" role="alert">
+			<strong>{{ $errors->first($key) }}</strong>
+		</span>
+		@endif
+	</div>
+</div>
+@else
 <div class="form-group row">
 	<label title="{{ $key ?? '' }}" for="inputEmail3" class="col-sm-2 control-label">{{ $label ?? ''}}</label>
 	<div class="col-sm-10">
@@ -29,3 +42,4 @@ if(empty($value)){
 		@endif
 	</div>
 </div>
+@endif
